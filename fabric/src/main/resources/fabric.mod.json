@@ -1,0 +1,21 @@
+{
+    "schemaVersion": 1,
+    "id": "creategoggles",
+    "version": "${version}",
+    "name": "CreateGoggles",
+    "description": "",
+    "authors": [],
+    "contact": {},
+    "license": "MIT",
+    "icon": "icon.png",
+    "environment": "*",
+    "entrypoints": {},
+    "mixins": [
+        "creategoggles.mixins.json",
+        "creategoggles-common.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.14.18",
+        "minecraft": ">=1.19.2"
+    }
+}
