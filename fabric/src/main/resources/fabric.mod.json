@@ -2,20 +2,26 @@
     "schemaVersion": 1,
     "id": "creategoggles",
     "version": "${version}",
-    "name": "CreateGoggles",
-    "description": "",
-    "authors": [],
+    "name": "${modName}",
+    "description": "Adds Goggle helmets and armored backtanks",
+    "authors": ["${author}"],
     "contact": {},
     "license": "MIT",
     "icon": "icon.png",
     "environment": "*",
-    "entrypoints": {},
+    "entrypoints": {
+        "main": [
+            "com.robocraft999.creategoggles.fabric.CreateGogglesFabric"
+        ]
+    },
     "mixins": [
         "creategoggles.mixins.json",
         "creategoggles-common.mixins.json"
     ],
     "depends": {
-        "fabricloader": ">=0.14.18",
-        "minecraft": ">=1.19.2"
+        "fabricloader": ">=${fabric_loader_version}",
+        "minecraft": ">=${minecraft_version}",
+        "architectury": "${architectury_version}",
+        "create": "*"
     }
 }

@@ -15,21 +15,61 @@ configurations {
     developmentFabric.extendsFrom common
 }
 
+repositories {
+    maven { url = "https://api.modrinth.com/maven" } // LazyDFU
+    maven { url = "https://maven.terraformersmc.com/releases/" } // Mod Menu
+    maven { url = "https://mvn.devos.one/snapshots/" } // Create Fabric, Porting Lib, Forge Tags, Milk Lib, Registrate Fabric
+    maven { url = "https://cursemaven.com" } // Forge Config API Port
+    maven { url = "https://maven.cafeteria.dev/releases" } // Fake Player API
+    maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
+    maven { url = "https://jitpack.io/" } // Mixin Extras, Fabric ASM
+}
+
 dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+
     modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
     // Remove the next line if you don't want to depend on the API
     modApi "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
 
-    common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+    //modImplementation("com.tterrag.registrate_fabric:Registrate:$registrate_version_fabric")
+    modImplementation("com.simibubi.create:create-fabric-${minecraft_version}:${create_version_fabric}")
 }
 
 processResources {
-    inputs.property "version", project.version
+    from(project(":common").sourceSets.main.resources)
+    from(project(":forge").file('src/generated/creategoggles')) {
+        exclude('.cache/')
+    }
+    // Forge's data gen doesn't work with assets placed in the common project, so we place them in Forge and include them here
+    from(project(":forge").sourceSets.main.resources) {
+        include("assets/")
+        include("data/")
+    }
+
+    duplicatesStrategy DuplicatesStrategy.INCLUDE
+
+    inputs.property "modId", "${mod_id}"
+    inputs.property "version", "${mod_version}"
+    inputs.property "modName", "${mod_name}"
+    inputs.property "author", "${authors}"
+    inputs.property "fabric_loader_version", "${fabric_loader_version}"
+    inputs.property "minecraft_version", "${minecraft_version}"
+    inputs.property "architectury_version", "${architectury_version}"
+
+
 
     filesMatching("fabric.mod.json") {
-        expand "version": project.version
+        expand( "modId": "${mod_id}",
+                "version": "${mod_version}",
+                "modName": "${mod_name}",
+                "author": "${authors}",
+                "fabric_loader_version": "${fabric_loader_version}",
+                "minecraft_version": "${minecraft_version}",
+                "architectury_version": "${architectury_version}"
+        )
     }
 }
 

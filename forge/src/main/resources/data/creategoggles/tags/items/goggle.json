@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "creategoggles:goggle_chainmail_helmet",
+    "creategoggles:goggle_diamond_helmet",
+    "creategoggles:goggle_golden_helmet",
+    "creategoggles:goggle_iron_helmet",
+    "creategoggles:goggle_leather_helmet",
+    "creategoggles:goggle_turtle_helmet",
+    "creategoggles:goggle_netherite_helmet",
+    "creategoggles:goggle_diving_helmet"
+  ]
+}

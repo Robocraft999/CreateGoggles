@@ -1,0 +1,17 @@
+{
+  "type": "creategoggles:crafting_nbt",
+  "key": {
+    "b": {
+      "item": "create:copper_backtank"
+    },
+    "c": {
+      "item": "minecraft:leather_chestplate"
+    }
+  },
+  "pattern": [
+    "cb"
+  ],
+  "result": {
+    "item": "creategoggles:leather_backtank"
+  }
+}

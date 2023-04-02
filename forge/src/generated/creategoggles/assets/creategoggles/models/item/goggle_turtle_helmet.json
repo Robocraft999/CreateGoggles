@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "creategoggles:item/goggle_turtle_helmet"
+  }
+}

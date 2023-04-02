@@ -14,20 +14,61 @@ configurations {
     developmentForge.extendsFrom common
 }
 
+repositories {
+
+}
+
+def generatedResources = file("src/generated")
+
+sourceSets.main.resources { srcDir generatedResources }
+
+loom {
+    runs {
+        data {
+            data()
+            programArgs "--all", "--mod", "creategoggles"
+            programArgs "--output", generatedResources.absolutePath
+            //programArgs "--existing", file("src/main/resources").absolutePath
+        }
+    }
+}
+
 dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
+    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
     // Remove the next line if you don't want to depend on the API
     modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
 
-    common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
+    modImplementation("com.simibubi.create:create-${minecraft_version}:${create_version_forge}:slim"){transitive = false}
+    modImplementation("com.jozufozu.flywheel:flywheel-forge-${minecraft_version}:${flywheel_version_forge}")
+    modImplementation("com.tterrag.registrate:Registrate:${registrate_version_forge}")
+
+    modApi("mekanism:Mekanism:${mekanism_version}:api")
+    modRuntimeOnly("mekanism:Mekanism:${mekanism_version}")// core
+
+    modApi("top.theillusivec4.curios:curios-forge:${curios_minecraft_version}-${curios_version}:api")
+    modRuntimeOnly("top.theillusivec4.curios:curios-forge:${curios_minecraft_version}-${curios_version}")
+
 }
 
 processResources {
-    inputs.property "version", project.version
+    from(project(":common").sourceSets.main.resources)
+    from(file('src/generated/creategoggles')) {
+        exclude('.cache/')
+    }
+
+    inputs.property "modId", "${mod_id}"
+    inputs.property "version", "${mod_version}"
+    inputs.property "modName", "${mod_name}"
+    inputs.property "author", "${authors}"
 
     filesMatching("META-INF/mods.toml") {
-        expand "version": project.version
+        expand( "modId": "${mod_id}",
+                "version": "${mod_version}",
+                "modName": "${mod_name}",
+                "author": "${authors}"
+        )
     }
 }
 

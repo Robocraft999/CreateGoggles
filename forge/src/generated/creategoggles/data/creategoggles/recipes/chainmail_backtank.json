@@ -1,0 +1,17 @@
+{
+  "type": "creategoggles:crafting_nbt",
+  "key": {
+    "b": {
+      "item": "create:copper_backtank"
+    },
+    "c": {
+      "item": "minecraft:chainmail_chestplate"
+    }
+  },
+  "pattern": [
+    "cb"
+  ],
+  "result": {
+    "item": "creategoggles:chainmail_backtank"
+  }
+}

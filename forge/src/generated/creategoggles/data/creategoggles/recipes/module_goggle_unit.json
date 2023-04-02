@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "creategoggles:goggle_netherite_helmet"
+    },
+    "A": {
+      "item": "mekanism:alloy_reinforced"
+    },
+    "B": {
+      "item": "mekanism:module_base"
+    },
+    "H": {
+      "item": "mekanism:hdpe_sheet"
+    }
+  },
+  "pattern": [
+    "A#A",
+    "ABA",
+    "HHH"
+  ],
+  "result": {
+    "item": "creategoggles:module_goggle_unit"
+  }
+}

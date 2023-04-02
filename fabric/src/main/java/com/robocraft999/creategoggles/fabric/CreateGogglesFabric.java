@@ -7,5 +7,8 @@ public class CreateGogglesFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         CreateGoggles.init();
+        CreateGoggles.LOGGER.info("CreateGogglesFabric init");
+
+        CreateGoggles.REGISTRATE.register();
     }
 }
