@@ -5,7 +5,10 @@
     "name": "${modName}",
     "description": "Adds Goggle helmets and armored backtanks",
     "authors": ["${author}"],
-    "contact": {},
+    "contact": {
+        "issues": "https://github.com/Robocraft999/CreateGoggles/issues",
+        "sources": "https://github.com/Robocraft999/CreateGoggles"
+    },
     "license": "MIT",
     "icon": "icon.png",
     "environment": "*",
