@@ -1,11 +1,11 @@
 package com.robocraft999.creategoggles.forge;
 
 import com.robocraft999.creategoggles.CPConfig;
+import com.robocraft999.creategoggles.CreateGoggles;
 import com.robocraft999.creategoggles.forge.compat.mekanism.CompatMekanism;
 import com.robocraft999.creategoggles.forge.data.RecipeDataProvider;
-import com.robocraft999.creategoggles.CreateGoggles;
+import com.robocraft999.creategoggles.forge.registry.CGModules;
 import com.robocraft999.creategoggles.forge.registry.CPItems;
-import com.robocraft999.creategoggles.forge.registry.CPModules;
 import com.robocraft999.creategoggles.registry.ModCompat;
 import dev.architectury.platform.forge.EventBuses;
 import mekanism.api.MekanismIMC;
@@ -38,14 +38,10 @@ public class CreateGogglesForge {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         CreateGoggles.REGISTRATE.registerEventListeners(modEventBus);
 
-        //CGBlocks.register();
-        //CGTileEntities.register();
         CPItems.register();
 
-        //CGRecipeTypes.register(modEventBus);
-
         if(ModCompat.MEKANISM.isLoaded())
-            CPModules.register(modEventBus);
+            CGModules.register(modEventBus);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CPConfig.commonSpec);
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, CPConfig.clientSpec);
@@ -90,7 +86,7 @@ public class CreateGogglesForge {
 
             }
             if(ModCompat.MEKANISM.isLoaded()){
-                MekanismIMC.addMekaSuitHelmetModules(CPModules.GOGGLE_MODULE.get());
+                MekanismIMC.addMekaSuitHelmetModules(CGModules.GOGGLE_MODULE.get());
             }
         }
     }

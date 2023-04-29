@@ -8,7 +8,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
-public class CPModules {
+public class CGModules {
 
     public static final DeferredRegister<ModuleData<?>> MODULES = DeferredRegister.create(MekanismAPI.moduleRegistryName(), CreateGoggles.MOD_ID);
 
