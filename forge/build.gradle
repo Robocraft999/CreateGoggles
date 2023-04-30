@@ -31,6 +31,10 @@ loom {
             //programArgs "--existing", file("src/main/resources").absolutePath
         }
     }
+    forge {
+        mixinConfig "creategoggles.mixins.json"
+        mixinConfig "creategoggles-common.mixins.json"
+    }
 }
 
 dependencies {

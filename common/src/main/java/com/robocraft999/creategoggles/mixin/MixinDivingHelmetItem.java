@@ -1,25 +1,36 @@
 package com.robocraft999.creategoggles.mixin;
 
-import com.robocraft999.creategoggles.item.goggle.DivingGoggleArmor;
-import com.simibubi.create.content.curiosities.armor.CopperArmorItem;
 import com.simibubi.create.content.curiosities.armor.DivingHelmetItem;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(DivingHelmetItem.class)
-public class MixinDivingHelmetItem {
-    @Redirect(
+public abstract class MixinDivingHelmetItem {
+    /*@Redirect(
             method = "breatheUnderwater",
             at = @At(
                     value = "INVOKE",
                     target = "Lcom/simibubi/create/content/curiosities/armor/CopperArmorItem;isWornBy(Lnet/minecraft/world/entity/Entity;)Z"
-            ),
-            remap = false
+            )
     )
     private static boolean isWornByProxy(CopperArmorItem item, Entity entity){
         return item.isWornBy(entity) || DivingGoggleArmor.isWornBy((LivingEntity) entity);
-    }
+    }*/
+
+    /*public boolean isWornBy(Entity entity){
+        return ((DivingHelmetItem)(Object)this).isWornBy(entity) || DivingGoggleArmor.isWornBy((LivingEntity) entity);
+    }*/
+
+    /*
+    @Inject(
+            target = @Desc(
+                    value = "isWornBy",
+                    owner = CopperArmorItem.class,
+                    args=Entity.class,
+                    ret=boolean.class
+            ),
+            at = @At("RETURN")
+    )
+    public void onIsWornByReturn(CallbackInfoReturnable<Boolean> cir, Entity entity){
+        cir.setReturnValue(cir.getReturnValueZ() || DivingGoggleArmor.isWornBy((LivingEntity) entity));
+    }*/
 }
