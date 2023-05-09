@@ -1,5 +1,5 @@
 plugins {
-    id "com.github.johnrengelman.shadow" version "7.1.2"
+    id "com.github.johnrengelman.shadow" version "${shadow_plugin_version}"
 }
 architectury {
     platformSetupLoomIde()
@@ -29,6 +29,18 @@ loom {
             programArgs "--all", "--mod", "creategoggles"
             programArgs "--output", generatedResources.absolutePath
             //programArgs "--existing", file("src/main/resources").absolutePath
+        }
+        client {
+            client()
+            setConfigName("Forge Client")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+        server {
+            server()
+            setConfigName("Forge Server")
+            ideConfigGenerated(true)
+            runDir("run")
         }
     }
     forge {
