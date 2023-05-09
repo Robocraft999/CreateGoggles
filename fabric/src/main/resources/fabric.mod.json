@@ -15,6 +15,9 @@
     "entrypoints": {
         "main": [
             "com.robocraft999.creategoggles.fabric.CreateGogglesFabric"
+        ],
+        "client": [
+            "com.robocraft999.creategoggles.fabric.CreateGogglesFabricClient"
         ]
     },
     "mixins": [

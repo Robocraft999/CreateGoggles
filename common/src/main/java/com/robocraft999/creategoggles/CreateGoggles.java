@@ -6,9 +6,6 @@ import com.robocraft999.creategoggles.registry.CGItems;
 import com.robocraft999.creategoggles.registry.CGRecipeTypes;
 import com.robocraft999.creategoggles.registry.CGTileEntities;
 import com.simibubi.create.foundation.data.CreateRegistrate;
-import dev.architectury.platform.Platform;
-import net.minecraftforge.api.ModLoadingContext;
-import net.minecraftforge.fml.config.ModConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,12 +21,5 @@ public class CreateGoggles {
         CGItems.register();
         CGRecipeTypes.register();
         CGLang.register();
-
-        if(Platform.isFabric()){
-            ModLoadingContext.registerConfig(MOD_ID, ModConfig.Type.CLIENT, CPConfig.clientSpec);
-            ModLoadingContext.registerConfig(MOD_ID, ModConfig.Type.COMMON, CPConfig.commonSpec);
-
-            ClientEvents.register();
-        }
     }
 }
