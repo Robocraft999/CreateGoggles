@@ -1,6 +1,5 @@
 package com.robocraft999.creategoggles.forge.registry;
 
-import com.robocraft999.creategoggles.forge.CreateGogglesForge;
 import com.robocraft999.creategoggles.forge.item.goggle.DivingGoggleArmorWrapper;
 import com.robocraft999.creategoggles.item.goggle.GoggleArmor;
 import com.robocraft999.creategoggles.registry.ModCompat;
@@ -34,7 +33,6 @@ public class CPItems {
 			GOGGLE_UNIT = registerGoggleModule();
 
 	public static void register() {
-		CreateGogglesForge.logger.info("Registering Items");
 	}
 
 	private static ItemEntry<Item> registerGoggleModule(){

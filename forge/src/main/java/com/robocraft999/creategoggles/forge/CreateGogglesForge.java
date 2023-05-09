@@ -34,6 +34,7 @@ public class CreateGogglesForge {
         // Submit our event bus to let architectury register our content on the right time
         EventBuses.registerModEventBus(CreateGoggles.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
         CreateGoggles.init();
+        CreateGoggles.LOGGER.info("CreateGogglesForge init");
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         CreateGoggles.REGISTRATE.registerEventListeners(modEventBus);
@@ -56,12 +57,12 @@ public class CreateGogglesForge {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        logger.info("Create Plus Setup");
+        logger.info("Create Goggles Setup");
     }
 
 
     private void clientRegistries(final FMLClientSetupEvent event) {
-        logger.info("Create Plus Client Setup");
+        logger.info("Create Goggles Client Setup");
     }
 
     private void gatherData(GatherDataEvent event){
@@ -78,7 +79,7 @@ public class CreateGogglesForge {
             if(ModCompat.CURIOS.isLoaded()) {
                 if(CPConfig.COMMON.useCustomCurioBacktankSlot.get()){
                     InterModComms.sendTo(CreateGoggles.MOD_ID, "curios", SlotTypeMessage.REGISTER_TYPE,
-                            () -> new SlotTypeMessage.Builder("createplus.backtank_slot")
+                            () -> new SlotTypeMessage.Builder("creategoggles.backtank_slot")
                                     .size(1)
                                     .icon(new ResourceLocation(CreateGoggles.MOD_ID, "item/backtank_slot_icon"))
                                     .build());
