@@ -5,8 +5,8 @@ import com.robocraft999.creategoggles.data.CreateGogglesRecipeBuilder;
 import com.robocraft999.creategoggles.forge.registry.CPItems;
 import com.robocraft999.creategoggles.registry.CGItems;
 import com.simibubi.create.AllItems;
-import com.simibubi.create.content.contraptions.components.crusher.CrushingRecipe;
-import com.simibubi.create.content.contraptions.processing.ProcessingRecipeBuilder;
+import com.simibubi.create.content.kinetics.crusher.CrushingRecipe;
+import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -33,14 +33,13 @@ public class RecipeDataProvider extends RecipeProvider {
         helmetRecipe(CGItems.LEATHER_GOGGLE_HELMET.get(), Items.LEATHER_HELMET, consumer);
         helmetRecipe(CGItems.TURTLE_GOGGLE_HELMET.get(), Items.TURTLE_HELMET, consumer);
         helmetRecipe(CGItems.NETHERITE_GOGGLE_HELMET.get(), Items.NETHERITE_HELMET, consumer);
-        helmetRecipe(CPItems.DIVING_GOGGLE_HELMET.get(), AllItems.DIVING_HELMET.get(), consumer);
+        helmetRecipe(CPItems.DIVING_GOGGLE_HELMET.get(), AllItems.COPPER_DIVING_HELMET.get(), consumer);
 
         backtankRecipe(CGItems.CHAINMAIL_BACKTANK.get(), Items.CHAINMAIL_CHESTPLATE, consumer);
         backtankRecipe(CGItems.DIAMOND_BACKTANK.get(), Items.DIAMOND_CHESTPLATE, consumer);
         backtankRecipe(CGItems.GOLDEN_BACKTANK.get(), Items.GOLDEN_CHESTPLATE, consumer);
         backtankRecipe(CGItems.IRON_BACKTANK.get(), Items.IRON_CHESTPLATE, consumer);
         backtankRecipe(CGItems.LEATHER_BACKTANK.get(), Items.LEATHER_CHESTPLATE, consumer);
-        backtankRecipe(CGItems.NETHERITE_BACKTANK.get(), Items.NETHERITE_CHESTPLATE, consumer);
 
         mekModule(CPItems.GOGGLE_UNIT.get(), CGItems.NETHERITE_GOGGLE_HELMET.get(), consumer);
     }

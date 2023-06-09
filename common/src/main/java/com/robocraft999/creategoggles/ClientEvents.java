@@ -1,8 +1,8 @@
 package com.robocraft999.creategoggles;
 
 import com.robocraft999.creategoggles.item.goggle.GoggleArmorLayer;
-import com.simibubi.create.content.curiosities.armor.AllArmorMaterials;
-import com.simibubi.create.content.curiosities.armor.CopperArmorItem;
+import com.simibubi.create.Create;
+import com.simibubi.create.content.equipment.armor.AllArmorMaterials;
 import dev.architectury.platform.Platform;
 import io.github.fabricators_of_create.porting_lib.util.ArmorTextureRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
@@ -26,6 +26,6 @@ public class ClientEvents {
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register(ClientEvents::addEntityRenderLayers);
 
         if(Platform.isFabric())
-            ArmorTextureRegistry.register(AllArmorMaterials.COPPER, CopperArmorItem.TEXTURE);
+            ArmorTextureRegistry.register(AllArmorMaterials.COPPER, Create.asResource("copper_diving"));
     }
 }
