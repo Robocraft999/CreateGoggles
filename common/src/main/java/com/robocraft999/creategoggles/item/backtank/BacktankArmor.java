@@ -1,10 +1,8 @@
 package com.robocraft999.creategoggles.item.backtank;
 
-import static com.robocraft999.creategoggles.CreateGoggles.REGISTRATE;
-
-import com.simibubi.create.content.curiosities.armor.BackTankUtil;
-import com.simibubi.create.content.curiosities.armor.CapacityEnchantment;
-import com.simibubi.create.content.curiosities.armor.CopperBacktankItem;
+import com.simibubi.create.content.equipment.armor.BacktankItem;
+import com.simibubi.create.content.equipment.armor.BacktankUtil;
+import com.simibubi.create.content.equipment.armor.CapacityEnchantment.ICapacityEnchantable;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
@@ -15,12 +13,11 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.Block;
-//import top.theillusivec4.curios.api.CuriosCapability;
-//import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class BacktankArmor extends ArmorItem implements CapacityEnchantment.ICapacityEnchantable {
+import static com.robocraft999.creategoggles.CreateGoggles.REGISTRATE;
+public class BacktankArmor extends ArmorItem implements ICapacityEnchantable {
     private String blockItemId;
 
     public BacktankArmor(ArmorMaterial material, String id, Properties properties) {
@@ -47,7 +44,7 @@ public class BacktankArmor extends ArmorItem implements CapacityEnchantment.ICap
         if (this.allowedIn(tab)) {
             ItemStack stack = new ItemStack(this);
             CompoundTag nbt = new CompoundTag();
-            nbt.putInt("Air", BackTankUtil.maxAirWithoutEnchants());
+            nbt.putInt("Air", BacktankUtil.maxAirWithoutEnchants());
             stack.setTag(nbt);
             stacks.add(stack);
         }
@@ -60,12 +57,12 @@ public class BacktankArmor extends ArmorItem implements CapacityEnchantment.ICap
 
     @Override
     public int getBarColor(ItemStack stack) {
-        return CopperBacktankItem.DURABILITY_BAR;
+        return BacktankItem.BAR_COLOR;
     }
 
     @Override
     public int getBarWidth(ItemStack stack) {
-        return Math.round(13.0F * Mth.clamp(BackTankUtil.getAir(stack) / ((float) BackTankUtil.maxAir(stack)), 0, 1));
+        return Math.round(13.0F * Mth.clamp(BacktankUtil.getAir(stack) / ((float) BacktankUtil.maxAir(stack)), 0, 1));
     }
 
     public static boolean isWornBy(LivingEntity entity) {

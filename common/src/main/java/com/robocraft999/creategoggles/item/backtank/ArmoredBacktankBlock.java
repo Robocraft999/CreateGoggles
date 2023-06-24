@@ -1,9 +1,7 @@
 package com.robocraft999.creategoggles.item.backtank;
 
-import static com.robocraft999.creategoggles.CreateGoggles.REGISTRATE;
-
-import com.simibubi.create.content.curiosities.armor.CopperBacktankBlock;
-import com.simibubi.create.content.curiosities.armor.CopperBacktankTileEntity;
+import com.simibubi.create.content.equipment.armor.BacktankBlock;
+import com.simibubi.create.content.equipment.armor.BacktankBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
@@ -15,7 +13,9 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Optional;
 
-public class ArmoredBacktankBlock extends CopperBacktankBlock {
+import static com.robocraft999.creategoggles.CreateGoggles.REGISTRATE;
+
+public class ArmoredBacktankBlock extends BacktankBlock {
     String typeId;
 
     public ArmoredBacktankBlock(String id, Properties properties) {
@@ -26,14 +26,14 @@ public class ArmoredBacktankBlock extends CopperBacktankBlock {
     @Override
     public ItemStack getCloneItemStack(BlockGetter p_185473_1_, BlockPos p_185473_2_, BlockState p_185473_3_) {
         ItemStack item = new ItemStack(REGISTRATE.get(typeId, Registry.ITEM_REGISTRY).get());
-        Optional<CopperBacktankTileEntity> tileEntityOptional = getTileEntityOptional(p_185473_1_, p_185473_2_);
+        Optional<BacktankBlockEntity> tileEntityOptional = getBlockEntityOptional(p_185473_1_, p_185473_2_);
 
-        int air = tileEntityOptional.map(CopperBacktankTileEntity::getAirLevel)
+        int air = tileEntityOptional.map(BacktankBlockEntity::getAirLevel)
                 .orElse(0);
         CompoundTag tag = item.getOrCreateTag();
         tag.putInt("Air", air);
 
-        ListTag enchants = tileEntityOptional.map(CopperBacktankTileEntity::getEnchantmentTag)
+        ListTag enchants = tileEntityOptional.map(BacktankBlockEntity::getEnchantmentTag)
                 .orElse(new ListTag());
         if (!enchants.isEmpty()) {
             ListTag enchantmentTagList = item.getEnchantmentTags();
@@ -41,7 +41,7 @@ public class ArmoredBacktankBlock extends CopperBacktankBlock {
             tag.put("Enchantments", enchantmentTagList);
         }
 
-        tileEntityOptional.map(CopperBacktankTileEntity::getCustomName).ifPresent(item::setHoverName);
+        tileEntityOptional.map(BacktankBlockEntity::getCustomName).ifPresent(item::setHoverName);
         return item;
     }
 

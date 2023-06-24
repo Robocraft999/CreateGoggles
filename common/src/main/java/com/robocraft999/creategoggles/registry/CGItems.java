@@ -1,6 +1,7 @@
 package com.robocraft999.creategoggles.registry;
 
 import com.robocraft999.creategoggles.CreateGoggles;
+import com.robocraft999.creategoggles.item.backtank.DyableBacktankItem;
 import com.robocraft999.creategoggles.item.goggle.DivingGoggleArmor;
 import com.robocraft999.creategoggles.item.goggle.DyableGoggleArmor;
 import com.robocraft999.creategoggles.item.goggle.GoggleArmor;
@@ -62,7 +63,7 @@ public class CGItems {
             GOLDEN_BACKTANK = backtank("golden_backtank", ArmorMaterials.GOLD, GOLDEN_BACKTANK_PLACEABLE),
             IRON_BACKTANK = backtank("iron_backtank", ArmorMaterials.IRON, IRON_BACKTANK_PLACEABLE),
             LEATHER_BACKTANK = REGISTRATE
-                    .item("leather_backtank", p -> new BacktankItem.Layered(ArmorMaterials.LEATHER, p, new ResourceLocation("leather"), CGItems.LEATHER_BACKTANK_PLACEABLE))
+                    .item("leather_backtank", p -> new DyableBacktankItem(ArmorMaterials.LEATHER, p, new ResourceLocation("leather"), CGItems.LEATHER_BACKTANK_PLACEABLE))
                     .model(AssetLookup.customGenericItemModel("_", "item"))
                     .color(() -> DyableGoggleArmor.DyableGoggleArmorColor::new)
                     .tag(AllTags.AllItemTags.PRESSURIZED_AIR_SOURCES.tag)

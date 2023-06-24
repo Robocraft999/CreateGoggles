@@ -1,7 +1,7 @@
 package com.robocraft999.creategoggles.forge.mixin;
 
 import com.robocraft999.creategoggles.registry.ModCompat;
-import com.simibubi.create.content.curiosities.armor.BackTankUtil;
+import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@Mixin(BackTankUtil.class)
+@Mixin(BacktankUtil.class)
 public class MixinBackTankUtil {
     @Redirect(
             method = "get",

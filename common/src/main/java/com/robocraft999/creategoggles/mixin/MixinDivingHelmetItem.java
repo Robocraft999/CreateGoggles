@@ -1,6 +1,7 @@
 package com.robocraft999.creategoggles.mixin;
 
-import com.simibubi.create.content.curiosities.armor.DivingHelmetItem;
+
+import com.simibubi.create.content.equipment.armor.DivingHelmetItem;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(DivingHelmetItem.class)
