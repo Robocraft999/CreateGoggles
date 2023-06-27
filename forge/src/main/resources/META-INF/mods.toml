@@ -60,6 +60,6 @@ side = "BOTH"
 [[dependencies.creategoggles]]
 modId = "create"
 mandatory = true
-versionRange="[0.5.0.i,0.5.1)"
+versionRange="[0.5.1.b,)"
 ordering="AFTER"
 side="BOTH"
