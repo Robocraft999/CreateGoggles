@@ -1,7 +1,10 @@
 package com.robocraft999.creategoggles.data;
 
+import com.robocraft999.creategoggles.CreateGoggles;
+import com.robocraft999.creategoggles.item.modifier.ItemModifier;
 import com.robocraft999.creategoggles.registry.CGItems;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.entry.RegistryEntry;
 
 import static com.robocraft999.creategoggles.CreateGoggles.REGISTRATE;
 
@@ -22,6 +25,9 @@ public class CGLang {
         goggleTooltip(CGItems.NETHERITE_GOGGLE_HELMET);
         goggleTooltip(CGItems.LEATHER_GOGGLE_HELMET);
         goggleTooltip(CGItems.DIVING_GOGGLE_HELMET);
+
+        //modifierHint(CGItemModifiers.GOGGLE_MODIFIER, "Helmet now provides Goggle functionality.");
+        REGISTRATE.addRawLang("hint." + CreateGoggles.MOD_ID + ".modifier." + "goggle_modifier", "Helmet now provides Goggle functionality.");
     }
 
     private static void tooltip(ItemEntry<?> item, String category, String value) {
@@ -29,6 +35,13 @@ public class CGLang {
             REGISTRATE.addLang("item", item.getId(), "tooltip."+category, value);
         else
             REGISTRATE.addLang("item", item.getId(), "tooltip", value);
+    }
+
+    private static void modifierHint(RegistryEntry<? extends ItemModifier> modifier, String hint){
+        //modifier.get().getHintComponent().getString()
+        CreateGoggles.LOGGER.info("hint." + CreateGoggles.MOD_ID + ".modifier." + modifier.get().getRegistryName().getPath());
+        CreateGoggles.LOGGER.info(modifier.get().getHintComponent().getString());
+        //REGISTRATE.addRawLang("hint." + CreateGoggles.MOD_ID + ".modifier." + modifier.get().getRegistryName().getPath(), hint);
     }
 
     private static void backtankTooltip(ItemEntry<?> item){

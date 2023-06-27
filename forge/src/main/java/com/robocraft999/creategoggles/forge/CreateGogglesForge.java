@@ -2,6 +2,7 @@ package com.robocraft999.creategoggles.forge;
 
 import com.robocraft999.creategoggles.CPConfig;
 import com.robocraft999.creategoggles.CreateGoggles;
+import com.robocraft999.creategoggles.forge.compat.curios.CompatCurios;
 import com.robocraft999.creategoggles.forge.compat.mekanism.CompatMekanism;
 import com.robocraft999.creategoggles.forge.data.RecipeDataProvider;
 import com.robocraft999.creategoggles.forge.registry.CGModules;
@@ -52,6 +53,7 @@ public class CreateGogglesForge {
         modEventBus.addListener(this::gatherData);
 
         ModCompat.MEKANISM.executeIfInstalled(() -> CompatMekanism::init);
+        ModCompat.CURIOS.executeIfInstalled(() -> CompatCurios::init);
 
         MinecraftForge.EVENT_BUS.register(this);
     }

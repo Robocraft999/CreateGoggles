@@ -1,7 +1,7 @@
 package com.robocraft999.creategoggles.forge.compat.mekanism;
 
 import com.robocraft999.creategoggles.forge.registry.CGModules;
-import com.simibubi.create.content.contraptions.goggles.GogglesItem;
+import com.simibubi.create.content.equipment.goggles.GogglesItem;
 import mekanism.api.MekanismAPI;
 import net.minecraft.world.entity.EquipmentSlot;
 

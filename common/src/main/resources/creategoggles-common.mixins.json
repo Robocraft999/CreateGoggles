@@ -4,9 +4,6 @@
     "package": "com.robocraft999.creategoggles.mixin",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
-        "MixinCopperArmorItem",
-        "MixinCopperBacktankArmorLayer",
-        "MixinDivingHelmetItem"
     ],
     "client": [
     ],
