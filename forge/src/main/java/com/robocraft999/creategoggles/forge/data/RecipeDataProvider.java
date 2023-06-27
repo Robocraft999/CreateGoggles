@@ -1,8 +1,11 @@
 package com.robocraft999.creategoggles.forge.data;
 
 import com.robocraft999.creategoggles.CreateGoggles;
+import com.robocraft999.creategoggles.data.ApplyModifierRecipeBuilder;
 import com.robocraft999.creategoggles.data.CreateGogglesRecipeBuilder;
 import com.robocraft999.creategoggles.forge.registry.CPItems;
+import com.robocraft999.creategoggles.item.modifier.ItemModifier;
+import com.robocraft999.creategoggles.registry.CGItemModifiers;
 import com.robocraft999.creategoggles.registry.CGItems;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.content.kinetics.crusher.CrushingRecipe;
@@ -42,6 +45,9 @@ public class RecipeDataProvider extends RecipeProvider {
         backtankRecipe(CGItems.LEATHER_BACKTANK.get(), Items.LEATHER_CHESTPLATE, consumer);
 
         mekModule(CPItems.GOGGLE_UNIT.get(), CGItems.NETHERITE_GOGGLE_HELMET.get(), consumer);
+
+        //TODO add removal recipe (custom item modifier)
+        modifier(CGItemModifiers.GOGGLE_MODIFIER.get(), AllItems.GOGGLES.get(), consumer);
     }
 
     private void helmetRecipe(ItemLike result, ItemLike helmet, Consumer<FinishedRecipe> writer){
@@ -89,5 +95,9 @@ public class RecipeDataProvider extends RecipeProvider {
                 .define('H', Ingredient.fromJson(GsonHelper.parse("{\"item\": \"mekanism:hdpe_sheet\"}")))
                 .unlockedBy("has_module", has(input))
                 .save(writer);
+    }
+
+    private void modifier(ItemModifier modifier, ItemLike addition, Consumer<FinishedRecipe> writer){
+        ApplyModifierRecipeBuilder.of(addition, modifier).save(writer);
     }
 }
