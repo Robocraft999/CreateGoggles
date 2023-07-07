@@ -20,6 +20,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 
 import java.util.function.Supplier;
 
@@ -72,6 +73,10 @@ public class CGItems {
                     .tag(AllTags.AllItemTags.PRESSURIZED_AIR_SOURCES.tag)
                     .tag(forgeItemTag("chestplates"))
                     .register();
+
+    public static final ItemEntry<Item> MODIFIER_REMOVER = REGISTRATE
+            .item("modifier_remover", Item::new)
+            .register();
 
     private static ItemEntry<? extends GoggleHelmet> goggleHelmet(String name, ArmorMaterial material){
         return REGISTRATE.item(name, p -> new GoggleHelmet(material, p, vanillaArmorLoc(material))).register();

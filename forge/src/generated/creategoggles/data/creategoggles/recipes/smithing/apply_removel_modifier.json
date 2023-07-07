@@ -1,0 +1,7 @@
+{
+  "type": "creategoggles:apply_modifier",
+  "addition": {
+    "item": "creategoggles:modifier_remover"
+  },
+  "modifier": "creategoggles:removel_modifier"
+}

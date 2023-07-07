@@ -1,4 +1,4 @@
-// 1.19.2	2023-06-25T15:52:55.2259003	Recipes
+// 1.19.2	2023-07-07T14:53:45.8134544	Recipes
 2deff61b79b64b15348f8ae4ef73d367fb8532b6 data/creategoggles/advancements/recipes/combat/chainmail_backtank.json
 48a2bd5a4dbe30a65d9fef781e93e1b712d322aa data/creategoggles/advancements/recipes/combat/diamond_backtank.json
 b4fd83bce970bf34c03979d4800610bebcddaa21 data/creategoggles/advancements/recipes/combat/goggle_chainmail_helmet.json
@@ -41,3 +41,4 @@ ebdad47d0064f554818434165f04fa3f5bc7c159 data/creategoggles/recipes/goggle_nethe
 9253ea0c7e16d78f39b202efc22b863f9b91e86d data/creategoggles/recipes/leather_backtank.json
 ea69781effb380ba609e88fcc9a54270dd1b8364 data/creategoggles/recipes/module_goggle_unit.json
 dbfe866d20fe5dd98ce0b4383f056de730768307 data/creategoggles/recipes/smithing/apply_goggle_modifier.json
+0ec8939a89b21b1e346ef261183bd85410694b92 data/creategoggles/recipes/smithing/apply_removel_modifier.json

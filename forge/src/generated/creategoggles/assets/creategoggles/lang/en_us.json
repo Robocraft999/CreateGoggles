@@ -86,5 +86,6 @@
   "item.creategoggles.leather_backtank.tooltip.condition2": "When placed, Powered by Kinetics",
   "item.creategoggles.leather_backtank.tooltip.summary": "A _Wearable_ _Tank_ for carrying Pressurized Air that is plated with armor to protect the wearer.",
   "item.creategoggles.leather_backtank_placeable": "Leather Backtank Placeable",
+  "item.creategoggles.modifier_remover": "Modifier Remover",
   "module.creategoggles.goggle_unit": "Goggle Unit"
 }

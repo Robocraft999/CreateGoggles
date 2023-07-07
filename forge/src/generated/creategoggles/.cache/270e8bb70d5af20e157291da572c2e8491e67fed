@@ -1,11 +1,11 @@
-// 1.19.2	2023-06-25T19:05:42.7850801	Registrate Provider for creategoggles [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2023-07-07T14:53:45.8154512	Registrate Provider for creategoggles [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 7f462d3a6706f58aa0cea24884827d8365ffbf6c assets/creategoggles/blockstates/chainmail_backtank.json
 e52dcaca40caf5fe22f4b1501fecde2a91d891ef assets/creategoggles/blockstates/diamond_backtank.json
 6cde82499a1b278cf25228a21c2d500ee1907827 assets/creategoggles/blockstates/golden_backtank.json
 b419b82c302ad6b944e1d1bba11dc1389a79582d assets/creategoggles/blockstates/iron_backtank.json
 ae5208db8996a912e5a8afbd0e7694d9e5f98255 assets/creategoggles/blockstates/leather_backtank.json
-404a082c226dd50c42facf35848bc896a6888dba assets/creategoggles/lang/en_ud.json
-c66e9ae1c2b5d2a54b4e8f04b05c0499ba7d6b4b assets/creategoggles/lang/en_us.json
+ccd5162ed58378e0013ff6d5ed6b181499884d84 assets/creategoggles/lang/en_ud.json
+908127eb3c3399bca9f2bd8c1818fdee5f88bec3 assets/creategoggles/lang/en_us.json
 b3d2434a88d3884ac1f10ed1842e68566c6200ab assets/creategoggles/models/item/chainmail_backtank.json
 6c53b1a6ed28929b7a0a090edf6101e610f842fc assets/creategoggles/models/item/chainmail_backtank_placeable.json
 b59341ee904740ab4b22545b0f3573e891cc5d83 assets/creategoggles/models/item/diamond_backtank.json
@@ -24,6 +24,7 @@ d469f22dd952b59344eabc5abc9be1d0469241f7 assets/creategoggles/models/item/iron_b
 6c53b1a6ed28929b7a0a090edf6101e610f842fc assets/creategoggles/models/item/iron_backtank_placeable.json
 c2b7564d5c58cf138139052ddaab2d402cb019d4 assets/creategoggles/models/item/leather_backtank.json
 6c53b1a6ed28929b7a0a090edf6101e610f842fc assets/creategoggles/models/item/leather_backtank_placeable.json
+c2e289a5eea1bd6badeebff47ad14d48aac41e40 assets/creategoggles/models/item/modifier_remover.json
 d6e8b435bb938143ba96650573a257fde2203d62 assets/creategoggles/models/item/module_goggle_unit.json
 7e79f403dc2a86f0a1776f406b7c629da8fa1f6c data/creategoggles/loot_tables/blocks/chainmail_backtank.json
 933f03c4f6cb5eeb1be624a747bd8b10ab97c62a data/creategoggles/loot_tables/blocks/diamond_backtank.json

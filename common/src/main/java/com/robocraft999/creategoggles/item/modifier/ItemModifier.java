@@ -39,7 +39,7 @@ public class ItemModifier {
     }
 
     public boolean isItemValid(ItemStack stack) {
-        return !(stack.is(getIncompatibleItems()) || !this.predicate.test(stack) || ItemModifierManager.hasModifier(stack));
+        return !(stack.is(getIncompatibleItems()) || !this.predicate.test(stack) || ItemModifierManager.hasSpecificModifier(stack, this));
     }
 
     public List<ItemStack> getValidItems() {

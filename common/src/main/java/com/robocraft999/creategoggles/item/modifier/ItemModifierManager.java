@@ -36,5 +36,9 @@ public class ItemModifierManager {
         return hasModifier(stack) && getModifier(stack).equals(modifier);
     }
 
-    //maybe add hasSpecificModifier
+    public static void removeModifier(ItemStack stack) {
+        if (hasModifier(stack)) {
+            stack.getOrCreateTag().remove("Modifier");
+        }
+    }
 }
