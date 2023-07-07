@@ -4,7 +4,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import org.apache.commons.lang3.tuple.Pair;
 
-public class CPConfig {
+public class CGConfig {
     public static class Common{
         public final BooleanValue useCustomCurioGoggleSlot;
         public final BooleanValue useCustomCurioBacktankSlot;

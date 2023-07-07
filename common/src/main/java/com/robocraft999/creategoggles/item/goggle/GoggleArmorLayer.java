@@ -2,7 +2,7 @@ package com.robocraft999.creategoggles.item.goggle;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.robocraft999.creategoggles.CPConfig;
+import com.robocraft999.creategoggles.CGConfig;
 import com.robocraft999.creategoggles.compat.CuriosCompatDummy;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllPartialModels;
@@ -51,7 +51,7 @@ public class GoggleArmorLayer<T extends LivingEntity, M extends EntityModel<T>> 
         ms.mulPose(Vector3f.ZP.rotationDegrees(180.0f));
         ms.scale(0.625f, 0.625f, 0.625f);
 
-        if(CPConfig.CLIENT.moveGoggleToEyes.get()) {
+        if(CGConfig.CLIENT.moveGoggleToEyes.get()) {
             ms.mulPose(Vector3f.ZP.rotationDegrees(180.0f));
             ms.translate(0, -0.25, 0);
         }

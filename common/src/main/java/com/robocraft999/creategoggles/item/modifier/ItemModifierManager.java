@@ -1,5 +1,6 @@
 package com.robocraft999.creategoggles.item.modifier;
 
+import com.robocraft999.creategoggles.CGConfig;
 import com.robocraft999.creategoggles.registry.CGItemModifiers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -20,9 +21,11 @@ public class ItemModifierManager {
     }
 
     public static void setModifier(ItemStack stack, ItemModifier modifier) {
-        stack.getOrCreateTag().putString("Modifier", modifier.getRegistryName().toString());
+        if (CGConfig.COMMON.enableExperimentalFeatures.get()){
+            stack.getOrCreateTag().putString("Modifier", modifier.getRegistryName().toString());
 
-        modifier.apply(stack);
+            modifier.apply(stack);
+        }
     }
 
     public static boolean hasModifier(ItemStack stack) {
