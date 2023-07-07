@@ -7,6 +7,7 @@
         "MixinBackTankUtil"
     ],
     "client": [
+        "ItemRendererMixin"
     ],
     "injectors": {
         "defaultRequire": 1
