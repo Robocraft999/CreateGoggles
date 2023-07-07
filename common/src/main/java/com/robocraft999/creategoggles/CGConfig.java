@@ -9,6 +9,8 @@ public class CGConfig {
         public final BooleanValue useCustomCurioGoggleSlot;
         public final BooleanValue useCustomCurioBacktankSlot;
 
+        public final BooleanValue enableExperimentalFeatures;
+
         Common(ForgeConfigSpec.Builder builder){
             builder.comment("General configuration settings")
                     .push("general");
@@ -22,6 +24,11 @@ public class CGConfig {
                     .comment("Uses custom curio slot for backtank instead of the back slot")
                     .worldRestart()
                     .define("customCurioBacktankSlot", false);
+
+            enableExperimentalFeatures = builder
+                    .comment("Enables experimental features")
+                    .worldRestart()
+                    .define("enableExperimentalFeatures", true);
 
             builder.pop();
         }

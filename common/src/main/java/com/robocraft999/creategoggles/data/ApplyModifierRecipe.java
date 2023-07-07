@@ -2,6 +2,7 @@ package com.robocraft999.creategoggles.data;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
+import com.robocraft999.creategoggles.CGConfig;
 import com.robocraft999.creategoggles.item.modifier.ItemModifier;
 import com.robocraft999.creategoggles.item.modifier.ItemModifierManager;
 import com.robocraft999.creategoggles.registry.CGItemModifiers;
@@ -31,6 +32,9 @@ public class ApplyModifierRecipe extends UpgradeRecipe {
     @Override
     public boolean matches(Container inv, Level level) {
         if (!this.modifier.isItemValid(inv.getItem(0))) {
+            return false;
+        }
+        if (!CGConfig.COMMON.enableExperimentalFeatures.get()) {
             return false;
         }
         return this.addition.test(inv.getItem(1));
