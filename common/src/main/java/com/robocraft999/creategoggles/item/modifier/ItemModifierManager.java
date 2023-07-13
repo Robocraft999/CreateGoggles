@@ -29,7 +29,7 @@ public class ItemModifierManager {
     }
 
     public static boolean hasModifier(ItemStack stack) {
-        return stack.getOrCreateTag().contains("Modifier");
+        return stack.hasTag() && stack.getOrCreateTag().contains("Modifier");
     }
 
     public static boolean hasSpecificModifier(ItemStack stack, ItemModifier modifier) {
