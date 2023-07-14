@@ -40,9 +40,13 @@ public class CGItems {
             GOLDEN_GOGGLE_HELMET = goggleHelmet("goggle_golden_helmet", ArmorMaterials.GOLD),
             IRON_GOGGLE_HELMET = goggleHelmet("goggle_iron_helmet", ArmorMaterials.IRON),
             TURTLE_GOGGLE_HELMET = goggleHelmet("goggle_turtle_helmet", ArmorMaterials.TURTLE),
-            NETHERITE_GOGGLE_HELMET = REGISTRATE.item("goggle_netherite_helmet", p -> new GoggleHelmet(ArmorMaterials.NETHERITE, p.fireResistant(), vanillaArmorLoc(ArmorMaterials.NETHERITE))).register(),
+            NETHERITE_GOGGLE_HELMET = REGISTRATE
+                    .item("goggle_netherite_helmet", p -> new GoggleHelmet(ArmorMaterials.NETHERITE, p.fireResistant(), vanillaArmorLoc(ArmorMaterials.NETHERITE)))
+                    .tag(CGTags.Items.GOGGLE)
+                    .register(),
             LEATHER_GOGGLE_HELMET = REGISTRATE
                     .item("goggle_leather_helmet", p -> new DyableGoggleHelmet(ArmorMaterials.LEATHER, p, vanillaArmorLoc(ArmorMaterials.LEATHER)))
+                    .tag(CGTags.Items.GOGGLE)
                     .model((ctx, p) -> p.generated(
                             ctx::getEntry,
                             new ResourceLocation(CreateGoggles.MOD_ID, "item/goggle_leather_helmet"),
@@ -53,6 +57,12 @@ public class CGItems {
     public static final ItemEntry<DivingGoggleHelmet>
             DIVING_GOGGLE_HELMET = REGISTRATE
                     .item("goggle_diving_helmet", p -> new DivingGoggleHelmet(AllArmorMaterials.COPPER, p, Create.asResource("copper_diving")))
+                    .tag(CGTags.Items.GOGGLE)
+                    .register(),
+            //TODO fix texture to have correct goggle color (doesnt has it because the color pallet doesnt contains it)
+            NETHERITE_DIVING_GOGGLE_HELMET = REGISTRATE
+                    .item("goggle_netherite_diving_helmet", p -> new DivingGoggleHelmet(ArmorMaterials.NETHERITE, p.fireResistant(), Create.asResource("netherite_diving")))
+                    .tag(CGTags.Items.GOGGLE)
                     .register();
     public static final ItemEntry<BacktankItem.BacktankBlockItem>
             CHAINMAIL_BACKTANK_PLACEABLE = backtank_placable("chainmail_backtank", () -> CGItems.CHAINMAIL_BACKTANK, () -> CGBlocks.CHAINMAIL_BACKTANK_BLOCK),
@@ -79,7 +89,7 @@ public class CGItems {
             .register();
 
     private static ItemEntry<? extends GoggleHelmet> goggleHelmet(String name, ArmorMaterial material){
-        return REGISTRATE.item(name, p -> new GoggleHelmet(material, p, vanillaArmorLoc(material))).register();
+        return REGISTRATE.item(name, p -> new GoggleHelmet(material, p, vanillaArmorLoc(material))).tag(CGTags.Items.GOGGLE).register();
     }
 
     private static ItemEntry<BacktankItem.BacktankBlockItem> backtank_placable(String name, Supplier<ItemEntry<? extends BacktankItem>> item,

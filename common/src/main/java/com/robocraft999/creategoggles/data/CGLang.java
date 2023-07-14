@@ -25,6 +25,7 @@ public class CGLang {
         goggleTooltip(CGItems.NETHERITE_GOGGLE_HELMET);
         goggleTooltip(CGItems.LEATHER_GOGGLE_HELMET);
         goggleTooltip(CGItems.DIVING_GOGGLE_HELMET);
+        goggleTooltip(CGItems.NETHERITE_DIVING_GOGGLE_HELMET);
 
         //modifierHint(CGItemModifiers.GOGGLE_MODIFIER, "Helmet now provides Goggle functionality.");
         REGISTRATE.addRawLang("hint." + CreateGoggles.MOD_ID + ".modifier." + "goggle_modifier", "Helmet now provides Goggle functionality.");

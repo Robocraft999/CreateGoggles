@@ -1,0 +1,17 @@
+{
+  "type": "creategoggles:crafting_nbt",
+  "key": {
+    "g": {
+      "item": "create:goggles"
+    },
+    "h": {
+      "item": "create:netherite_diving_helmet"
+    }
+  },
+  "pattern": [
+    "hg"
+  ],
+  "result": {
+    "item": "creategoggles:goggle_netherite_diving_helmet"
+  }
+}
