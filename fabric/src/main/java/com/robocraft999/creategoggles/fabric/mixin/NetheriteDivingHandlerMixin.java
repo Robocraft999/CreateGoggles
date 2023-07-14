@@ -1,4 +1,4 @@
-package com.robocraft999.creategoggles.mixin;
+package com.robocraft999.creategoggles.fabric.mixin;
 
 import com.simibubi.create.content.equipment.armor.BacktankItem;
 import com.simibubi.create.content.equipment.armor.BacktankUtil;

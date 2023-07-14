@@ -6,7 +6,9 @@
     "mixins": [
     ],
     "client": [
-        "ItemRendererMixin"
+        "ItemRendererMixin",
+        "ClientEventsMixin",
+        "NetheriteDivingHandlerMixin"
     ],
     "injectors": {
         "defaultRequire": 1

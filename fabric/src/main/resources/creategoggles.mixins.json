@@ -7,7 +7,9 @@
     ],
     "client": [
         "ItemRendererMixin",
-        "MixinHumanoidArmorLayer"
+        "MixinHumanoidArmorLayer",
+        "ClientEventsMixin",
+        "NetheriteDivingHandlerMixin"
     ],
     "injectors": {
         "defaultRequire": 1
