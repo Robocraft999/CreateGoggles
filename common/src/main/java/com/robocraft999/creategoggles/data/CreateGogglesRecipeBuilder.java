@@ -22,7 +22,6 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 
 import javax.annotation.Nullable;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -154,20 +153,16 @@ public class CreateGogglesRecipeBuilder implements RecipeBuilder {
             }
 
             JsonArray jsonArray = new JsonArray();
-            Iterator var3 = this.pattern.iterator();
 
-            while(var3.hasNext()) {
-                String string = (String)var3.next();
+            for (String string : this.pattern) {
                 jsonArray.add(string);
             }
 
             jsonObject.add("pattern", jsonArray);
             JsonObject jsonObject2 = new JsonObject();
-            Iterator var7 = this.key.entrySet().iterator();
 
-            while(var7.hasNext()) {
-                Map.Entry<Character, Ingredient> entry = (Map.Entry)var7.next();
-                jsonObject2.add(String.valueOf(entry.getKey()), ((Ingredient)entry.getValue()).toJson());
+            for (Map.Entry<Character, Ingredient> entry : this.key.entrySet()) {
+                jsonObject2.add(String.valueOf(entry.getKey()), (entry.getValue()).toJson());
             }
 
             jsonObject.add("key", jsonObject2);

@@ -1,7 +1,8 @@
 package com.robocraft999.creategoggles.forge;
 
-import com.robocraft999.creategoggles.CPConfig;
+import com.robocraft999.creategoggles.CGConfig;
 import com.robocraft999.creategoggles.CreateGoggles;
+import com.robocraft999.creategoggles.forge.compat.curios.CompatCurios;
 import com.robocraft999.creategoggles.forge.compat.mekanism.CompatMekanism;
 import com.robocraft999.creategoggles.forge.data.RecipeDataProvider;
 import com.robocraft999.creategoggles.forge.registry.CGModules;
@@ -44,14 +45,15 @@ public class CreateGogglesForge {
         if(ModCompat.MEKANISM.isLoaded())
             CGModules.register(modEventBus);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CPConfig.commonSpec);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, CPConfig.clientSpec);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CGConfig.commonSpec);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, CGConfig.clientSpec);
 
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::clientRegistries);
         modEventBus.addListener(this::gatherData);
 
         ModCompat.MEKANISM.executeIfInstalled(() -> CompatMekanism::init);
+        ModCompat.CURIOS.executeIfInstalled(() -> CompatCurios::init);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -77,7 +79,7 @@ public class CreateGogglesForge {
         @SubscribeEvent
         public static void enqueueIMC(final InterModEnqueueEvent event) {
             if(ModCompat.CURIOS.isLoaded()) {
-                if(CPConfig.COMMON.useCustomCurioBacktankSlot.get()){
+                if(CGConfig.COMMON.useCustomCurioBacktankSlot.get()){
                     InterModComms.sendTo(CreateGoggles.MOD_ID, "curios", SlotTypeMessage.REGISTER_TYPE,
                             () -> new SlotTypeMessage.Builder("creategoggles.backtank_slot")
                                     .size(1)

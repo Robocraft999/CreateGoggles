@@ -1,32 +1,31 @@
 package com.robocraft999.creategoggles.registry;
 
-import com.simibubi.create.content.curiosities.armor.CopperBacktankInstance;
-import com.simibubi.create.content.curiosities.armor.CopperBacktankRenderer;
-import com.simibubi.create.content.curiosities.armor.CopperBacktankTileEntity;
+import com.robocraft999.creategoggles.CreateGoggles;
+import com.simibubi.create.content.equipment.armor.BacktankBlockEntity;
+import com.simibubi.create.content.equipment.armor.BacktankInstance;
+import com.simibubi.create.content.equipment.armor.BacktankRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
-import net.minecraft.core.Registry;
 
 import static com.robocraft999.creategoggles.CreateGoggles.REGISTRATE;
 
 public class CGTileEntities {
 
-    public static final BlockEntityEntry<CopperBacktankTileEntity>
-            CHAINMAIL_BACKTANK_TILE = backtankTile("chainmail_backtank"),
-            DIAMOND_BACKTANK_TILE = backtankTile("diamond_backtank"),
-            GOLDEN_BACKTANK_TILE = backtankTile("golden_backtank"),
-            IRON_BACKTANK_TILE = backtankTile("iron_backtank"),
-            NETHERITE_BACKTANK_TILE = backtankTile("netherite_backtank"),
-            LEATHER_BACKTANK_TILE = backtankTile("leather_backtank");
-
-
-    private static BlockEntityEntry<CopperBacktankTileEntity> backtankTile(String name){
-        return REGISTRATE
-                .tileEntity(name, CopperBacktankTileEntity::new)
-                .instance(() -> CopperBacktankInstance::new)
-                .validBlocks(REGISTRATE.get(name, Registry.BLOCK_REGISTRY))
-                .renderer(() -> CopperBacktankRenderer::new)
-                .register();
+    static{
+        //TODO remove
+        CreateGoggles.LOGGER.info("cgblockentities");
     }
+
+    public static final BlockEntityEntry<BacktankBlockEntity> BACKTANK = REGISTRATE
+            .blockEntity("cg_backtank", BacktankBlockEntity::new)
+            .instance(() -> BacktankInstance::new)
+            .validBlocks(
+                    CGBlocks.CHAINMAIL_BACKTANK_BLOCK,
+                    CGBlocks.DIAMOND_BACKTANK_BLOCK,
+                    CGBlocks.GOLDEN_BACKTANK_BLOCK,
+                    CGBlocks.IRON_BACKTANK_BLOCK,
+                    CGBlocks.LEATHER_BACKTANK_BLOCK)
+            .renderer(() -> BacktankRenderer::new)
+            .register();
 
     public static void register() {}
 

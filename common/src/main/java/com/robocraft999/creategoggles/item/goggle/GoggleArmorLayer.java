@@ -2,9 +2,10 @@ package com.robocraft999.creategoggles.item.goggle;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.robocraft999.creategoggles.CPConfig;
-import com.robocraft999.creategoggles.registry.ModCompat;
+import com.robocraft999.creategoggles.CGConfig;
+import com.robocraft999.creategoggles.compat.CuriosCompatDummy;
 import com.simibubi.create.AllItems;
+import com.simibubi.create.AllPartialModels;
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
@@ -20,8 +21,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
 public class GoggleArmorLayer<T extends LivingEntity, M extends EntityModel<T>> extends RenderLayer<T, M> {
 
     public GoggleArmorLayer(RenderLayerParent<T, M> renderer) {
@@ -32,14 +31,13 @@ public class GoggleArmorLayer<T extends LivingEntity, M extends EntityModel<T>> 
     public void render(PoseStack ms, MultiBufferSource buffer, int light, LivingEntity entity, float yaw, float pitch, float pt, float p_117356_, float p_117357_, float p_117358_) {
         if (entity.getPose() == Pose.SLEEPING)
             return;
-        if (!GoggleArmor.isWornBy(entity) || isWearingGoggleInCurio(entity))
+        if (!IGoggleHelmet.isGoggleHelmet(entity) || CuriosCompatDummy.predicate.test(entity))
             return;
 
         M entityModel = getParentModel();
-        if (!(entityModel instanceof HumanoidModel))
+        if (!(entityModel instanceof HumanoidModel<?> model))
             return;
 
-        HumanoidModel<?> model = (HumanoidModel<?>) entityModel;
         ItemStack stack = new ItemStack(AllItems.GOGGLES.get());
 
         // Translate and rotate with our head
@@ -53,13 +51,14 @@ public class GoggleArmorLayer<T extends LivingEntity, M extends EntityModel<T>> 
         ms.mulPose(Vector3f.ZP.rotationDegrees(180.0f));
         ms.scale(0.625f, 0.625f, 0.625f);
 
-        if(CPConfig.CLIENT.moveGoggleToEyes.get()) {
+        if(CGConfig.CLIENT.moveGoggleToEyes.get()) {
             ms.mulPose(Vector3f.ZP.rotationDegrees(180.0f));
             ms.translate(0, -0.25, 0);
         }
 
         // Render
-        Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.HEAD, light, OverlayTexture.NO_OVERLAY, ms, buffer, 0);
+        //Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.HEAD, light, OverlayTexture.NO_OVERLAY, ms, buffer, 0);
+        Minecraft.getInstance().getItemRenderer().render(stack, ItemTransforms.TransformType.HEAD, false, ms, buffer, light, OverlayTexture.NO_OVERLAY, AllPartialModels.GOGGLES.get());
         ms.popPose();
     }
 
@@ -74,17 +73,5 @@ public class GoggleArmorLayer<T extends LivingEntity, M extends EntityModel<T>> 
 
         GoggleArmorLayer<?, ?> layer = new GoggleArmorLayer<>(livingRenderer);
         helper.register(layer);
-    }
-
-
-    private static boolean isWearingGoggleInCurio(LivingEntity entity){
-        AtomicBoolean hasGoggles = new AtomicBoolean(false);
-        if(ModCompat.CURIOS.isLoaded()){
-            /*entity.getCapability(CuriosCapability.INVENTORY).ifPresent(handler -> {
-                ICurioStacksHandler stacksHandler = handler.getCurios().get("head");
-                if(stacksHandler != null) hasGoggles.set(stacksHandler.getStacks().getStackInSlot(0).getItem() == AllItems.GOGGLES.get());
-            });*/
-        }
-        return hasGoggles.get();
     }
 }

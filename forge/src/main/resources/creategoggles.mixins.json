@@ -4,9 +4,11 @@
     "package": "com.robocraft999.creategoggles.forge.mixin",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
-        "MixinBackTankUtil"
     ],
     "client": [
+        "ItemRendererMixin",
+        "ClientEventsMixin",
+        "NetheriteDivingHandlerMixin"
     ],
     "injectors": {
         "defaultRequire": 1

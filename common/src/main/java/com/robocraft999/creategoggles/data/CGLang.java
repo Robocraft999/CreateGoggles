@@ -1,7 +1,10 @@
 package com.robocraft999.creategoggles.data;
 
+import com.robocraft999.creategoggles.CreateGoggles;
+import com.robocraft999.creategoggles.item.modifier.ItemModifier;
 import com.robocraft999.creategoggles.registry.CGItems;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.entry.RegistryEntry;
 
 import static com.robocraft999.creategoggles.CreateGoggles.REGISTRATE;
 
@@ -12,7 +15,6 @@ public class CGLang {
         backtankTooltip(CGItems.DIAMOND_BACKTANK);
         backtankTooltip(CGItems.GOLDEN_BACKTANK);
         backtankTooltip(CGItems.IRON_BACKTANK);
-        backtankTooltip(CGItems.NETHERITE_BACKTANK);
         backtankTooltip(CGItems.LEATHER_BACKTANK);
 
         goggleTooltip(CGItems.CHAINMAIL_GOGGLE_HELMET);
@@ -23,6 +25,10 @@ public class CGLang {
         goggleTooltip(CGItems.NETHERITE_GOGGLE_HELMET);
         goggleTooltip(CGItems.LEATHER_GOGGLE_HELMET);
         goggleTooltip(CGItems.DIVING_GOGGLE_HELMET);
+        goggleTooltip(CGItems.NETHERITE_DIVING_GOGGLE_HELMET);
+
+        //modifierHint(CGItemModifiers.GOGGLE_MODIFIER, "Helmet now provides Goggle functionality.");
+        REGISTRATE.addRawLang("hint." + CreateGoggles.MOD_ID + ".modifier." + "goggle_modifier", "Helmet now provides Goggle functionality.");
     }
 
     private static void tooltip(ItemEntry<?> item, String category, String value) {
@@ -30,6 +36,13 @@ public class CGLang {
             REGISTRATE.addLang("item", item.getId(), "tooltip."+category, value);
         else
             REGISTRATE.addLang("item", item.getId(), "tooltip", value);
+    }
+
+    private static void modifierHint(RegistryEntry<? extends ItemModifier> modifier, String hint){
+        //modifier.get().getHintComponent().getString()
+        CreateGoggles.LOGGER.info("hint." + CreateGoggles.MOD_ID + ".modifier." + modifier.get().getRegistryName().getPath());
+        CreateGoggles.LOGGER.info(modifier.get().getHintComponent().getString());
+        //REGISTRATE.addRawLang("hint." + CreateGoggles.MOD_ID + ".modifier." + modifier.get().getRegistryName().getPath(), hint);
     }
 
     private static void backtankTooltip(ItemEntry<?> item){
@@ -43,13 +56,9 @@ public class CGLang {
 
     private static void goggleTooltip(ItemEntry<?> item){
         tooltip(item, "", "item." + item.getId().getPath().toUpperCase());
-        tooltip(item, "summary", "A helmet with a pair of glasses to augment your vision with useful _kinetic information_.");
-        tooltip(item, "condition1", "When worn");
-        tooltip(item, "behaviour1", "Shows _colored indicators_ corresponding to the _Speed Level_ of a placed kinetic component as well as _Stress Impact_ and _Capacity_ of individual components.");
-        tooltip(item, "condition2", "When looking at gauge");
-        tooltip(item, "behaviour2", "Shows detailed information about _Speed_ or _Stress_ of the network to which the gauge is connected.");
-        tooltip(item, "condition3", "When looking at fluid containers");
-        tooltip(item, "behaviour3", "Shows detailed information about the _Capacity_ of the block and any _Fluids_ stored within.");
+        tooltip(item, "summary", "Augments your HUD with _miscellaneous information_ about placed components and provides armor.");
+        tooltip(item, "condition1", "When looking at blocks");
+        tooltip(item, "behaviour1", "_Kinetic components_ show added _Stress Impact_ or _Capacity_. _Stressometers_ show statistics of their _attached kinetic network_. Some other blocks reveal information such as item and fluid content.");
     }
 
     public static void register(){
