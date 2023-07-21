@@ -1,4 +1,4 @@
-// 1.19.2	2023-07-13T11:57:30.6495142	Recipes
+// 1.19.2	2023-07-21T14:17:48.6600676	Recipes
 2deff61b79b64b15348f8ae4ef73d367fb8532b6 data/creategoggles/advancements/recipes/combat/chainmail_backtank.json
 48a2bd5a4dbe30a65d9fef781e93e1b712d322aa data/creategoggles/advancements/recipes/combat/diamond_backtank.json
 b4fd83bce970bf34c03979d4800610bebcddaa21 data/creategoggles/advancements/recipes/combat/goggle_chainmail_helmet.json
@@ -13,6 +13,7 @@ a1c38792ce4f8010c59453182b54e5fe6b6ce33e data/creategoggles/advancements/recipes
 6341ccc4c5d739f9c75e9b6fd202ed66d4e0e12e data/creategoggles/advancements/recipes/combat/golden_backtank.json
 a522f00f9dc6f02f66fe0e55f05fc81056096b16 data/creategoggles/advancements/recipes/combat/iron_backtank.json
 74ad0cedb468a9ee842e87d97865e5be683f6cee data/creategoggles/advancements/recipes/combat/leather_backtank.json
+3fb09965a99504af6af53bf0e40882406b8bc323 data/creategoggles/advancements/recipes/combat/modifier_remover.json
 e051013633fe4e5097bf5c4cf95ad42ac0f43aa4 data/creategoggles/advancements/recipes/search/module_goggle_unit.json
 a0c5cf6f07aaef7c0f6f0501278ed18d43743cd1 data/creategoggles/recipes/chainmail_backtank.json
 b2921051e1879ec3f1e43f1650cbf09c58c7d939 data/creategoggles/recipes/crushing/chainmail_chestplate.json
@@ -42,6 +43,7 @@ ebdad47d0064f554818434165f04fa3f5bc7c159 data/creategoggles/recipes/goggle_nethe
 6c4205b612e96b2cc2689fc3d3a7f5a36cd0026e data/creategoggles/recipes/golden_backtank.json
 1586fb2107fc7856fc5892ba5016a2610d2057b1 data/creategoggles/recipes/iron_backtank.json
 9253ea0c7e16d78f39b202efc22b863f9b91e86d data/creategoggles/recipes/leather_backtank.json
+edc1077dd72753c49e6cb3cab18e90458c4b9092 data/creategoggles/recipes/modifier_remover.json
 ea69781effb380ba609e88fcc9a54270dd1b8364 data/creategoggles/recipes/module_goggle_unit.json
 dbfe866d20fe5dd98ce0b4383f056de730768307 data/creategoggles/recipes/smithing/apply_goggle_modifier.json
 0ec8939a89b21b1e346ef261183bd85410694b92 data/creategoggles/recipes/smithing/apply_removel_modifier.json
