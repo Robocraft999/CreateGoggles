@@ -7,8 +7,6 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.Objects;
 
-import static com.robocraft999.creategoggles.CreateGoggles.REGISTRATE;
-
 public class ItemModifierManager {
 
     public static ItemModifier getModifier(ItemStack stack) {
@@ -17,7 +15,7 @@ public class ItemModifierManager {
         }
 
         String modifierName = Objects.requireNonNull(stack.getTag()).getString("Modifier");
-        return REGISTRATE.get(new ResourceLocation(modifierName).getPath(), CGItemModifiers.ITEM_MODIFIER_REGISTRY).orElse(null);
+        return CGItemModifiers.ITEM_MODIFIERS.contains(new ResourceLocation(modifierName)) ? CGItemModifiers.ITEM_MODIFIERS.get(new ResourceLocation(modifierName)) : null;
     }
 
     public static void setModifier(ItemStack stack, ItemModifier modifier) {

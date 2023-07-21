@@ -12,7 +12,6 @@ import dev.architectury.platform.forge.EventBuses;
 import mekanism.api.MekanismIMC;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -23,6 +22,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import top.theillusivec4.curios.api.SlotTypeMessage;
@@ -69,7 +69,7 @@ public class CreateGogglesForge {
 
     private void gatherData(GatherDataEvent event){
         logger.info("gathering data");
-        event.getGenerator().addProvider(true, new RecipeDataProvider(event.getGenerator()));
+        event.getGenerator().addProvider(new RecipeDataProvider(event.getGenerator()));
     }
 
     @Mod.EventBusSubscriber(modid = CreateGoggles.MOD_ID, bus=Mod.EventBusSubscriber.Bus.MOD)

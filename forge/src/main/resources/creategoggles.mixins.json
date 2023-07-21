@@ -8,7 +8,8 @@
     "client": [
         "ItemRendererMixin",
         "ClientEventsMixin",
-        "NetheriteDivingHandlerMixin"
+        "NetheriteDivingHandlerMixin",
+        "ItemModifierMixin"
     ],
     "injectors": {
         "defaultRequire": 1
