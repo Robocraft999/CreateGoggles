@@ -49,6 +49,14 @@ public class RecipeDataProvider extends RecipeProvider {
 
         modifier(CGItemModifiers.GOGGLE_MODIFIER.get(), AllItems.GOGGLES.get(), consumer);
         modifier(CGItemModifiers.REMOVEL_MODIFIER.get(), CGItems.MODIFIER_REMOVER.get(), consumer);
+
+        ShapedRecipeBuilder
+                .shaped(CGItems.MODIFIER_REMOVER.get())
+                .pattern(" B")
+                .pattern("B ")
+                .define('B', Ingredient.of(AllItems.BRASS_INGOT.get()))
+                .unlockedBy("has_brass", has(AllItems.BRASS_INGOT.get()))
+                .save(consumer);
     }
 
     private void helmetRecipe(ItemLike result, ItemLike helmet, Consumer<FinishedRecipe> writer){
