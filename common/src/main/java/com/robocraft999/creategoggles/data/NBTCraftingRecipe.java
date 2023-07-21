@@ -1,22 +1,24 @@
 package com.robocraft999.creategoggles.data;
 
-import java.util.HashMap;
-import java.util.Map.Entry;
-
 import com.google.gson.JsonObject;
 import com.robocraft999.creategoggles.registry.CGRecipeTypes;
-
-import net.minecraft.world.item.crafting.*;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import dev.architectury.core.AbstractRecipeSerializer;
+import net.minecraft.core.NonNullList;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.core.NonNullList;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.CraftingRecipe;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.ShapedRecipe;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.Nonnull;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 public record NBTCraftingRecipe(ShapedRecipe recipe) implements CraftingRecipe {
 
@@ -81,7 +83,7 @@ public record NBTCraftingRecipe(ShapedRecipe recipe) implements CraftingRecipe {
 	}
 
 
-	public static class Serializer implements RecipeSerializer<NBTCraftingRecipe> {
+	public static class Serializer extends AbstractRecipeSerializer<NBTCraftingRecipe> {
 
 		@Nonnull
 		@Override

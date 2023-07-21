@@ -7,6 +7,7 @@ import com.robocraft999.creategoggles.item.modifier.ItemModifier;
 import com.robocraft999.creategoggles.item.modifier.ItemModifierManager;
 import com.robocraft999.creategoggles.registry.CGItemModifiers;
 import com.robocraft999.creategoggles.registry.CGRecipeTypes;
+import dev.architectury.core.AbstractRecipeSerializer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -16,8 +17,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.UpgradeRecipe;
 import net.minecraft.world.level.Level;
-
-import static com.robocraft999.creategoggles.CreateGoggles.REGISTRATE;
 
 public class ApplyModifierRecipe extends UpgradeRecipe {
     private final ItemModifier modifier;
@@ -74,7 +73,7 @@ public class ApplyModifierRecipe extends UpgradeRecipe {
         return true;
     }
 
-    public static class Serializer implements RecipeSerializer<ApplyModifierRecipe> {
+    public static class Serializer extends AbstractRecipeSerializer<ApplyModifierRecipe> {
 
         @Override
         public ApplyModifierRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
@@ -83,17 +82,17 @@ public class ApplyModifierRecipe extends UpgradeRecipe {
             ResourceLocation resourceLocation = ResourceLocation.tryParse(GsonHelper.getAsString(json, "modifier"));
             String name = resourceLocation.getPath();
 
-            if (!REGISTRATE.getOptional(name, CGItemModifiers.ITEM_MODIFIER_REGISTRY).isPresent()) {
+            if (!CGItemModifiers.ITEM_MODIFIERS.contains(resourceLocation)) {
                 throw new JsonSyntaxException("Unknown item modifier '" + resourceLocation + "'");
             }
-            ItemModifier modifier = REGISTRATE.get(name, CGItemModifiers.ITEM_MODIFIER_REGISTRY).get();
+            ItemModifier modifier = CGItemModifiers.ITEM_MODIFIERS.get(resourceLocation);
             return new ApplyModifierRecipe(recipeId, addition, modifier);
         }
 
         @Override
         public ApplyModifierRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
             Ingredient addition = Ingredient.fromNetwork(buffer);
-            ItemModifier modifier = REGISTRATE.get(buffer.readResourceLocation().getPath(), CGItemModifiers.ITEM_MODIFIER_REGISTRY).get();
+            ItemModifier modifier = CGItemModifiers.ITEM_MODIFIERS.get(buffer.readResourceLocation());
             return new ApplyModifierRecipe(recipeId, addition, modifier);
         }
 

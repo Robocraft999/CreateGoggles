@@ -26,7 +26,7 @@ public class ClientEvents {
         if (ItemModifierManager.hasModifier(stack)) {
             components.add(1, ItemModifierManager.getModifier(stack).getHintComponent());
             if(stack.isEnchanted()){
-                components.add(2, Component.empty());
+                components.add(2, Component.nullToEmpty(""));
             }
         }
     }
