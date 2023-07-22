@@ -4,7 +4,6 @@ import com.robocraft999.creategoggles.CreateGoggles;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -36,7 +35,7 @@ public class ItemModifier {
     }
 
     public Component getHintComponent() {
-        return new TranslatableComponent("hint." + CreateGoggles.MOD_ID + ".modifier." + getRegistryName().getPath()).withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY);
+        return Component.translatable("hint." + CreateGoggles.MOD_ID + ".modifier." + getRegistryName().getPath()).withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY);
     }
 
     public boolean isItemValid(ItemStack stack) {

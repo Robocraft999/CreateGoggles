@@ -94,7 +94,7 @@ public class CreateGogglesRecipeBuilder implements RecipeBuilder {
     public void save(Consumer<FinishedRecipe> writer, ResourceLocation id) {
         this.ensureValid(id);
         this.advancement
-                .parent(new ResourceLocation("recipes/root"))
+                .parent(ROOT_RECIPE_ADVANCEMENT)
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
                 .rewards(AdvancementRewards.Builder.recipe(id))
                 .requirements(RequirementsStrategy.OR);

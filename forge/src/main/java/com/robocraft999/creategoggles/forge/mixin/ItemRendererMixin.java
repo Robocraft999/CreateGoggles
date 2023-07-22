@@ -20,6 +20,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
+import java.util.Iterator;
+
 @Mixin(ItemRenderer.class)
 public abstract class ItemRendererMixin {
 
@@ -39,7 +41,7 @@ public abstract class ItemRendererMixin {
             ),
             locals = LocalCapture.CAPTURE_FAILHARD
     )
-    public void onRender(ItemStack itemStack, ItemTransforms.TransformType transformType, boolean bl, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, int j, BakedModel bakedModel, CallbackInfo ci, boolean bl2, boolean bl3, RenderType renderType, VertexConsumer vertexConsumer){
+    public void onRender(ItemStack itemStack, ItemTransforms.TransformType transformType, boolean bl, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, int j, BakedModel bakedModel, CallbackInfo ci, boolean bl2, boolean bl3, Iterator iter, BakedModel bakedModel2, Iterator iter2, RenderType renderType, VertexConsumer vertexConsumer){
         if (ItemModifierManager.hasSpecificModifier(itemStack, CGItemModifiers.GOGGLE_MODIFIER.get())){
             BakedModel model = this.itemModelShaper.getModelManager().getModel(new ModelResourceLocation("creategoggles:goggle#inventory"));
             this.renderModelLists(model, itemStack, i, j, poseStack, vertexConsumer);

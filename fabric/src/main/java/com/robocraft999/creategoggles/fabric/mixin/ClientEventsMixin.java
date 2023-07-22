@@ -1,5 +1,6 @@
 package com.robocraft999.creategoggles.fabric.mixin;
 
+import com.mojang.blaze3d.shaders.FogShape;
 import com.simibubi.create.content.equipment.armor.DivingHelmetItem;
 import com.simibubi.create.foundation.events.ClientEvents;
 import com.simibubi.create.foundation.fluid.FluidHelper;
@@ -12,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.FogType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -43,7 +45,8 @@ public class ClientEventsMixin {
             cancellable = true,
             locals = LocalCapture.CAPTURE_FAILHARD
     )
-    private static void onGetFogDensity(FogRenderer.FogMode type, Camera camera, FogEvents.FogData fogData, CallbackInfoReturnable<Boolean> cir,
+    private static void onGetFogDensity(FogRenderer.FogMode mode, FogType type, Camera camera, float partialTick, float renderDistance,
+                                        float nearDistance, float farDistance, FogShape shape, FogEvents.FogData fogData, CallbackInfoReturnable<Boolean> cir,
                                         Level level, BlockPos blockPos, FluidState fluidState, Fluid fluid, Entity entity, ItemStack divingHelmet
     ){
         if (divingHelmet != null && FluidHelper.isLava(fluid) && divingHelmet.getItem() instanceof DivingHelmetItem && isNetheriteArmor(divingHelmet)){

@@ -10,8 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ForgeModelBakery;
+import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -28,7 +27,7 @@ public class ClientEvents {
 		if (ItemModifierManager.hasModifier(stack)) {
 			components.add(1, ItemModifierManager.getModifier(stack).getHintComponent());
 			if(stack.isEnchanted()){
-				components.add(2, Component.nullToEmpty(""));
+				components.add(2, Component.empty());
 			}
 		}
 	}
@@ -43,8 +42,8 @@ public class ClientEvents {
 		}
 
 		@SubscribeEvent
-		public static void onModelRegister(ModelRegistryEvent event) {
-			ForgeModelBakery.addSpecialModel(new ModelResourceLocation(CreateGoggles.MOD_ID + ":goggle#inventory"));
+		public static void onModelRegister(ModelEvent.RegisterAdditional event) {
+			event.register(new ModelResourceLocation(CreateGoggles.MOD_ID + ":goggle#inventory"));
 		}
 	}
 }

@@ -2,7 +2,6 @@ package com.robocraft999.creategoggles.data;
 
 import com.google.gson.JsonObject;
 import com.robocraft999.creategoggles.registry.CGRecipeTypes;
-import dev.architectury.core.AbstractRecipeSerializer;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -83,7 +82,7 @@ public record NBTCraftingRecipe(ShapedRecipe recipe) implements CraftingRecipe {
 	}
 
 
-	public static class Serializer extends AbstractRecipeSerializer<NBTCraftingRecipe> {
+	public static class Serializer implements RecipeSerializer<NBTCraftingRecipe> {
 
 		@Nonnull
 		@Override
