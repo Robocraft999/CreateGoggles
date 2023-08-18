@@ -11,7 +11,6 @@ import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
-import net.minecraft.core.Registry;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -98,7 +97,7 @@ public class CreateGogglesRecipeBuilder implements RecipeBuilder {
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
                 .rewards(AdvancementRewards.Builder.recipe(id))
                 .requirements(RequirementsStrategy.OR);
-        writer.accept(new Result(id, this.result, this.count, this.group == null ? "" : this.group, this.rows, this.key, this.advancement, new ResourceLocation(id.getNamespace(), "recipes/" + this.result.getItemCategory().getRecipeFolderName() + "/" + id.getPath())));
+        writer.accept(new Result(id, this.result, this.count, this.group == null ? "" : this.group, this.rows, this.key, this.advancement, new ResourceLocation(id.getNamespace(), "recipes/" + id.getPath())));
     }
 
     private void ensureValid(ResourceLocation p_126144_) {
@@ -171,7 +170,7 @@ public class CreateGogglesRecipeBuilder implements RecipeBuilder {
 
             jsonObject.add("key", jsonObject2);
             JsonObject jsonObject3 = new JsonObject();
-            jsonObject3.addProperty("item", Registry.ITEM.getKey(this.result).toString());
+            jsonObject3.addProperty("item", this.result.arch$registryName().toString());
             if (this.count > 1) {
                 jsonObject3.addProperty("count", this.count);
             }

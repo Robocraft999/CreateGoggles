@@ -15,6 +15,12 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
+/**
+ * Code from Forbidden and Arcanus
+ * @author stal111
+ *
+ * edited by Robocraft999
+ */
 public record ApplyModifierRecipeBuilder(Ingredient addition, ItemModifier modifier) implements RecipeBuilder {
     public static ApplyModifierRecipeBuilder of(ItemLike addition, ItemModifier modifier) {
         return new ApplyModifierRecipeBuilder(Ingredient.of(addition), modifier);

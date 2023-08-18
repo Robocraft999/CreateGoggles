@@ -57,14 +57,14 @@ dependencies {
     modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
 
     modImplementation("com.simibubi.create:create-${minecraft_version}:${create_version_forge}:slim"){transitive = false}
-    modImplementation("com.jozufozu.flywheel:flywheel-forge-${minecraft_version}:${flywheel_version_forge}")
+    modImplementation("com.jozufozu.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version_forge}")
     modImplementation("com.tterrag.registrate:Registrate:${registrate_version_forge}")
 
-    modApi("mekanism:Mekanism:${mekanism_version}:api")
-    modRuntimeOnly("mekanism:Mekanism:${mekanism_version}")// core
+    // modApi("mekanism:Mekanism:${mekanism_version}:api")
+    // modRuntimeOnly("mekanism:Mekanism:${mekanism_version}")// core
 
-    modApi("top.theillusivec4.curios:curios-forge:${curios_minecraft_version}-${curios_version}:api")
-    modRuntimeOnly("top.theillusivec4.curios:curios-forge:${curios_minecraft_version}-${curios_version}")
+    // modApi("top.theillusivec4.curios:curios-forge:${curios_minecraft_version}-${curios_version}:api")
+    // modRuntimeOnly("top.theillusivec4.curios:curios-forge:${curios_minecraft_version}-${curios_version}")
 
 }
 

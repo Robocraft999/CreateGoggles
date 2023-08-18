@@ -19,7 +19,6 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ArmorMaterials;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 
 import java.util.function.Supplier;
@@ -29,7 +28,7 @@ import static com.simibubi.create.AllTags.forgeItemTag;
 
 public class CGItems {
     static {
-        REGISTRATE.creativeModeTab(() -> CreativeModeTab.TAB_COMBAT);
+
         //TODO remove
         CreateGoggles.LOGGER.info("cgitems");
     }

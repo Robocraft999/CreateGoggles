@@ -1,7 +1,7 @@
 package com.robocraft999.creategoggles.registry;
 
 import com.robocraft999.creategoggles.CreateGoggles;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -17,10 +17,10 @@ public class CGTags {
    }
 
     private static TagKey<Item> forgeItemTag(String name) {
-        return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("forge", name));
+        return TagKey.create(Registries.ITEM, new ResourceLocation("forge", name));
     }
 
     private static TagKey<Item> modItemTag(String name) {
-        return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(CreateGoggles.MOD_ID, name));
+        return TagKey.create(Registries.ITEM, new ResourceLocation(CreateGoggles.MOD_ID, name));
     }
 }

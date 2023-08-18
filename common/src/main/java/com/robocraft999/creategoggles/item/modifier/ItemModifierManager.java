@@ -9,6 +9,12 @@ import java.util.Objects;
 
 import static com.robocraft999.creategoggles.CreateGoggles.REGISTRATE;
 
+/**
+ * Code from Forbidden and Arcanus
+ * @author stal111
+ *
+ * edited by Robocraft999
+ */
 public class ItemModifierManager {
 
     public static ItemModifier getModifier(ItemStack stack) {

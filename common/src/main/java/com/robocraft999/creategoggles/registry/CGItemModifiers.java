@@ -23,7 +23,7 @@ public class CGItemModifiers {
 
     public static final RegistryEntry<? extends ItemModifier>
             GOGGLE_MODIFIER = modifier(
-            "goggle_modifier", stack -> stack.getItem() instanceof ArmorItem armorItem && armorItem.getSlot() == EquipmentSlot.HEAD, CGTags.Items.GOGGLE_MODIFIER_INCOMPATIBLE
+            "goggle_modifier", stack -> stack.getItem() instanceof ArmorItem armorItem && armorItem.getEquipmentSlot() == EquipmentSlot.HEAD, CGTags.Items.GOGGLE_MODIFIER_INCOMPATIBLE
     ),
             REMOVEL_MODIFIER = modifierRemover(
                     "removel_modifier", stack -> stack.getItem() instanceof ArmorItem && ItemModifierManager.hasModifier(stack), CGTags.Items.REMOVAL_MODIFIER_INCOMPATIBLE

@@ -3,14 +3,12 @@ package com.robocraft999.creategoggles.data;
 import com.google.gson.JsonObject;
 import com.robocraft999.creategoggles.registry.CGRecipeTypes;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.CraftingRecipe;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.ShapedRecipe;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
@@ -34,7 +32,7 @@ public record NBTCraftingRecipe(ShapedRecipe recipe) implements CraftingRecipe {
 
 	@Nonnull
 	@Override
-	public ItemStack assemble(CraftingContainer inv) {
+	public ItemStack assemble(CraftingContainer inv, RegistryAccess registryAccess) {
 		HashMap<Enchantment, Integer> allEnchants = new HashMap<>();
 		ItemStack nbtItemResult = ItemStack.EMPTY;
 		for (int slot = 0; slot < inv.getContainerSize(); slot++) {
@@ -44,7 +42,7 @@ public record NBTCraftingRecipe(ShapedRecipe recipe) implements CraftingRecipe {
 				allEnchants.putAll(EnchantmentHelper.getEnchantments(nbtItem));
 			}
 			if(nbtItemResult.isEmpty()) {
-				nbtItemResult = new ItemStack(getResultItem().getItem());
+				nbtItemResult = new ItemStack(getResultItem(registryAccess).getItem());
 			}
 		}
 		if(!allEnchants.isEmpty() || !nbtItemResult.isEmpty()){
@@ -58,10 +56,9 @@ public record NBTCraftingRecipe(ShapedRecipe recipe) implements CraftingRecipe {
 		return nbtItemResult;
 	}
 
-	@Nonnull
 	@Override
-	public ItemStack getResultItem() {
-		return recipe().getResultItem();
+	public ItemStack getResultItem(RegistryAccess registryAccess) {
+		return recipe().getResultItem(registryAccess);
 	}
 
 	@Nonnull
@@ -79,6 +76,12 @@ public record NBTCraftingRecipe(ShapedRecipe recipe) implements CraftingRecipe {
 	@Override
 	public boolean canCraftInDimensions(int width, int height) {
 		return recipe().canCraftInDimensions(width, height);
+	}
+
+
+	@Override
+	public CraftingBookCategory category() {
+		return CraftingBookCategory.EQUIPMENT;
 	}
 
 

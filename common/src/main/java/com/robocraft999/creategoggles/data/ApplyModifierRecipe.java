@@ -7,6 +7,7 @@ import com.robocraft999.creategoggles.item.modifier.ItemModifier;
 import com.robocraft999.creategoggles.item.modifier.ItemModifierManager;
 import com.robocraft999.creategoggles.registry.CGItemModifiers;
 import com.robocraft999.creategoggles.registry.CGRecipeTypes;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -14,17 +15,23 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.UpgradeRecipe;
+import net.minecraft.world.item.crafting.SmithingTransformRecipe;
 import net.minecraft.world.level.Level;
 
 import static com.robocraft999.creategoggles.CreateGoggles.REGISTRATE;
 
-public class ApplyModifierRecipe extends UpgradeRecipe {
+/**
+ * Code from Forbidden and Arcanus
+ * @author stal111
+ *
+ * edited by Robocraft999
+ */
+public class ApplyModifierRecipe extends SmithingTransformRecipe {
     private final ItemModifier modifier;
     private final Ingredient addition;
 
     public ApplyModifierRecipe(ResourceLocation id, Ingredient addition, ItemModifier modifier) {
-        super(id, Ingredient.EMPTY, addition, ItemStack.EMPTY);
+        super(id, Ingredient.EMPTY, Ingredient.EMPTY, addition, ItemStack.EMPTY);
         this.addition = addition;
         this.modifier = modifier;
     }
@@ -42,7 +49,7 @@ public class ApplyModifierRecipe extends UpgradeRecipe {
 
 
     @Override
-    public ItemStack assemble(Container inv) {
+    public ItemStack assemble(Container inv, RegistryAccess registryAccess) {
         ItemStack stack = inv.getItem(0).copy();
 
         ItemModifierManager.setModifier(stack, this.modifier);
@@ -52,7 +59,7 @@ public class ApplyModifierRecipe extends UpgradeRecipe {
 
 
     @Override
-    public ItemStack getResultItem() {
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
         return ItemStack.EMPTY;
     }
 
