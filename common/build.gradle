@@ -16,7 +16,7 @@ dependencies {
     modImplementation("com.tterrag.registrate_fabric:Registrate:$registrate_version_fabric")
     modImplementation("com.simibubi.create:create-fabric-${minecraft_version}:${create_version_fabric}")
     //modImplementation("com.simibubi.create:create-${minecraft_version}:${create_version_forge}:slim"){transitive = false}
-    modImplementation("com.jozufozu.flywheel:flywheel-fabric-$minecraft_version:$flywheel_version_fabric")
+    //modImplementation("com.jozufozu.flywheel:flywheel-fabric-$minecraft_version:$flywheel_version_fabric")
 }
 
 architectury {

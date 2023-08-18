@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 @Mixin(HumanoidArmorLayer.class)
 public abstract class MixinHumanoidArmorLayer {
     @Shadow
-    protected abstract <T extends LivingEntity, A extends HumanoidModel<T>> void renderModel(PoseStack poseStack, MultiBufferSource multiBufferSource, int i, ArmorItem armorItem, boolean bl, A humanoidModel, boolean bl2, float f, float g, float h, @Nullable String string);
+    protected abstract <T extends LivingEntity, A extends HumanoidModel<T>> void renderModel(PoseStack poseStack, MultiBufferSource multiBufferSource, int i, ArmorItem armorItem, A humanoidModel, boolean bl, float f, float g, float h, @Nullable String string);
 
     @Inject(
             method = "renderArmorPiece",
@@ -33,15 +33,15 @@ public abstract class MixinHumanoidArmorLayer {
             cancellable = true,
             locals = LocalCapture.CAPTURE_FAILHARD
     )
-    public<T extends LivingEntity, A extends HumanoidModel<T>> void checkForColoredArmor(PoseStack matrices, MultiBufferSource vertexConsumers, T entity, EquipmentSlot armorSlot, int light, A model, CallbackInfo ci, ItemStack itemStack, ArmorItem armorItem, boolean bl) {
+    public<T extends LivingEntity, A extends HumanoidModel<T>> void checkForColoredArmor(PoseStack poseStack, MultiBufferSource multiBufferSource, T entity, EquipmentSlot armorSlot, int light, A humanoidModel, CallbackInfo ci, ItemStack itemStack, ArmorItem armorItem, boolean bl) {
         boolean bl2 = itemStack.hasFoil();
-        if (armorItem instanceof DyeableLeatherItem) {
-            int j = ((DyeableLeatherItem)armorItem).getColor(itemStack);
+        if (armorItem instanceof DyeableLeatherItem leatherItem) {
+            int j = leatherItem.getColor(itemStack);
             float f = (float)(j >> 16 & 255) / 255.0F;
             float g = (float)(j >> 8 & 255) / 255.0F;
             float h = (float)(j & 255) / 255.0F;
-            this.renderModel(matrices, vertexConsumers, light, armorItem, bl2, model, bl, f, g, h, (String)null);
-            this.renderModel(matrices, vertexConsumers, light, armorItem, bl2, model, bl, 1.0F, 1.0F, 1.0F, "overlay");
+            this.renderModel(poseStack, multiBufferSource, light, armorItem, humanoidModel, bl, f, g, h, (String)null);
+            this.renderModel(poseStack, multiBufferSource, light, armorItem, humanoidModel, bl, 1.0F, 1.0F, 1.0F, "overlay");
             ci.cancel();
         }
     }

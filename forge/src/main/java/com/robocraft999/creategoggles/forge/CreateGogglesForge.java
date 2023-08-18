@@ -9,13 +9,11 @@ import com.robocraft999.creategoggles.forge.registry.CGModules;
 import com.robocraft999.creategoggles.forge.registry.CPItems;
 import com.robocraft999.creategoggles.registry.ModCompat;
 import dev.architectury.platform.forge.EventBuses;
-import mekanism.api.MekanismIMC;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -25,7 +23,8 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import top.theillusivec4.curios.api.SlotTypeMessage;
+
+//import top.theillusivec4.curios.api.SlotTypeMessage;
 
 @Mod(CreateGoggles.MOD_ID)
 public class CreateGogglesForge {
@@ -34,6 +33,7 @@ public class CreateGogglesForge {
     public CreateGogglesForge() {
         // Submit our event bus to let architectury register our content on the right time
         EventBuses.registerModEventBus(CreateGoggles.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
+        CreateGoggles.REGISTRATE.defaultCreativeTab(CreativeModeTabs.COMBAT);
         CreateGoggles.init();
         CreateGoggles.LOGGER.info("CreateGogglesForge init");
 
@@ -79,17 +79,17 @@ public class CreateGogglesForge {
         @SubscribeEvent
         public static void enqueueIMC(final InterModEnqueueEvent event) {
             if(ModCompat.CURIOS.isLoaded()) {
-                if(CGConfig.COMMON.useCustomCurioBacktankSlot.get()){
+                /*if(CGConfig.COMMON.useCustomCurioBacktankSlot.get()){
                     InterModComms.sendTo(CreateGoggles.MOD_ID, "curios", SlotTypeMessage.REGISTER_TYPE,
                             () -> new SlotTypeMessage.Builder("creategoggles.backtank_slot")
                                     .size(1)
                                     .icon(new ResourceLocation(CreateGoggles.MOD_ID, "item/backtank_slot_icon"))
                                     .build());
-                }
+                }*/
 
             }
             if(ModCompat.MEKANISM.isLoaded()){
-                MekanismIMC.addMekaSuitHelmetModules(CGModules.GOGGLE_MODULE.get());
+                //MekanismIMC.addMekaSuitHelmetModules(CGModules.GOGGLE_MODULE.get());
             }
         }
     }

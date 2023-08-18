@@ -48,7 +48,7 @@ public class ClientEvents {
 
 		@SubscribeEvent
 		public static void onModelRegister(ModelEvent.RegisterAdditional event) {
-			event.register(new ModelResourceLocation(CreateGoggles.MOD_ID + ":goggle#inventory"));
+			event.register(new ModelResourceLocation(CreateGoggles.MOD_ID, "goggle","inventory"));
 		}
 	}
 }
