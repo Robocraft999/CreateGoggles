@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_backtank": {
+    "has_helmet": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:leather_chestplate"
+              "minecraft:leather_helmet"
             ]
           }
         ]
@@ -15,20 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "creategoggles:leather_backtank"
+        "recipe": "creategoggles:goggle_leather_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_backtank",
+      "has_helmet",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "creategoggles:leather_backtank"
+      "creategoggles:goggle_leather_helmet"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "minecraft:netherite_helmet"
+  },
+  "base": {
+    "item": "creategoggles:goggle_diamond_helmet"
+  },
+  "result": {
+    "item": "creategoggles:goggle_netherite_helmet"
+  },
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  }
+}

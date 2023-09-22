@@ -30,5 +30,6 @@
     "recipes": [
       "creategoggles:modifier_remover"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }
