@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-public class CreateGogglesRecipeBuilder implements RecipeBuilder {
+public class NBTCraftingRecipeBuilder implements RecipeBuilder {
     private final Item result;
     private final int count;
     private final List<String> rows = Lists.newArrayList();
@@ -35,28 +35,28 @@ public class CreateGogglesRecipeBuilder implements RecipeBuilder {
     @Nullable
     private String group;
 
-    public CreateGogglesRecipeBuilder(ItemLike result, int count) {
+    public NBTCraftingRecipeBuilder(ItemLike result, int count) {
         this.result = result.asItem();
         this.count = count;
     }
 
-    public static CreateGogglesRecipeBuilder shaped(ItemLike result) {
+    public static NBTCraftingRecipeBuilder shaped(ItemLike result) {
         return shaped(result, 1);
     }
 
-    public static CreateGogglesRecipeBuilder shaped(ItemLike result, int count) {
-        return new CreateGogglesRecipeBuilder(result, count);
+    public static NBTCraftingRecipeBuilder shaped(ItemLike result, int count) {
+        return new NBTCraftingRecipeBuilder(result, count);
     }
 
-    public CreateGogglesRecipeBuilder define(Character tag, TagKey<Item> item) {
+    public NBTCraftingRecipeBuilder define(Character tag, TagKey<Item> item) {
         return this.define(tag, Ingredient.of(item));
     }
 
-    public CreateGogglesRecipeBuilder define(Character tag, ItemLike item) {
+    public NBTCraftingRecipeBuilder define(Character tag, ItemLike item) {
         return this.define(tag, Ingredient.of(item));
     }
 
-    public CreateGogglesRecipeBuilder define(Character tag, Ingredient item) {
+    public NBTCraftingRecipeBuilder define(Character tag, Ingredient item) {
         if (this.key.containsKey(tag)) {
             throw new IllegalArgumentException("Symbol '" + tag + "' is already defined!");
         } else if (tag == ' ') {
@@ -67,7 +67,7 @@ public class CreateGogglesRecipeBuilder implements RecipeBuilder {
         }
     }
 
-    public CreateGogglesRecipeBuilder pattern(String pattern) {
+    public NBTCraftingRecipeBuilder pattern(String pattern) {
         if (!this.rows.isEmpty() && pattern.length() != this.rows.get(0).length()) {
             throw new IllegalArgumentException("Pattern must be the same width on every line!");
         } else {
@@ -76,12 +76,12 @@ public class CreateGogglesRecipeBuilder implements RecipeBuilder {
         }
     }
 
-    public CreateGogglesRecipeBuilder unlockedBy(String name, CriterionTriggerInstance trigger) {
+    public NBTCraftingRecipeBuilder unlockedBy(String name, CriterionTriggerInstance trigger) {
         this.advancement.addCriterion(name, trigger);
         return this;
     }
 
-    public CreateGogglesRecipeBuilder group(@Nullable String group) {
+    public NBTCraftingRecipeBuilder group(@Nullable String group) {
         this.group = group;
         return this;
     }

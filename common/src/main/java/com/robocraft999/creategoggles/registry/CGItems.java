@@ -49,7 +49,8 @@ public class CGItems {
                     .model((ctx, p) -> p.generated(
                             ctx::getEntry,
                             new ResourceLocation(CreateGoggles.MOD_ID, "item/goggle_leather_helmet"),
-                            new ResourceLocation(CreateGoggles.MOD_ID,"item/goggle_leather_helmet_overlay")))
+                            new ResourceLocation(CreateGoggles.MOD_ID,"item/goggle_leather_helmet_overlay")))*/
+                    .model(AssetLookup.existingItemModel())
                     .color(() -> ArmorColor::new)
                     .register();
 
@@ -95,7 +96,8 @@ public class CGItems {
                                                                                Supplier<BlockEntry<? extends BacktankBlock>> block){
         return REGISTRATE
                 .item(name + "_placeable", p -> new BacktankItem.BacktankBlockItem(block.get().get(), item.get()::get, p))
-                .model((c, p) -> p.withExistingParent(c.getName(), p.mcLoc("item/barrier")))
+                //.model((c, p) -> p.withExistingParent(c.getName(), p.mcLoc("item/barrier")))
+                .model(AssetLookup.existingItemModel())
                 .register();
     }
 

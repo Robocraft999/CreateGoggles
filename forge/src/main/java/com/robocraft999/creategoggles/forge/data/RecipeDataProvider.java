@@ -2,8 +2,7 @@ package com.robocraft999.creategoggles.forge.data;
 
 import com.robocraft999.creategoggles.CreateGoggles;
 import com.robocraft999.creategoggles.data.ApplyModifierRecipeBuilder;
-import com.robocraft999.creategoggles.data.CreateGogglesRecipeBuilder;
-import com.robocraft999.creategoggles.forge.registry.CPItems;
+import com.robocraft999.creategoggles.data.NBTCraftingRecipeBuilder;
 import com.robocraft999.creategoggles.item.modifier.ItemModifier;
 import com.robocraft999.creategoggles.registry.CGItemModifiers;
 import com.robocraft999.creategoggles.registry.CGItems;
@@ -11,24 +10,23 @@ import com.simibubi.create.AllItems;
 import com.simibubi.create.content.kinetics.crusher.CrushingRecipe;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.common.Tags;
 
 import java.util.function.Consumer;
 
 public class RecipeDataProvider extends RecipeProvider {
     public RecipeDataProvider(DataGenerator gen) {
-        super(gen);
+        super(gen.getPackOutput());
     }
 
     @Override
-    protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
         helmetRecipe(CGItems.CHAINMAIL_GOGGLE_HELMET.get(), Items.CHAINMAIL_HELMET, consumer);
         helmetRecipe(CGItems.DIAMOND_GOGGLE_HELMET.get(), Items.DIAMOND_HELMET, consumer);
         helmetRecipe(CGItems.GOLDEN_GOGGLE_HELMET.get(), Items.GOLDEN_HELMET, consumer);
@@ -45,22 +43,32 @@ public class RecipeDataProvider extends RecipeProvider {
         backtankRecipe(CGItems.IRON_BACKTANK.get(), Items.IRON_CHESTPLATE, consumer);
         backtankRecipe(CGItems.LEATHER_BACKTANK.get(), Items.LEATHER_CHESTPLATE, consumer);
 
-        mekModule(CPItems.GOGGLE_UNIT.get(), CGItems.NETHERITE_GOGGLE_HELMET.get(), consumer);
+        //mekModule(CPItems.GOGGLE_UNIT.get(), CGItems.NETHERITE_GOGGLE_HELMET.get(), consumer);
 
         modifier(CGItemModifiers.GOGGLE_MODIFIER.get(), AllItems.GOGGLES.get(), consumer);
         modifier(CGItemModifiers.REMOVEL_MODIFIER.get(), CGItems.MODIFIER_REMOVER.get(), consumer);
 
         ShapedRecipeBuilder
-                .shaped(CGItems.MODIFIER_REMOVER.get())
+                .shaped(RecipeCategory.COMBAT, CGItems.MODIFIER_REMOVER.get())
                 .pattern(" B")
                 .pattern("B ")
                 .define('B', Ingredient.of(AllItems.BRASS_INGOT.get()))
                 .unlockedBy("has_brass", has(AllItems.BRASS_INGOT.get()))
                 .save(consumer);
+
+        SmithingTransformRecipeBuilder
+                .smithing(
+                        Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+                        Ingredient.of(CGItems.DIAMOND_GOGGLE_HELMET.get()),
+                        Ingredient.of(Items.NETHERITE_HELMET),
+                        RecipeCategory.MISC,
+                        CGItems.NETHERITE_GOGGLE_HELMET.asItem()
+                ).unlocks("has_helmet", has(CGItems.DIAMOND_GOGGLE_HELMET.get()))
+                .save(consumer, new ResourceLocation(CreateGoggles.MOD_ID, "goggle_netherite_helmet_smithing"));
     }
 
     private void helmetRecipe(ItemLike result, ItemLike helmet, Consumer<FinishedRecipe> writer){
-        CreateGogglesRecipeBuilder.shaped(result)
+        NBTCraftingRecipeBuilder.shaped(result)
                 .pattern("hg")
                 .define('h', helmet)
                 .define('g', AllItems.GOGGLES.get())
@@ -70,7 +78,7 @@ public class RecipeDataProvider extends RecipeProvider {
     }
 
     private void backtankRecipe(ItemLike result, ItemLike chestplate, Consumer<FinishedRecipe> writer){
-        CreateGogglesRecipeBuilder.shaped(result)
+        NBTCraftingRecipeBuilder.shaped(result)
                 .pattern("cb")
                 .define('c', chestplate)
                 .define('b', AllItems.COPPER_BACKTANK.get())
@@ -94,7 +102,7 @@ public class RecipeDataProvider extends RecipeProvider {
     }
 
     private void mekModule(ItemLike module, ItemLike input, Consumer<FinishedRecipe> writer){
-        ShapedRecipeBuilder.shaped(module)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, module)
                 .pattern("A#A")
                 .pattern("ABA")
                 .pattern("HHH")
