@@ -48,6 +48,11 @@ public class RecipeDataProvider extends RecipeProvider {
         modifier(CGItemModifiers.GOGGLE_MODIFIER.get(), AllItems.GOGGLES.get(), consumer);
         modifier(CGItemModifiers.REMOVEL_MODIFIER.get(), CGItems.MODIFIER_REMOVER.get(), consumer);
 
+        SmithingTrimRecipeBuilder
+                .smithingTrim(Ingredient.of(CGItems.GOGGLE_ARMOR_TRIM_SMITHING_TEMPLATE.get()), Ingredient.of(Tags.Items.ARMORS_HELMETS), Ingredient.of(AllItems.GOGGLES.get()), RecipeCategory.COMBAT)
+                .unlocks("has_trim", has(CGItems.GOGGLE_ARMOR_TRIM_SMITHING_TEMPLATE.get()))
+                .save(consumer, new ResourceLocation(CreateGoggles.MOD_ID, "goggle_armor_trimming"));
+
         ShapedRecipeBuilder
                 .shaped(RecipeCategory.COMBAT, CGItems.MODIFIER_REMOVER.get())
                 .pattern(" B")

@@ -7,6 +7,7 @@ import com.robocraft999.creategoggles.item.goggle.DivingGoggleHelmet;
 import com.robocraft999.creategoggles.item.goggle.DyableGoggleHelmet;
 import com.robocraft999.creategoggles.item.goggle.GoggleHelmet;
 import com.robocraft999.creategoggles.item.goggle.IGoggleHelmet;
+import com.robocraft999.creategoggles.item.modifier.CGSmithingTemplateItem;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.Create;
 import com.simibubi.create.content.equipment.armor.AllArmorMaterials;
@@ -17,6 +18,7 @@ import com.simibubi.create.foundation.data.AssetLookup;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.Item;
@@ -28,7 +30,6 @@ import static com.simibubi.create.AllTags.forgeItemTag;
 
 public class CGItems {
     static {
-
         //TODO remove
         CreateGoggles.LOGGER.info("cgitems");
     }
@@ -46,7 +47,7 @@ public class CGItems {
             LEATHER_GOGGLE_HELMET = REGISTRATE
                     .item("goggle_leather_helmet", p -> new DyableGoggleHelmet(ArmorMaterials.LEATHER, p, vanillaArmorLoc(ArmorMaterials.LEATHER)))
                     .tag(CGTags.Items.GOGGLE)
-                    .model((ctx, p) -> p.generated(
+                    /*.model((ctx, p) -> p.generated(
                             ctx::getEntry,
                             new ResourceLocation(CreateGoggles.MOD_ID, "item/goggle_leather_helmet"),
                             new ResourceLocation(CreateGoggles.MOD_ID,"item/goggle_leather_helmet_overlay")))*/
@@ -87,6 +88,22 @@ public class CGItems {
     public static final ItemEntry<Item> MODIFIER_REMOVER = REGISTRATE
             .item("modifier_remover", Item::new)
             .register();
+
+    public static final ItemEntry<CGSmithingTemplateItem> GOGGLE_ARMOR_TRIM_SMITHING_TEMPLATE = REGISTRATE
+            .item("goggle_armor_trim_smithing_template", p -> CGSmithingTemplateItem.createGoggleArmorTrimTemplateItem())
+            .tag(ItemTags.TRIM_TEMPLATES)
+            .register();
+
+    /*public static final RegistryEntry<TrimPattern> GOGGLE_ARMOR_TRIM = REGISTRATE
+            .object("goggle_armor_pattern")
+            .simple(Registries.TRIM_PATTERN, () ->
+                    new TrimPattern(
+                            CGTrimPatterns.GOGGLE_PATTERN.location(),
+                            BuiltInRegistries.ITEM.wrapAsHolder(GOGGLE_ARMOR_TRIM_SMITHING_TEMPLATE.get()),
+                            Component.translatable(Util.makeDescriptionId("trim_pattern", CGTrimPatterns.GOGGLE_PATTERN.location()))
+                    )
+            );*/
+
 
     private static ItemEntry<? extends GoggleHelmet> goggleHelmet(String name, ArmorMaterial material){
         return REGISTRATE.item(name, p -> new GoggleHelmet(material, p, vanillaArmorLoc(material))).tag(CGTags.Items.GOGGLE).register();

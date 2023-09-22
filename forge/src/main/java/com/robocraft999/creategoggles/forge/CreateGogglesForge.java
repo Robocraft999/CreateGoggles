@@ -7,10 +7,19 @@ import com.robocraft999.creategoggles.forge.compat.mekanism.CompatMekanism;
 import com.robocraft999.creategoggles.forge.data.RecipeDataProvider;
 import com.robocraft999.creategoggles.forge.registry.CGModules;
 import com.robocraft999.creategoggles.forge.registry.CPItems;
+import com.robocraft999.creategoggles.registry.CGTrimPatterns;
 import com.robocraft999.creategoggles.registry.ModCompat;
+import com.simibubi.create.AllItems;
+import com.tterrag.registrate.providers.ProviderType;
 import dev.architectury.platform.forge.EventBuses;
+import net.minecraft.Util;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.armortrim.TrimMaterial;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,6 +32,9 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.Map;
+import java.util.Set;
 
 //import top.theillusivec4.curios.api.SlotTypeMessage;
 
@@ -69,6 +81,25 @@ public class CreateGogglesForge {
 
     private void gatherData(GatherDataEvent event){
         logger.info("gathering data");
+        //CGTrimPatterns.registerOnData();
+        CreateGoggles.REGISTRATE.addDataGenerator(ProviderType.GENERIC_SERVER, provider -> provider.add(data -> {
+            return new DatapackBuiltinEntriesProvider(
+                    data.output(),
+                    data.registries(),
+                    new RegistrySetBuilder()
+                            .add(Registries.TRIM_MATERIAL, bootstrap -> bootstrap.register(
+                                    CGTrimPatterns.GOGGLE_MATERIAL,
+                                    TrimMaterial.create(
+                                            "goggle_material",
+                                            AllItems.GOGGLES.get(),
+                                            0.8f,
+                                            Component.translatable(Util.makeDescriptionId("trim_material", CGTrimPatterns.GOGGLE_PATTERN.location())),
+                                            Map.of()
+                                    )
+                            )),
+                    Set.of(CreateGoggles.MOD_ID)
+            );
+                }));
         event.getGenerator().addProvider(true, new RecipeDataProvider(event.getGenerator()));
     }
 

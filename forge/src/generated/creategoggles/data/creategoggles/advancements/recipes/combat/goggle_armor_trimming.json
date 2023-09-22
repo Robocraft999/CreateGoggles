@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "creategoggles:goggle_armor_trimming"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_trim": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "creategoggles:goggle_armor_trim_smithing_template"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_trim",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "creategoggles:goggle_armor_trimming"
+    ]
+  },
+  "sends_telemetry_event": false
+}
