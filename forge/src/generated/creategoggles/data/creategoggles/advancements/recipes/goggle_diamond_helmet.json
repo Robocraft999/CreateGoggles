@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_backtank": {
+    "has_helmet": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:chainmail_chestplate"
+              "minecraft:diamond_helmet"
             ]
           }
         ]
@@ -15,20 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "creategoggles:chainmail_backtank"
+        "recipe": "creategoggles:goggle_diamond_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_backtank",
+      "has_helmet",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "creategoggles:chainmail_backtank"
+      "creategoggles:goggle_diamond_helmet"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

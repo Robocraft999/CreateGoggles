@@ -4,7 +4,6 @@
   "block.creategoggles.golden_backtank": "ʞuɐʇʞɔɐᗺ uǝpןo⅁",
   "block.creategoggles.iron_backtank": "ʞuɐʇʞɔɐᗺ uoɹI",
   "block.creategoggles.leather_backtank": "ʞuɐʇʞɔɐᗺ ɹǝɥʇɐǝꞀ",
-  "description.creategoggles.goggle_unit": "suoıʇdɐɹʇuoɔ ǝʇɐǝɹɔ ʇnoqɐ uoıʇɐɯɹoɟuı pǝɔuɐʌpɐ sʇuɐɹ⅁",
   "hint.creategoggles.modifier.goggle_modifier": "˙ʎʇıןɐuoıʇɔunɟ ǝןbbo⅁ sǝpıʌoɹd ʍou ʇǝɯןǝH",
   "item.creategoggles.chainmail_backtank": "ʞuɐʇʞɔɐᗺ ןıɐɯuıɐɥƆ",
   "item.creategoggles.chainmail_backtank.tooltip": "ʞNⱯ⟘ʞƆⱯᗺ‾ꞀIⱯWNIⱯHƆ˙ɯǝʇı",
@@ -92,5 +91,5 @@
   "item.creategoggles.leather_backtank.tooltip.summary": "˙ɹǝɹɐǝʍ ǝɥʇ ʇɔǝʇoɹd oʇ ɹoɯɹɐ ɥʇıʍ pǝʇɐןd sı ʇɐɥʇ ɹıⱯ pǝzıɹnssǝɹԀ buıʎɹɹɐɔ ɹoɟ ‾ʞuɐ⟘‾ ‾ǝןqɐɹɐǝM‾ Ɐ",
   "item.creategoggles.leather_backtank_placeable": "ǝןqɐǝɔɐןԀ ʞuɐʇʞɔɐᗺ ɹǝɥʇɐǝꞀ",
   "item.creategoggles.modifier_remover": "ɹǝʌoɯǝᴚ ɹǝıɟıpoW",
-  "module.creategoggles.goggle_unit": "ʇıu∩ ǝןbbo⅁"
+  "item.minecraft.smithing_template": "ǝʇɐןdɯǝ⟘ buıɥʇıɯS ɯıɹ⟘ ɹoɯɹⱯ ǝןbbo⅁"
 }
