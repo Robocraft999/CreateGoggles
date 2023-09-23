@@ -2,7 +2,9 @@ package com.robocraft999.creategoggles.forge;
 
 import com.robocraft999.creategoggles.CreateGoggles;
 import com.robocraft999.creategoggles.forge.item.goggle.GoggleArmorLayerForge;
+import com.robocraft999.creategoggles.item.modifier.ItemModifier;
 import com.robocraft999.creategoggles.item.modifier.ItemModifierManager;
+import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.resources.model.ModelResourceLocation;
@@ -25,7 +27,10 @@ public class ClientEvents {
 		ItemStack stack = event.getItemStack();
 		List<Component> components = event.getToolTip();
 		if (ItemModifierManager.hasModifier(stack)) {
-			components.add(1, ItemModifierManager.getModifier(stack).getHintComponent());
+			RegistryEntry<ItemModifier> optionalModifier = ItemModifierManager.getModifier(stack);
+			if (!optionalModifier.isPresent())
+				return;
+			components.add(1, optionalModifier.get().getHintComponent());
 			if(stack.isEnchanted()){
 				components.add(2, Component.empty());
 			}

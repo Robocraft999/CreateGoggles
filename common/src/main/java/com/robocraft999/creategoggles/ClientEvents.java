@@ -1,7 +1,9 @@
 package com.robocraft999.creategoggles;
 
 import com.robocraft999.creategoggles.item.goggle.GoggleArmorLayer;
+import com.robocraft999.creategoggles.item.modifier.ItemModifier;
 import com.robocraft999.creategoggles.item.modifier.ItemModifierManager;
+import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
@@ -24,7 +26,10 @@ public class ClientEvents {
     }
     private static void onTooltip(ItemStack stack, TooltipFlag tooltipFlag, List<Component> components) {
         if (ItemModifierManager.hasModifier(stack)) {
-            components.add(1, ItemModifierManager.getModifier(stack).getHintComponent());
+            RegistryEntry<ItemModifier> optionalModifier = ItemModifierManager.getModifier(stack);
+            if (!optionalModifier.isPresent())
+                return;
+            components.add(1, optionalModifier.get().getHintComponent());
             if(stack.isEnchanted()){
                 components.add(2, Component.empty());
             }
