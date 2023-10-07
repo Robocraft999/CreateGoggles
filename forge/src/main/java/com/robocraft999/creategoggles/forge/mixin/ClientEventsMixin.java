@@ -1,6 +1,6 @@
 package com.robocraft999.creategoggles.forge.mixin;
 
-import com.simibubi.create.content.equipment.armor.DivingHelmetItem;
+import com.simibubi.create.content.equipment.armor.NetheriteDivingHandler;
 import com.simibubi.create.foundation.events.ClientEvents;
 import com.simibubi.create.foundation.fluid.FluidHelper;
 import net.minecraft.client.Camera;
@@ -16,8 +16,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
-
-import static com.simibubi.create.content.equipment.armor.NetheriteDivingHandler.isNetheriteArmor;
 
 @Mixin(ClientEvents.class)
 public class ClientEventsMixin {
@@ -46,7 +44,7 @@ public class ClientEventsMixin {
     private static void onGetFogDensity(ViewportEvent.RenderFog event, CallbackInfo ci, Camera camera, Level level,
                                         BlockPos blockPos, FluidState fluidState, Fluid fluid, Entity entity, ItemStack divingHelmet
     ){
-        if (!divingHelmet.isEmpty() && FluidHelper.isLava(fluid) && divingHelmet.getItem() instanceof DivingHelmetItem && isNetheriteArmor(divingHelmet)){
+        if (!divingHelmet.isEmpty() && FluidHelper.isLava(fluid) && NetheriteDivingHandler.isNetheriteArmor(divingHelmet)){
             event.setNearPlaneDistance(-4.0f);
             event.setFarPlaneDistance(20.0f);
             event.setCanceled(true);

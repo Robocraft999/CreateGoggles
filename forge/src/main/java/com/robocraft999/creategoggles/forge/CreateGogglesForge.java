@@ -81,7 +81,7 @@ public class CreateGogglesForge {
 
     private void gatherData(GatherDataEvent event){
         logger.info("gathering data");
-        //CGTrimPatterns.registerOnData();
+        CGTrimPatterns.registerOnData();
         CreateGoggles.REGISTRATE.addDataGenerator(ProviderType.GENERIC_SERVER, provider -> provider.add(data -> {
             return new DatapackBuiltinEntriesProvider(
                     data.output(),
@@ -93,7 +93,7 @@ public class CreateGogglesForge {
                                             "goggle_material",
                                             AllItems.GOGGLES.get(),
                                             0.8f,
-                                            Component.translatable(Util.makeDescriptionId("trim_material", CGTrimPatterns.GOGGLE_PATTERN.location())),
+                                            Component.translatable(Util.makeDescriptionId("trim_material", CGTrimPatterns.GOGGLE_MATERIAL.location())),
                                             Map.of()
                                     )
                             )),

@@ -1,7 +1,7 @@
 {
   "asset_name": "goggle_material",
   "description": {
-    "translate": "trim_material.creategoggles.goggle"
+    "translate": "trim_material.creategoggles.goggle_material"
   },
   "ingredient": "create:goggles",
   "item_model_index": 0.8

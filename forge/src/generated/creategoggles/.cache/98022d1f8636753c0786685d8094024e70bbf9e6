@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-12T17:16:45.585432	Registrate Provider for creategoggles [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.20.1	2023-10-07T13:39:24.5191862	Registrate Provider for creategoggles [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 7f462d3a6706f58aa0cea24884827d8365ffbf6c assets/creategoggles/blockstates/chainmail_backtank.json
 e52dcaca40caf5fe22f4b1501fecde2a91d891ef assets/creategoggles/blockstates/diamond_backtank.json
 6cde82499a1b278cf25228a21c2d500ee1907827 assets/creategoggles/blockstates/golden_backtank.json
@@ -27,7 +27,7 @@ c2e289a5eea1bd6badeebff47ad14d48aac41e40 assets/creategoggles/models/item/modifi
 ce4af123c760d2ab9fca10fd6c74b1f0e0b49e02 data/creategoggles/loot_tables/blocks/iron_backtank.json
 8e82bfabe4ae6f3d700f0ddf0816359fd07d0973 data/creategoggles/loot_tables/blocks/leather_backtank.json
 71b86302ed4a559df823b0ac7e071aa58bc43394 data/creategoggles/tags/items/goggle.json
-bcccd636678b951169fbad0d30d45c006534e6d4 data/creategoggles/trim_material/goggle_material.json
+0827e6144cc6fabdb1261d07738cc4f424990fd7 data/creategoggles/trim_material/goggle_material.json
 b9dae076012388abbe7df63143b7c1009898792a data/create/tags/items/pressurized_air_sources.json
 b9dae076012388abbe7df63143b7c1009898792a data/forge/tags/items/chestplates.json
 b9dae076012388abbe7df63143b7c1009898792a data/minecraft/tags/blocks/mineable/pickaxe.json
