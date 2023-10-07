@@ -4,12 +4,12 @@
     "package": "com.robocraft999.creategoggles.fabric.mixin",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
+        "NetheriteDivingHandlerMixin"
     ],
     "client": [
-        "ItemRendererMixin",
-        "MixinHumanoidArmorLayer",
         "ClientEventsMixin",
-        "NetheriteDivingHandlerMixin"
+        "ItemRendererMixin",
+        "MixinHumanoidArmorLayer"
     ],
     "injectors": {
         "defaultRequire": 1
