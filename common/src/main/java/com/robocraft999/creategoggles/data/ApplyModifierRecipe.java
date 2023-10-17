@@ -38,19 +38,24 @@ public class ApplyModifierRecipe extends SmithingTransformRecipe {
 
     @Override
     public boolean matches(Container inv, Level level) {
-        if (!this.modifier.isItemValid(inv.getItem(0))) {
+        if (!this.modifier.isItemValid(inv.getItem(1))) {
             return false;
         }
         if (!CGConfig.COMMON.enableExperimentalFeatures.get()) {
             return false;
         }
-        return this.addition.test(inv.getItem(1));
+
+        return this.addition.test(inv.getItem(2)) && inv.getItem(0).isEmpty();
     }
 
+    @Override
+    public boolean isBaseIngredient(ItemStack itemStack) {
+        return this.modifier.getValidItems().stream().anyMatch((item) -> ItemStack.isSameItem(item, itemStack));
+    }
 
     @Override
     public ItemStack assemble(Container inv, RegistryAccess registryAccess) {
-        ItemStack stack = inv.getItem(0).copy();
+        ItemStack stack = inv.getItem(1).copy();
 
         ItemModifierManager.setModifier(stack, this.modifier);
 

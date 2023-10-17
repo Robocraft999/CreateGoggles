@@ -2,6 +2,7 @@ package com.robocraft999.creategoggles.item.modifier;
 
 import com.robocraft999.creategoggles.CreateGoggles;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -44,12 +45,12 @@ public class ItemModifier {
     }
 
     public boolean isItemValid(ItemStack stack) {
-        return !(stack.is(getIncompatibleItems()) || !this.predicate.test(stack) || ItemModifierManager.hasSpecificModifier(stack, this));
+        return !stack.is(getIncompatibleItems()) && this.predicate.test(stack) && !ItemModifierManager.hasSpecificModifier(stack, this);
     }
 
     public List<ItemStack> getValidItems() {
         if (this.cachedValidItems == null) {
-            //this.cachedValidItems = Registries.stream().map(ItemStack::new).filter(this::isItemValid).toList();
+            this.cachedValidItems = BuiltInRegistries.ITEM.stream().map(ItemStack::new).filter(this::isItemValid).toList();
         }
         return this.cachedValidItems;
     }

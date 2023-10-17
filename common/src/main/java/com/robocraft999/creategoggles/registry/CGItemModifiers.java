@@ -9,7 +9,6 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -23,7 +22,7 @@ public class CGItemModifiers {
 
     public static final RegistryEntry<? extends ItemModifier>
             GOGGLE_MODIFIER = modifier(
-            "goggle_modifier", stack -> stack.getItem() instanceof ArmorItem armorItem && armorItem.getEquipmentSlot() == EquipmentSlot.HEAD, CGTags.Items.GOGGLE_MODIFIER_INCOMPATIBLE
+            "goggle_modifier", stack -> stack.getItem() instanceof ArmorItem armorItem && armorItem.getType() == ArmorItem.Type.HELMET/*.getEquipmentSlot() == EquipmentSlot.HEAD*/, CGTags.Items.GOGGLE_MODIFIER_INCOMPATIBLE
     ),
             REMOVEL_MODIFIER = modifierRemover(
                     "removel_modifier", stack -> stack.getItem() instanceof ArmorItem && ItemModifierManager.hasModifier(stack), CGTags.Items.REMOVAL_MODIFIER_INCOMPATIBLE
