@@ -3,9 +3,10 @@
     "minVersion": "0.8",
     "package": "com.robocraft999.creategoggles.forge.mixin",
     "compatibilityLevel": "JAVA_17",
-    "mixins": [],
+    "mixins": [
+        "ItemModifierMixin"
+    ],
     "client": [
-        "ClientEventsMixin",
         "ItemRendererMixin"
     ],
     "injectors": {
