@@ -1,8 +1,12 @@
 package com.robocraft999.creategoggles;
 
+import com.robocraft999.creategoggles.net.ClientboundEnableGogglesPacket;
+import net.minecraft.world.level.GameRules;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import org.apache.commons.lang3.tuple.Pair;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class CGConfig {
     public static class Common{
@@ -10,6 +14,16 @@ public class CGConfig {
         public final BooleanValue useCustomCurioBacktankSlot;
 
         public final BooleanValue enableExperimentalFeatures;
+
+        public static GameRules.Key<GameRules.BooleanValue> enableGogglesGameruleKey;
+        public static AtomicBoolean enableGoggles = new AtomicBoolean();
+
+        public void registerGamerules(){
+            enableGogglesGameruleKey = GameRules.register(
+                    "enableGoggles",
+                    GameRules.Category.PLAYER,
+                    GameRules.BooleanValue.create(false, (server, value) -> new ClientboundEnableGogglesPacket(value.get()).sendToAll(server)));
+        }
 
         Common(ForgeConfigSpec.Builder builder){
             builder.comment("General configuration settings")
@@ -26,7 +40,7 @@ public class CGConfig {
                     .define("customCurioBacktankSlot", false);
 
             enableExperimentalFeatures = builder
-                    .comment("Enables experimental features")
+                    .comment("Enables experimental features (Smithing the goggles onto normal helmets)")
                     .worldRestart()
                     .define("enableExperimentalFeatures", true);
 
@@ -37,6 +51,7 @@ public class CGConfig {
     public static class Client{
 
         public final BooleanValue moveGoggleToEyes;
+        public final BooleanValue enableCreativeModeGoggles;
 
         Client(ForgeConfigSpec.Builder builder){
             builder.comment("Client configuration settings")
@@ -45,6 +60,10 @@ public class CGConfig {
             moveGoggleToEyes = builder
                     .comment("Display the goggles before the eyes and not on the forehead")
                     .define("moveGoggleToEyes", false);
+
+            enableCreativeModeGoggles = builder
+                    .comment("Enables the goggles in creative mode without goggles")
+                    .define("enableCreativeModeGoggles", true);
         }
     }
 
