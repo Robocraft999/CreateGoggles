@@ -25,19 +25,6 @@ import static com.simibubi.create.content.equipment.armor.NetheriteDivingHandler
 @Mixin(ClientEvents.class)
 public class ClientEventsMixin {
 
-    // doesn't work for now. Probably best to just make a PR to Create
-    /*
-    @Redirect(
-            method = "getFogDensity",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lcom/tterrag/registrate/util/entry/ItemProviderEntry;isIn(Lnet/minecraft/world/item/ItemStack;)Z"
-            )
-    )
-    private boolean getFogDensityProxy(ItemEntry<DivingHelmetItem> itemEntry, ItemStack stack) {
-        return itemEntry.isIn(stack);
-    }*/
-
     //TODO make a PR to Create because this is bad
     @Inject(
             method = "getFogDensity",
@@ -49,7 +36,7 @@ public class ClientEventsMixin {
                                         float nearDistance, float farDistance, FogShape shape, FogEvents.FogData fogData, CallbackInfoReturnable<Boolean> cir,
                                         Level level, BlockPos blockPos, FluidState fluidState, Fluid fluid, Entity entity, ItemStack divingHelmet
     ){
-        if (divingHelmet != null && FluidHelper.isLava(fluid) && divingHelmet.getItem() instanceof DivingHelmetItem && isNetheriteArmor(divingHelmet)){
+        if (!divingHelmet.isEmpty() && FluidHelper.isLava(fluid) && divingHelmet.getItem() instanceof DivingHelmetItem && isNetheriteArmor(divingHelmet)){
             fogData.setNearPlaneDistance(-4.0f);
             fogData.setFarPlaneDistance(20.0f);
             cir.setReturnValue(true);
