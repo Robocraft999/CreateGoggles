@@ -5,6 +5,8 @@
   "block.creategoggles.iron_backtank": "ʞuɐʇʞɔɐᗺ uoɹI",
   "block.creategoggles.leather_backtank": "ʞuɐʇʞɔɐᗺ ɹǝɥʇɐǝꞀ",
   "description.creategoggles.goggle_unit": "suoıʇdɐɹʇuoɔ ǝʇɐǝɹɔ ʇnoqɐ uoıʇɐɯɹoɟuı pǝɔuɐʌpɐ sʇuɐɹ⅁",
+  "gamerule.enableGoggles": "sǝןbbo⅁ sɹǝǝuıbuƎ ǝןqɐuƎ",
+  "gamerule.enableGoggles.description": "ɯǝɥʇ ɹɐǝʍ oʇ buıʌɐɥ ʇnoɥʇıʍ sǝןbbo⅁ sɹǝǝuıbuƎ sǝʇɐǝɹƆ sǝןqɐuƎ",
   "hint.creategoggles.modifier.goggle_modifier": "˙ʎʇıןɐuoıʇɔunɟ ǝןbbo⅁ sǝpıʌoɹd ʍou ʇǝɯןǝH",
   "item.creategoggles.chainmail_backtank": "ʞuɐʇʞɔɐᗺ ןıɐɯuıɐɥƆ",
   "item.creategoggles.chainmail_backtank.tooltip": "ʞNⱯ⟘ʞƆⱯᗺ‾ꞀIⱯWNIⱯHƆ˙ɯǝʇı",

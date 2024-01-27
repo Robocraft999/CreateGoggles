@@ -1,11 +1,11 @@
-// 1.19.2	2023-07-13T12:08:24.9228545	Registrate Provider for creategoggles [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2024-01-27T12:39:30.9349601	Registrate Provider for creategoggles [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 7f462d3a6706f58aa0cea24884827d8365ffbf6c assets/creategoggles/blockstates/chainmail_backtank.json
 e52dcaca40caf5fe22f4b1501fecde2a91d891ef assets/creategoggles/blockstates/diamond_backtank.json
 6cde82499a1b278cf25228a21c2d500ee1907827 assets/creategoggles/blockstates/golden_backtank.json
 b419b82c302ad6b944e1d1bba11dc1389a79582d assets/creategoggles/blockstates/iron_backtank.json
 ae5208db8996a912e5a8afbd0e7694d9e5f98255 assets/creategoggles/blockstates/leather_backtank.json
-93a8fdd838b3505572b994f7a1a1f722938002df assets/creategoggles/lang/en_ud.json
-243b4c9651f5fbfc37afcee1865549dd9a243263 assets/creategoggles/lang/en_us.json
+b900423787ebc3bf629fc36316e99a79b448ced3 assets/creategoggles/lang/en_ud.json
+0875388ea4271a11e98f5abe09ef19b6d3c54451 assets/creategoggles/lang/en_us.json
 b3d2434a88d3884ac1f10ed1842e68566c6200ab assets/creategoggles/models/item/chainmail_backtank.json
 6c53b1a6ed28929b7a0a090edf6101e610f842fc assets/creategoggles/models/item/chainmail_backtank_placeable.json
 b59341ee904740ab4b22545b0f3573e891cc5d83 assets/creategoggles/models/item/diamond_backtank.json
