@@ -1,6 +1,7 @@
 package com.robocraft999.creategoggles;
 
 import com.robocraft999.creategoggles.data.CGLang;
+import com.robocraft999.creategoggles.net.CGNet;
 import com.robocraft999.creategoggles.registry.*;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
@@ -29,6 +30,8 @@ public class CreateGoggles {
         CGRecipeTypes.register();
         CGItemModifiers.register();
         CGLang.register();
+        CGNet.init();
+        CGConfig.COMMON.registerGamerules();
     }
 
     public static ResourceLocation asResource(String path) {
