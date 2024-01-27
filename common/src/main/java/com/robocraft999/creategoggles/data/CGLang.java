@@ -29,6 +29,8 @@ public class CGLang {
 
         //modifierHint(CGItemModifiers.GOGGLE_MODIFIER, "Helmet now provides Goggle functionality.");
         REGISTRATE.addRawLang("hint." + CreateGoggles.MOD_ID + ".modifier." + "goggle_modifier", "Helmet now provides Goggle functionality.");
+        REGISTRATE.addRawLang("gamerule.enableGoggles", "Enable Engineers Goggles");
+        REGISTRATE.addRawLang("gamerule.enableGoggles.description", "Enables Creates Engineers Goggles without having to wear them");
     }
 
     private static void tooltip(ItemEntry<?> item, String category, String value) {
