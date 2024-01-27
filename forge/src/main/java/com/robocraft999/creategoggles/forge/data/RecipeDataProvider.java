@@ -65,7 +65,7 @@ public class RecipeDataProvider extends RecipeProvider {
                 .smithing(
                         Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
                         Ingredient.of(CGItems.DIAMOND_GOGGLE_HELMET.get()),
-                        Ingredient.of(Items.NETHERITE_HELMET),
+                        Ingredient.of(Items.NETHERITE_INGOT),
                         RecipeCategory.MISC,
                         CGItems.NETHERITE_GOGGLE_HELMET.asItem()
                 ).unlocks("has_helmet", has(CGItems.DIAMOND_GOGGLE_HELMET.get()))

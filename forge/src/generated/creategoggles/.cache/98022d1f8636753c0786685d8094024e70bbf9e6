@@ -1,11 +1,11 @@
-// 1.20.1	2023-10-07T13:39:24.5191862	Registrate Provider for creategoggles [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.20.1	2024-01-27T16:05:28.1107921	Registrate Provider for creategoggles [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 7f462d3a6706f58aa0cea24884827d8365ffbf6c assets/creategoggles/blockstates/chainmail_backtank.json
 e52dcaca40caf5fe22f4b1501fecde2a91d891ef assets/creategoggles/blockstates/diamond_backtank.json
 6cde82499a1b278cf25228a21c2d500ee1907827 assets/creategoggles/blockstates/golden_backtank.json
 b419b82c302ad6b944e1d1bba11dc1389a79582d assets/creategoggles/blockstates/iron_backtank.json
 ae5208db8996a912e5a8afbd0e7694d9e5f98255 assets/creategoggles/blockstates/leather_backtank.json
-3c87b06bb059737f663396825f423923c2893d68 assets/creategoggles/lang/en_ud.json
-38208a019d2b23411b39c249bae601e04cbca19b assets/creategoggles/lang/en_us.json
+ca56e5c820481ce9bc3dc2a2565954f1a5482e5f assets/creategoggles/lang/en_ud.json
+689991b147737a92178c58cc93c212963e6bc4fa assets/creategoggles/lang/en_us.json
 b3d2434a88d3884ac1f10ed1842e68566c6200ab assets/creategoggles/models/item/chainmail_backtank.json
 b59341ee904740ab4b22545b0f3573e891cc5d83 assets/creategoggles/models/item/diamond_backtank.json
 c2c97a66849f0b8bec804057d379f5f94f71d728 assets/creategoggles/models/item/goggle_armor_trim_smithing_template.json
@@ -27,7 +27,6 @@ c2e289a5eea1bd6badeebff47ad14d48aac41e40 assets/creategoggles/models/item/modifi
 ce4af123c760d2ab9fca10fd6c74b1f0e0b49e02 data/creategoggles/loot_tables/blocks/iron_backtank.json
 8e82bfabe4ae6f3d700f0ddf0816359fd07d0973 data/creategoggles/loot_tables/blocks/leather_backtank.json
 71b86302ed4a559df823b0ac7e071aa58bc43394 data/creategoggles/tags/items/goggle.json
-0827e6144cc6fabdb1261d07738cc4f424990fd7 data/creategoggles/trim_material/goggle_material.json
 b9dae076012388abbe7df63143b7c1009898792a data/create/tags/items/pressurized_air_sources.json
 b9dae076012388abbe7df63143b7c1009898792a data/forge/tags/items/chestplates.json
 b9dae076012388abbe7df63143b7c1009898792a data/minecraft/tags/blocks/mineable/pickaxe.json
