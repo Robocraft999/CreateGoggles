@@ -1,5 +1,6 @@
-package com.robocraft999.creategoggles;
+package com.robocraft999.creategoggles.fabric;
 
+import com.robocraft999.creategoggles.CreateGoggles;
 import com.robocraft999.creategoggles.item.goggle.GoggleArmorLayer;
 import com.robocraft999.creategoggles.item.modifier.ItemModifier;
 import com.robocraft999.creategoggles.item.modifier.ItemModifierManager;

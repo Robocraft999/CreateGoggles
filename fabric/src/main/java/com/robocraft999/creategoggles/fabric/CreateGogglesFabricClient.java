@@ -1,6 +1,5 @@
 package com.robocraft999.creategoggles.fabric;
 
-import com.robocraft999.creategoggles.ClientEvents;
 import com.robocraft999.creategoggles.CreateGoggles;
 import net.fabricmc.api.ClientModInitializer;
 
