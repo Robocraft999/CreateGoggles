@@ -142,12 +142,6 @@ unifiedPublishing {
                 curseforge = "create"
                 modrinth = "create"
             }
-            optional {
-                curseforge = "mekanism"
-                modrinth = "mekanism"
-            }
-
-
         }
 
         if (project.hasProperty("CF_TOKEN") || System.getenv("CF_TOKEN") != null) {
