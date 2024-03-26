@@ -1,5 +1,6 @@
 plugins {
     id "com.github.johnrengelman.shadow" version "${shadow_plugin_version}"
+    id "idea"
 }
 architectury {
     platformSetupLoomIde()
@@ -96,17 +97,17 @@ shadowJar {
     exclude "fabric.mod.json"
 
     configurations = [project.configurations.shadowCommon]
-    classifier "dev-shadow"
+    archiveClassifier = "dev-shadow"
 }
 
 remapJar {
     input.set shadowJar.archiveFile
     dependsOn shadowJar
-    classifier "[FORGE]"
+    archiveClassifier = "[FORGE]"
 }
 
 jar {
-    classifier "dev"
+    archiveClassifier = "dev"
 }
 
 sourcesJar {

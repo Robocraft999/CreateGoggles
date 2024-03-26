@@ -1,5 +1,6 @@
-package com.robocraft999.creategoggles;
+package com.robocraft999.creategoggles.fabric;
 
+import com.robocraft999.creategoggles.CreateGoggles;
 import com.robocraft999.creategoggles.item.goggle.GoggleArmorLayer;
 import com.robocraft999.creategoggles.item.modifier.ItemModifier;
 import com.robocraft999.creategoggles.item.modifier.ItemModifierManager;
@@ -8,6 +9,9 @@ import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback.RegistrationHelper;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.resources.model.ModelResourceLocation;
@@ -22,8 +26,23 @@ import java.util.List;
 public class ClientEvents {
     public static void addEntityRenderLayers(EntityType<? extends LivingEntity> entityType, LivingEntityRenderer<?,?> entityRenderer,
                                              RegistrationHelper registrationHelper, EntityRendererProvider.Context context) {
-        GoggleArmorLayer.registerOn(entityRenderer, registrationHelper);
+
+        registerGoggleArmorLayerOn(entityRenderer, registrationHelper);
     }
+
+    public static void registerGoggleArmorLayerOn(EntityRenderer<?> entityRenderer, LivingEntityFeatureRendererRegistrationCallback.RegistrationHelper helper) {
+        if (!(entityRenderer instanceof LivingEntityRenderer<?, ?> livingRenderer))
+            return;
+
+        EntityModel<?> model = livingRenderer.getModel();
+
+        if (!(model instanceof HumanoidModel))
+            return;
+
+        GoggleArmorLayer<?, ?> layer = new GoggleArmorLayer<>(livingRenderer);
+        helper.register(layer);
+    }
+
     private static void onTooltip(ItemStack stack, TooltipFlag tooltipFlag, List<Component> components) {
         if (ItemModifierManager.hasModifier(stack)) {
             RegistryEntry<ItemModifier> optionalModifier = ItemModifierManager.getModifier(stack);

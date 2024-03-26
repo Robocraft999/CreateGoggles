@@ -6,14 +6,11 @@ import com.robocraft999.creategoggles.CGConfig;
 import com.robocraft999.creategoggles.compat.CuriosCompatDummy;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllPartialModels;
-import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
-import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -60,18 +57,5 @@ public class GoggleArmorLayer<T extends LivingEntity, M extends EntityModel<T>> 
         //Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.HEAD, light, OverlayTexture.NO_OVERLAY, ms, buffer, 0);
         Minecraft.getInstance().getItemRenderer().render(stack, ItemTransforms.TransformType.HEAD, false, ms, buffer, light, OverlayTexture.NO_OVERLAY, AllPartialModels.GOGGLES.get());
         ms.popPose();
-    }
-
-    public static void registerOn(EntityRenderer<?> entityRenderer, LivingEntityFeatureRendererRegistrationCallback.RegistrationHelper helper) {
-        if (!(entityRenderer instanceof LivingEntityRenderer<?, ?> livingRenderer))
-            return;
-
-        EntityModel<?> model = livingRenderer.getModel();
-
-        if (!(model instanceof HumanoidModel))
-            return;
-
-        GoggleArmorLayer<?, ?> layer = new GoggleArmorLayer<>(livingRenderer);
-        helper.register(layer);
     }
 }

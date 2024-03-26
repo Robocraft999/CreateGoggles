@@ -1,8 +1,7 @@
 Features
-- added new gamerule
-- added client config option to enable goggles in creative
 
 Bug Fixes
-- fixed server crash
 
 Internal
+- updated create to 0.5.1.f
+- upgraded some other stuff
