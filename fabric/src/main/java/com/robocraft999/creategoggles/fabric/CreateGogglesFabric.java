@@ -10,7 +10,7 @@ import net.minecraftforge.fml.config.ModConfig;
 public class CreateGogglesFabric implements ModInitializer {
     @Override
     public void onInitialize() {
-        CreateGoggles.REGISTRATE.useCreativeTab(CreativeModeTabs.COMBAT);
+        CreateGoggles.REGISTRATE.defaultCreativeTab(CreativeModeTabs.COMBAT);
         CreateGoggles.init();
         CreateGoggles.LOGGER.info("CreateGogglesFabric init");
 
