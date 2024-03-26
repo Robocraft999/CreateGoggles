@@ -10,6 +10,12 @@ import java.util.Objects;
 
 import static com.robocraft999.creategoggles.CreateGoggles.REGISTRATE;
 
+/**
+ * Code from Forbidden and Arcanus
+ * @author stal111
+ *
+ * edited by Robocraft999
+ */
 public class ItemModifierManager {
 
     private static final String TAG_NAME = "CGModifier";

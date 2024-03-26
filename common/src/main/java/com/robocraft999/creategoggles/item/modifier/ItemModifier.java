@@ -2,7 +2,7 @@ package com.robocraft999.creategoggles.item.modifier;
 
 import com.robocraft999.creategoggles.CreateGoggles;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -12,6 +12,12 @@ import net.minecraft.world.item.ItemStack;
 import java.util.List;
 import java.util.function.Predicate;
 
+/**
+ * Code from Forbidden and Arcanus
+ * @author stal111
+ *
+ * edited by Robocraft999
+ */
 public class ItemModifier {
     private final ResourceLocation name;
     private final Predicate<ItemStack> predicate;
@@ -39,12 +45,12 @@ public class ItemModifier {
     }
 
     public boolean isItemValid(ItemStack stack) {
-        return !(stack.is(getIncompatibleItems()) || !this.predicate.test(stack) || ItemModifierManager.hasSpecificModifier(stack, this));
+        return !stack.is(getIncompatibleItems()) && this.predicate.test(stack) && !ItemModifierManager.hasSpecificModifier(stack, this);
     }
 
     public List<ItemStack> getValidItems() {
         if (this.cachedValidItems == null) {
-            this.cachedValidItems = Registry.ITEM.stream().map(ItemStack::new).filter(this::isItemValid).toList();
+            this.cachedValidItems = BuiltInRegistries.ITEM.stream().map(ItemStack::new).filter(this::isItemValid).toList();
         }
         return this.cachedValidItems;
     }

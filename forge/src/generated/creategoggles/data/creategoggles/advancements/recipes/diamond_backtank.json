@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "minecraft:golden_chestplate"
+              "minecraft:diamond_chestplate"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "creategoggles:golden_backtank"
+        "recipe": "creategoggles:diamond_backtank"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,8 @@
   ],
   "rewards": {
     "recipes": [
-      "creategoggles:golden_backtank"
+      "creategoggles:diamond_backtank"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

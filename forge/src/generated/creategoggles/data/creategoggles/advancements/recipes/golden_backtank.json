@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_module": {
+    "has_backtank": {
       "conditions": {
         "items": [
           {
             "items": [
-              "creategoggles:goggle_netherite_helmet"
+              "minecraft:golden_chestplate"
             ]
           }
         ]
@@ -15,20 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "creategoggles:module_goggle_unit"
+        "recipe": "creategoggles:golden_backtank"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_module",
+      "has_backtank",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "creategoggles:module_goggle_unit"
+      "creategoggles:golden_backtank"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

@@ -7,6 +7,6 @@ import net.minecraft.resources.ResourceKey;
 
 public class RegistrateRegistryKeyProviderImpl {
     public static ResourceKey<Registry<ItemModifier>> itemModifierRegistryKey() {
-        return CreateGoggles.REGISTRATE.makeRegistry("item_modifier", ItemModifier.class);
+        return CreateGoggles.REGISTRATE.makeRegistry("item_modifier");
     }
 }

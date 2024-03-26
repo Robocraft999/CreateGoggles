@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "create:copper_diving_helmet"
+              "create:netherite_diving_helmet"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "creategoggles:goggle_diving_helmet"
+        "recipe": "creategoggles:goggle_netherite_diving_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,8 @@
   ],
   "rewards": {
     "recipes": [
-      "creategoggles:goggle_diving_helmet"
+      "creategoggles:goggle_netherite_diving_helmet"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

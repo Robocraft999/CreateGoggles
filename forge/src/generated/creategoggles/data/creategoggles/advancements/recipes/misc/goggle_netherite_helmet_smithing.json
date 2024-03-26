@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "minecraft:leather_helmet"
+              "creategoggles:goggle_diamond_helmet"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "creategoggles:goggle_leather_helmet"
+        "recipe": "creategoggles:goggle_netherite_helmet_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,8 @@
   ],
   "rewards": {
     "recipes": [
-      "creategoggles:goggle_leather_helmet"
+      "creategoggles:goggle_netherite_helmet_smithing"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "minecraft:iron_chestplate"
+              "minecraft:chainmail_chestplate"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "creategoggles:iron_backtank"
+        "recipe": "creategoggles:chainmail_backtank"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,8 @@
   ],
   "rewards": {
     "recipes": [
-      "creategoggles:iron_backtank"
+      "creategoggles:chainmail_backtank"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }

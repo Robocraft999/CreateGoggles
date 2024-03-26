@@ -1,16 +1,14 @@
 package com.robocraft999.creategoggles.item.goggle;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import com.robocraft999.creategoggles.CGConfig;
 import com.robocraft999.creategoggles.compat.CuriosCompatDummy;
 import com.simibubi.create.AllItems;
-import com.simibubi.create.AllPartialModels;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -40,22 +38,22 @@ public class GoggleArmorLayer<T extends LivingEntity, M extends EntityModel<T>> 
         // Translate and rotate with our head
         ms.pushPose();
         ms.translate(model.head.x / 16.0, model.head.y / 16.0, model.head.z / 16.0);
-        ms.mulPose(Vector3f.YP.rotation(model.head.yRot));
-        ms.mulPose(Vector3f.XP.rotation(model.head.xRot));
+        ms.mulPose(Axis.YP.rotation(model.head.yRot));
+        ms.mulPose(Axis.XP.rotation(model.head.xRot));
 
         // Translate and scale to our head
         ms.translate(0, -0.25, -0.05);
-        ms.mulPose(Vector3f.ZP.rotationDegrees(180.0f));
+        ms.mulPose(Axis.ZP.rotationDegrees(180.0f));
         ms.scale(0.625f, 0.625f, 0.625f);
 
         if(CGConfig.CLIENT.moveGoggleToEyes.get()) {
-            ms.mulPose(Vector3f.ZP.rotationDegrees(180.0f));
+            ms.mulPose(Axis.ZP.rotationDegrees(180.0f));
             ms.translate(0, -0.25, 0);
         }
 
         // Render
-        //Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.HEAD, light, OverlayTexture.NO_OVERLAY, ms, buffer, 0);
-        Minecraft.getInstance().getItemRenderer().render(stack, ItemTransforms.TransformType.HEAD, false, ms, buffer, light, OverlayTexture.NO_OVERLAY, AllPartialModels.GOGGLES.get());
+        Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.HEAD, light, OverlayTexture.NO_OVERLAY, ms, buffer, Minecraft.getInstance().level, 0);
+        //Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.HEAD, false, ms, buffer, light, OverlayTexture.NO_OVERLAY, AllPartialModels.GOGGLES.get());
         ms.popPose();
     }
 }

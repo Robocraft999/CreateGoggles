@@ -6,7 +6,7 @@ import com.robocraft999.creategoggles.item.modifier.ItemModifier;
 import com.robocraft999.creategoggles.item.modifier.ItemModifierManager;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
-import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
+import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback.RegistrationHelper;
 import net.minecraft.client.model.EntityModel;
@@ -55,13 +55,16 @@ public class ClientEvents {
         }
     }
 
+    /*private static void onModelRegistry(ModelLoadingPlugin.Context out) {
+        var list = new ArrayList<PartialModel>();
+        out.addModels(list.stream().map(PartialModel::getLocation).toList());
+    }*/
+
     public static void register(){
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register(ClientEvents::addEntityRenderLayers);
         ItemTooltipCallback.EVENT.register(ClientEvents::onTooltip);
-        ModelLoadingRegistry.INSTANCE.registerModelProvider((manager, out) -> {
-            out.accept(new ModelResourceLocation(CreateGoggles.MOD_ID + ":goggle#inventory"));
-        });
+        ModelLoadingPlugin.register(pluginContext -> pluginContext.addModels(new ModelResourceLocation(CreateGoggles.MOD_ID, "goggle", "inventory")));
+        //ModelLoadingPlugin.register(pluginContext -> pluginContext.addModels(ClientEvents.onModelRegistry()));
+        //ModelLoadingPlugin.register(ClientEvents::onModelRegistry);
     }
-
-
 }

@@ -26,6 +26,7 @@ public class CreateGoggles {
         CGBlocks.register();
         CGTileEntities.register();
         CGItems.register();
+        CGTrimPatterns.register();
         CGRecipeTypes.register();
         CGItemModifiers.register();
         CGLang.register();
