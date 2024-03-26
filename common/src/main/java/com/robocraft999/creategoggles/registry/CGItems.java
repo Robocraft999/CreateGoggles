@@ -43,10 +43,12 @@ public class CGItems {
             NETHERITE_GOGGLE_HELMET = REGISTRATE
                     .item("goggle_netherite_helmet", p -> new GoggleHelmet(ArmorMaterials.NETHERITE, p.fireResistant(), vanillaArmorLoc(ArmorMaterials.NETHERITE)))
                     .tag(CGTags.Items.GOGGLE)
+                    .tag(ItemTags.TRIMMABLE_ARMOR)
                     .register(),
             LEATHER_GOGGLE_HELMET = REGISTRATE
                     .item("goggle_leather_helmet", p -> new DyableGoggleHelmet(ArmorMaterials.LEATHER, p, vanillaArmorLoc(ArmorMaterials.LEATHER)))
                     .tag(CGTags.Items.GOGGLE)
+                    .tag(ItemTags.TRIMMABLE_ARMOR)
                     /*.model((ctx, p) -> p.generated(
                             ctx::getEntry,
                             new ResourceLocation(CreateGoggles.MOD_ID, "item/goggle_leather_helmet"),
@@ -59,11 +61,13 @@ public class CGItems {
             DIVING_GOGGLE_HELMET = REGISTRATE
                     .item("goggle_diving_helmet", p -> new DivingGoggleHelmet(AllArmorMaterials.COPPER, p, Create.asResource("copper_diving")))
                     .tag(CGTags.Items.GOGGLE)
+                    .tag(ItemTags.TRIMMABLE_ARMOR)
                     .register(),
             //TODO fix texture to have correct goggle color (doesnt has it because the color pallet doesnt contains it)
             NETHERITE_DIVING_GOGGLE_HELMET = REGISTRATE
                     .item("goggle_netherite_diving_helmet", p -> new DivingGoggleHelmet(ArmorMaterials.NETHERITE, p.fireResistant(), Create.asResource("netherite_diving")))
                     .tag(CGTags.Items.GOGGLE)
+                    .tag(ItemTags.TRIMMABLE_ARMOR)
                     .register();
     public static final ItemEntry<BacktankItem.BacktankBlockItem>
             CHAINMAIL_BACKTANK_PLACEABLE = backtank_placable("chainmail_backtank", () -> CGItems.CHAINMAIL_BACKTANK, () -> CGBlocks.CHAINMAIL_BACKTANK_BLOCK),
@@ -83,6 +87,7 @@ public class CGItems {
                     .color(() -> ArmorColor::new)
                     .tag(AllTags.AllItemTags.PRESSURIZED_AIR_SOURCES.tag)
                     .tag(forgeItemTag("chestplates"))
+                    .tag(ItemTags.TRIMMABLE_ARMOR)
                     .register();
 
     public static final ItemEntry<Item> MODIFIER_REMOVER = REGISTRATE
@@ -106,7 +111,7 @@ public class CGItems {
 
 
     private static ItemEntry<? extends GoggleHelmet> goggleHelmet(String name, ArmorMaterial material){
-        return REGISTRATE.item(name, p -> new GoggleHelmet(material, p, vanillaArmorLoc(material))).tag(CGTags.Items.GOGGLE).register();
+        return REGISTRATE.item(name, p -> new GoggleHelmet(material, p, vanillaArmorLoc(material))).tag(CGTags.Items.GOGGLE).tag(ItemTags.TRIMMABLE_ARMOR).register();
     }
 
     private static ItemEntry<BacktankItem.BacktankBlockItem> backtank_placable(String name, Supplier<ItemEntry<? extends BacktankItem>> item,
@@ -123,6 +128,7 @@ public class CGItems {
                 .item(name, p -> new BacktankItem(material, p, vanillaArmorLoc(material), placable))
                 .model(AssetLookup.customGenericItemModel("_", "item"))
                 .tag(AllTags.AllItemTags.PRESSURIZED_AIR_SOURCES.tag)
+                .tag(ItemTags.TRIMMABLE_ARMOR)
                 .tag(forgeItemTag("chestplates"))
                 .register();
     }

@@ -1,10 +1,10 @@
 {
   "type": "minecraft:smithing_trim",
   "addition": {
-    "tag": "minecraft:trim_materials"
+    "item": "create:goggles"
   },
   "base": {
-    "tag": "minecraft:trimmable_armor"
+    "tag": "forge:armors/helmets"
   },
   "template": {
     "item": "creategoggles:goggle_armor_trim_smithing_template"
