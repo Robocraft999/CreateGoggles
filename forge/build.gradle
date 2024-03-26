@@ -78,12 +78,16 @@ processResources {
     inputs.property "version", "${mod_version}"
     inputs.property "modName", "${mod_name}"
     inputs.property "author", "${authors}"
+    inputs.property "create_forge_version", "${create_version_plain}"
+    inputs.property "architectury_version", "${architectury_version}"
 
     filesMatching("META-INF/mods.toml") {
         expand( "modId": "${mod_id}",
                 "version": "${mod_version}",
                 "modName": "${mod_name}",
-                "author": "${authors}"
+                "author": "${authors}",
+                "create_forge_version" : "${create_version_plain}",
+                "architectury_version": "${architectury_version}"
         )
     }
 }
@@ -114,6 +118,52 @@ sourcesJar {
 components.java {
     withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
         skip()
+    }
+}
+
+unifiedPublishing {
+    project {
+        gameVersions = ["${minecraft_version}"]
+        gameLoaders = ["${project.name}"]
+
+        displayName = "${mod_name} ${project.version} [${project.name.toUpperCase()}]"
+        var changelog_file = new File('forge_changelog.md')
+        changelog = changelog_file.exists() ?  changelog_file.text : ""
+
+        mainPublication tasks.remapJar // Declares the publicated jar
+
+        relations {
+            depends {
+                curseforge = "architectury-api"
+                modrinth = "architectury-api"
+            }
+            depends {
+                curseforge = "create"
+                modrinth = "create"
+            }
+            optional {
+                curseforge = "mekanism"
+                modrinth = "mekanism"
+            }
+
+
+        }
+
+        if (project.hasProperty("CF_TOKEN") || System.getenv("CF_TOKEN") != null) {
+            curseforge {
+                token = project.hasProperty("CF_TOKEN") ? project.property("CF_TOKEN") : System.getenv("CF_TOKEN")
+                id = "${curseforge_project_id}" // Required, must be a string, ID of CurseForge project
+            }
+        }
+
+        if (project.hasProperty("MODRINTH_TOKEN") || System.getenv("MODRINTH_TOKEN") != null) {
+            modrinth {
+                mainPublicationDepends tasks.sourcesJar
+                secondaryPublication tasks.sourcesJar.getArchiveFile()
+                token = project.hasProperty("MODRINTH_TOKEN") ? project.property("MODRINTH_TOKEN") : System.getenv("MODRINTH_TOKEN")
+                id = "${modrinth_project_id}" // Required, must be a string, ID of Modrinth project
+            }
+        }
     }
 }
 

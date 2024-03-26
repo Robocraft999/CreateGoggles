@@ -100,6 +100,47 @@ components.java {
     }
 }
 
+unifiedPublishing {
+    project {
+        gameVersions = ["${minecraft_version}"]
+        gameLoaders = ["${project.name}"]
+
+        //TODO add fabric/forge
+        displayName = "${mod_name} ${project.version} [${project.name.toUpperCase()}]"
+        var changelog_file = new File('fabric_changelog.md')
+        changelog = changelog_file.exists() ?  changelog_file.text : ""
+
+        mainPublication tasks.remapJar // Declares the publicated jar
+
+        relations {
+            depends {
+                curseforge = "architectury-api"
+                modrinth = "architectury-api"
+            }
+            depends {
+                curseforge = "create-fabric"
+                modrinth = "create-fabric"
+            }
+        }
+
+        if (project.hasProperty("CF_TOKEN") || System.getenv("CF_TOKEN") != null) {
+            curseforge {
+                token = project.hasProperty("CF_TOKEN") ? project.property("CF_TOKEN") : System.getenv("CF_TOKEN")
+                id = "${curseforge_project_id}" // Required, must be a string, ID of CurseForge project
+            }
+        }
+
+        if (project.hasProperty("MODRINTH_TOKEN") || System.getenv("MODRINTH_TOKEN") != null) {
+            modrinth {
+                mainPublicationDepends tasks.sourcesJar
+                secondaryPublication tasks.sourcesJar.getArchiveFile()
+                token = project.hasProperty("MODRINTH_TOKEN") ? project.property("MODRINTH_TOKEN") : System.getenv("MODRINTH_TOKEN")
+                id = "${modrinth_project_id}" // Required, must be a string, ID of Modrinth project
+            }
+        }
+    }
+}
+
 publishing {
     publications {
         mavenFabric(MavenPublication) {

@@ -60,6 +60,12 @@ side = "BOTH"
 [[dependencies.creategoggles]]
 modId = "create"
 mandatory = true
-versionRange="[0.5.1.b,)"
+versionRange="[${create_forge_version},)"
+ordering="AFTER"
+side="BOTH"
+[[dependencies.creategoggles]]
+modId = "architectury"
+mandatory = true
+versionRange="[${architectury_version},)"
 ordering="AFTER"
 side="BOTH"
