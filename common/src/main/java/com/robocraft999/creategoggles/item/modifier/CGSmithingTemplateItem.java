@@ -14,8 +14,8 @@ public class CGSmithingTemplateItem extends SmithingTemplateItem {
     private static final ChatFormatting DESCRIPTION_FORMAT;
     private static final ResourceLocation EMPTY_SLOT_HELMET;
     private static final ResourceLocation EMPTY_SLOT_GOGGLES;
-    public CGSmithingTemplateItem(Component component, Component component2, Component component3, Component component4, Component component5, List<ResourceLocation> list, List<ResourceLocation> list2) {
-        super(component, component2, component3, component4, component5, list, list2);
+    public CGSmithingTemplateItem(Component appliesTo, Component ingredients, Component upgradeDescription, Component baseSlotDescription, Component additionsSlotDescription, List<ResourceLocation> list, List<ResourceLocation> list2) {
+        super(appliesTo, ingredients, upgradeDescription, baseSlotDescription, additionsSlotDescription, list, list2);
     }
 
     private static Component[] genUpgradeDescriptions(String name){
@@ -29,12 +29,12 @@ public class CGSmithingTemplateItem extends SmithingTemplateItem {
         };
     }
 
-    public static CGSmithingTemplateItem createGoggleArmorTrimTemplateItem(){
+    public static SmithingTemplateItem createGoggleArmorTrimTemplateItem(){
         Component[] upgradeDescriptions = genUpgradeDescriptions("goggle");
-        return new CGSmithingTemplateItem(
-                upgradeDescriptions[2],
+        return new SmithingTemplateItem(
                 upgradeDescriptions[0],
                 upgradeDescriptions[1],
+                upgradeDescriptions[2],
                 upgradeDescriptions[3],
                 upgradeDescriptions[4],
                 List.of(EMPTY_SLOT_HELMET),

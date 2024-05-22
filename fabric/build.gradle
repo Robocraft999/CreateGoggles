@@ -43,7 +43,7 @@ dependencies {
 
 processResources {
     from(project(":common").sourceSets.main.resources)
-    from(project(":forge").file('src/generated/creategoggles')) {
+    from(project(":forge").file('src/generated')) {
         exclude('.cache/')
     }
     // Forge's data gen doesn't work with assets placed in the common project, so we place them in Forge and include them here

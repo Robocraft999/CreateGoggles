@@ -21,7 +21,7 @@ repositories {
 
 def generatedResources = file("src/generated")
 
-sourceSets.main.resources { srcDir generatedResources }
+//sourceSets.main.resources { srcDir generatedResources }
 
 loom {
     runs {
@@ -71,7 +71,7 @@ dependencies {
 
 processResources {
     from(project(":common").sourceSets.main.resources)
-    from(file('src/generated/creategoggles')) {
+    from(generatedResources) {
         exclude('.cache/')
     }
 

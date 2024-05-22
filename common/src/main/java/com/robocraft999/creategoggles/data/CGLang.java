@@ -31,6 +31,13 @@ public class CGLang {
         REGISTRATE.addRawLang("hint." + CreateGoggles.MOD_ID + ".modifier." + "goggle_modifier", "Helmet now provides Goggle functionality.");
         REGISTRATE.addRawLang("gamerule.enableGoggles", "Enable Engineers Goggles");
         REGISTRATE.addRawLang("gamerule.enableGoggles.description", "Enables Creates Engineers Goggles without having to wear them");
+
+        REGISTRATE.addRawLang("trim_material.creategoggles.goggle_material", "Engineer's Goggles");
+        REGISTRATE.addRawLang("trim_pattern.creategoggles.goggle", "Goggle Armor Trim");
+        REGISTRATE.addRawLang("item.creategoggles.smithing_template.goggle.applies_to", "Helmets");
+        REGISTRATE.addRawLang("item.creategoggles.smithing_template.goggle.ingredients", "Engineer's Goggles");
+        REGISTRATE.addRawLang("item.creategoggles.smithing_template.goggle.base_slot_description", "Add a helmet");
+        REGISTRATE.addRawLang("item.creategoggles.smithing_template.goggle.additions_slot_description", "Add engineer's goggles");
     }
 
     private static void tooltip(ItemEntry<?> item, String category, String value) {

@@ -7,7 +7,6 @@ import com.robocraft999.creategoggles.forge.compat.mekanism.CompatMekanism;
 import com.robocraft999.creategoggles.forge.data.RecipeDataProvider;
 import com.robocraft999.creategoggles.forge.registry.CGModules;
 import com.robocraft999.creategoggles.forge.registry.CPItems;
-import com.robocraft999.creategoggles.registry.CGTrimPatterns;
 import com.robocraft999.creategoggles.registry.ModCompat;
 import dev.architectury.platform.forge.EventBuses;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -70,7 +69,6 @@ public class CreateGogglesForge {
 
     private void gatherData(GatherDataEvent event){
         logger.info("gathering data");
-        CGTrimPatterns.registerOnData();
         /*CreateGoggles.REGISTRATE.addDataGenerator(ProviderType.GENERIC_SERVER, provider -> provider.add(data -> {
             return new DatapackBuiltinEntriesProvider(
                     data.output(),
