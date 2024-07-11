@@ -97,7 +97,7 @@ public class NBTCraftingRecipeBuilder implements RecipeBuilder {
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
                 .rewards(AdvancementRewards.Builder.recipe(id))
                 .requirements(RequirementsStrategy.OR);
-        writer.accept(new Result(id, this.result, this.count, this.group == null ? "" : this.group, this.rows, this.key, this.advancement, new ResourceLocation(id.getNamespace(), "recipes/" + id.getPath())));
+        writer.accept(new Result(id, this.result, this.count, this.group == null ? "" : this.group, this.rows, this.key, this.advancement, new ResourceLocation(id.getNamespace(), "recipes/nbtcrafting/" + id.getPath())));
     }
 
     private void ensureValid(ResourceLocation p_126144_) {

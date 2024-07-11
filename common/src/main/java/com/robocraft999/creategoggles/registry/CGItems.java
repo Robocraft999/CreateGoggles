@@ -16,8 +16,10 @@ import com.simibubi.create.content.equipment.armor.BacktankItem;
 import com.simibubi.create.content.equipment.goggles.GogglesItem;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.tterrag.registrate.builders.ItemBuilder;
+import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -82,6 +84,7 @@ public class CGItems {
     public static final ItemEntry<SmithingTemplateItem> GOGGLE_ARMOR_TRIM_SMITHING_TEMPLATE = REGISTRATE
             .item("goggle_armor_trim_smithing_template", p -> CGSmithingTemplateItem.createGoggleArmorTrimTemplateItem())
             .tag(ItemTags.TRIM_TEMPLATES)
+            .setData(ProviderType.LANG, NonNullBiConsumer.noop())
             .register();
 
 
