@@ -4,6 +4,7 @@
   "block.creategoggles.golden_backtank": "Golden Backtank",
   "block.creategoggles.iron_backtank": "Iron Backtank",
   "block.creategoggles.leather_backtank": "Leather Backtank",
+  "description.creategoggles.goggle_unit": "Grants advanced information about create contraptions",
   "gamerule.enableGoggles": "Enable Engineers Goggles",
   "gamerule.enableGoggles.description": "Enables Creates Engineers Goggles without having to wear them",
   "hint.creategoggles.modifier.goggle_modifier": "Helmet now provides Goggle functionality.",
@@ -97,6 +98,7 @@
   "item.creategoggles.smithing_template.goggle.applies_to": "Helmets",
   "item.creategoggles.smithing_template.goggle.base_slot_description": "Add a helmet",
   "item.creategoggles.smithing_template.goggle.ingredients": "Engineer's Goggles",
+  "module.creategoggles.goggle_unit": "Goggle Unit",
   "trim_material.creategoggles.goggle_material": "Engineer's Goggles",
   "trim_pattern.creategoggles.goggle": "Goggle Armor Trim"
 }

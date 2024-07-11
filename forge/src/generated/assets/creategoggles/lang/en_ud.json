@@ -4,6 +4,7 @@
   "block.creategoggles.golden_backtank": "ʞuɐʇʞɔɐᗺ uǝpןo⅁",
   "block.creategoggles.iron_backtank": "ʞuɐʇʞɔɐᗺ uoɹI",
   "block.creategoggles.leather_backtank": "ʞuɐʇʞɔɐᗺ ɹǝɥʇɐǝꞀ",
+  "description.creategoggles.goggle_unit": "suoıʇdɐɹʇuoɔ ǝʇɐǝɹɔ ʇnoqɐ uoıʇɐɯɹoɟuı pǝɔuɐʌpɐ sʇuɐɹ⅁",
   "gamerule.enableGoggles": "sǝןbbo⅁ sɹǝǝuıbuƎ ǝןqɐuƎ",
   "gamerule.enableGoggles.description": "ɯǝɥʇ ɹɐǝʍ oʇ buıʌɐɥ ʇnoɥʇıʍ sǝןbbo⅁ sɹǝǝuıbuƎ sǝʇɐǝɹƆ sǝןqɐuƎ",
   "hint.creategoggles.modifier.goggle_modifier": "˙ʎʇıןɐuoıʇɔunɟ ǝןbbo⅁ sǝpıʌoɹd ʍou ʇǝɯןǝH",
@@ -97,6 +98,7 @@
   "item.creategoggles.smithing_template.goggle.applies_to": "sʇǝɯןǝH",
   "item.creategoggles.smithing_template.goggle.base_slot_description": "ʇǝɯןǝɥ ɐ ppⱯ",
   "item.creategoggles.smithing_template.goggle.ingredients": "sǝןbbo⅁ s,ɹǝǝuıbuƎ",
+  "module.creategoggles.goggle_unit": "ʇıu∩ ǝןbbo⅁",
   "trim_material.creategoggles.goggle_material": "sǝןbbo⅁ s,ɹǝǝuıbuƎ",
   "trim_pattern.creategoggles.goggle": "ɯıɹ⟘ ɹoɯɹⱯ ǝןbbo⅁"
 }

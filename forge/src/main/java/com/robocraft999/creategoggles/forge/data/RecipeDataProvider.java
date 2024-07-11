@@ -3,6 +3,7 @@ package com.robocraft999.creategoggles.forge.data;
 import com.robocraft999.creategoggles.CreateGoggles;
 import com.robocraft999.creategoggles.data.ApplyModifierRecipeBuilder;
 import com.robocraft999.creategoggles.data.NBTCraftingRecipeBuilder;
+import com.robocraft999.creategoggles.forge.registry.CGItemsForge;
 import com.robocraft999.creategoggles.item.modifier.ItemModifier;
 import com.robocraft999.creategoggles.registry.CGItemModifiers;
 import com.robocraft999.creategoggles.registry.CGItems;
@@ -43,7 +44,7 @@ public class RecipeDataProvider extends RecipeProvider {
         backtankRecipe(CGItems.IRON_BACKTANK.get(), Items.IRON_CHESTPLATE, consumer);
         backtankRecipe(CGItems.LEATHER_BACKTANK.get(), Items.LEATHER_CHESTPLATE, consumer);
 
-        //mekModule(CPItems.GOGGLE_UNIT.get(), CGItems.NETHERITE_GOGGLE_HELMET.get(), consumer);
+        mekModule(CGItemsForge.GOGGLE_UNIT.get(), CGItems.NETHERITE_GOGGLE_HELMET.get(), consumer);
 
         modifier(CGItemModifiers.GOGGLE_MODIFIER.get(), AllItems.GOGGLES.get(), consumer);
         modifier(CGItemModifiers.REMOVEL_MODIFIER.get(), CGItems.MODIFIER_REMOVER.get(), consumer);
