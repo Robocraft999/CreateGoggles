@@ -1,6 +1,7 @@
 # CreateGoggles
 
 [![CurseForge](http://cf.way2muchnoise.eu/full_377835_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/create-goggles)
+[![Modrinth](https://img.shields.io/modrinth/dt/create-goggles?logo=modrinth&label=&suffix=%20&style=flat&color=242629&labelColor=5ca424&logoColor=1c1c1c)](https://modrinth.com/mod/create-goggles)
 [![Issues](https://img.shields.io/github/issues/Robocraft999/CreateGoggles)](https://github.com/Robocraft999/CreateGoggles/issues)
 
 Adds Goggle Helmets and Armored Backtanks for Create Mod
