@@ -1,6 +1,6 @@
 Features
+- added mekanism support back
 
 Bug Fixes
 
 Internal
-- added architectury as dependency in mods.toml
