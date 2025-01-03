@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing_trim",
+  "addition": {
+    "item": "create:goggles"
+  },
+  "base": {
+    "tag": "c:helmets"
+  },
+  "template": {
+    "item": "creategoggles:goggle_armor_trim_smithing_template"
+  }
+}

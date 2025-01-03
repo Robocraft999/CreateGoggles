@@ -7,6 +7,7 @@ import com.robocraft999.creategoggles.forge.registry.CGItemsForge;
 import com.robocraft999.creategoggles.item.modifier.ItemModifier;
 import com.robocraft999.creategoggles.registry.CGItemModifiers;
 import com.robocraft999.creategoggles.registry.CGItems;
+import com.robocraft999.creategoggles.registry.CGTags;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.content.kinetics.crusher.CrushingRecipe;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
@@ -46,13 +47,17 @@ public class RecipeDataProvider extends RecipeProvider {
 
         mekModule(CGItemsForge.GOGGLE_UNIT.get(), CGItems.NETHERITE_GOGGLE_HELMET.get(), consumer);
 
-        modifier(CGItemModifiers.GOGGLE_MODIFIER.get(), AllItems.GOGGLES.get(), consumer);
+        //modifier(CGItemModifiers.GOGGLE_MODIFIER.get(), AllItems.GOGGLES.get(), consumer);
         modifier(CGItemModifiers.REMOVEL_MODIFIER.get(), CGItems.MODIFIER_REMOVER.get(), consumer);
 
         SmithingTrimRecipeBuilder
                 .smithingTrim(Ingredient.of(CGItems.GOGGLE_ARMOR_TRIM_SMITHING_TEMPLATE.get()), Ingredient.of(Tags.Items.ARMORS_HELMETS), Ingredient.of(AllItems.GOGGLES.get()), RecipeCategory.COMBAT)
                 .unlocks("has_trim", has(CGItems.GOGGLE_ARMOR_TRIM_SMITHING_TEMPLATE.get()))
-                .save(consumer, new ResourceLocation(CreateGoggles.MOD_ID, "goggle_armor_trimming"));
+                .save(consumer, CreateGoggles.asResource("goggle_armor_trimming"));
+        SmithingTrimRecipeBuilder
+                .smithingTrim(Ingredient.of(CGItems.GOGGLE_ARMOR_TRIM_SMITHING_TEMPLATE.get()), Ingredient.of(CGTags.Items.ARMORS_HELMETS), Ingredient.of(AllItems.GOGGLES.get()), RecipeCategory.COMBAT)
+                .unlocks("has_trim", has(CGItems.GOGGLE_ARMOR_TRIM_SMITHING_TEMPLATE.get()))
+                .save(consumer, CreateGoggles.asResource("goggle_armor_trimming_c"));
 
         ShapedRecipeBuilder
                 .shaped(RecipeCategory.COMBAT, CGItems.MODIFIER_REMOVER.get())

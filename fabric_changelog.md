@@ -1,8 +1,9 @@
 Features
+- It is now possible to use armor trims on helmets tagged with "c:helmets" 
+or "forge:armors/helmets"
+- goggle helmets are trimmable now
+- The modifier system is deprecated now and it is only possible to remove them
 
 Bug Fixes
-- fixed enchantments being lost on block break
 
 Internal
-- updated create to 0.5.1.j
-- upgraded some other stuff

@@ -14,10 +14,16 @@ public class CGTags {
 
        public static final TagKey<Item> GOGGLE_MODIFIER_INCOMPATIBLE = modItemTag("modifier/goggle_incompatible");
        public static final TagKey<Item> REMOVAL_MODIFIER_INCOMPATIBLE = modItemTag("modifier/removal_incompatible");
+
+       public static final TagKey<Item> ARMORS_HELMETS = commonItemTag("helmets");
    }
 
     private static TagKey<Item> forgeItemTag(String name) {
         return TagKey.create(Registries.ITEM, new ResourceLocation("forge", name));
+    }
+
+    private static TagKey<Item> commonItemTag(String name) {
+        return TagKey.create(Registries.ITEM, new ResourceLocation("c", name));
     }
 
     private static TagKey<Item> modItemTag(String name) {

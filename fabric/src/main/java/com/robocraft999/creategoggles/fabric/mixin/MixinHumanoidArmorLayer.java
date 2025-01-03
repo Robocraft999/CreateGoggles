@@ -1,14 +1,17 @@
 package com.robocraft999.creategoggles.fabric.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.robocraft999.creategoggles.registry.CGTrimPatterns;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.DyeableLeatherItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.armortrim.ArmorTrim;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -42,6 +45,17 @@ public abstract class MixinHumanoidArmorLayer {
             float h = (float)(j & 255) / 255.0F;
             this.renderModel(poseStack, multiBufferSource, light, armorItem, humanoidModel, bl, f, g, h, (String)null);
             this.renderModel(poseStack, multiBufferSource, light, armorItem, humanoidModel, bl, 1.0F, 1.0F, 1.0F, "overlay");
+            ci.cancel();
+        }
+    }
+
+    @Inject(
+            method = "renderTrim*",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    public<T extends LivingEntity, A extends HumanoidModel<T>> void onRenderArmorTrim(ArmorMaterial armorMaterial, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, ArmorTrim armorTrim, A humanoidModel, boolean bl, CallbackInfo ci){
+        if (armorTrim.material().is(CGTrimPatterns.GOGGLE_MATERIAL)){
             ci.cancel();
         }
     }

@@ -22,7 +22,7 @@ public class ItemModifierManager {
 
     public static RegistryEntry<ItemModifier> getModifier(ItemStack stack) {
         if (stack.isEmpty() || !stack.hasTag()){
-            return null;
+            return RegistryEntry.empty();
         }
 
         String modifierName = Objects.requireNonNull(stack.getTag()).getString(TAG_NAME);

@@ -2,8 +2,11 @@ package com.robocraft999.creategoggles.fabric;
 
 import com.robocraft999.creategoggles.CreateGoggles;
 import com.robocraft999.creategoggles.item.goggle.GoggleArmorLayer;
+import com.robocraft999.creategoggles.item.modifier.ArmorTrimHelper;
 import com.robocraft999.creategoggles.item.modifier.ItemModifier;
 import com.robocraft999.creategoggles.item.modifier.ItemModifierManager;
+import com.robocraft999.creategoggles.registry.CGItemModifiers;
+import com.robocraft999.creategoggles.registry.CGTrimPatterns;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
@@ -49,6 +52,12 @@ public class ClientEvents {
             if (!optionalModifier.isPresent())
                 return;
             components.add(1, optionalModifier.get().getHintComponent());
+            if(stack.isEnchanted()){
+                components.add(2, Component.empty());
+            }
+        }
+        else if (ArmorTrimHelper.hasMaterialAndPattern(stack, CGTrimPatterns.GOGGLE_MATERIAL.location(), CGTrimPatterns.GOGGLE_PATTERN.location())) {
+            components.add(1, CGItemModifiers.GOGGLE_MODIFIER.get().getHintComponent());
             if(stack.isEnchanted()){
                 components.add(2, Component.empty());
             }

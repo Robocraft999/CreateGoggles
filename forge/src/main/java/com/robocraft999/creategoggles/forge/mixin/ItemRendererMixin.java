@@ -2,15 +2,12 @@ package com.robocraft999.creategoggles.forge.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.robocraft999.creategoggles.CreateGoggles;
-import com.robocraft999.creategoggles.item.modifier.ItemModifierManager;
-import com.robocraft999.creategoggles.registry.CGItemModifiers;
+import com.robocraft999.creategoggles.client.GoggleTextureOverlayRenderer;
 import net.minecraft.client.renderer.ItemModelShaper;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Final;
@@ -24,14 +21,14 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import java.util.Iterator;
 
 @Mixin(ItemRenderer.class)
-public abstract class ItemRendererMixin {
+public abstract class ItemRendererMixin implements GoggleTextureOverlayRenderer {
 
     @Final
     @Shadow
     private ItemModelShaper itemModelShaper;
 
     @Shadow
-    protected abstract void renderModelLists(BakedModel bakedModel, ItemStack itemStack, int i, int j, PoseStack poseStack, VertexConsumer vertexConsumer);
+    public abstract void renderModelLists(BakedModel bakedModel, ItemStack itemStack, int i, int j, PoseStack poseStack, VertexConsumer vertexConsumer);
 
     @Inject(
             method = "render",
@@ -42,10 +39,8 @@ public abstract class ItemRendererMixin {
             ),
             locals = LocalCapture.CAPTURE_FAILHARD
     )
+    @SuppressWarnings({"rawtypes"})
     public void onRender(ItemStack itemStack, ItemDisplayContext itemDisplayContext, boolean bl, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, int j, BakedModel bakedModel, CallbackInfo ci, boolean bl2, boolean bl3, Iterator iter, BakedModel bakedModel2, Iterator iter2, RenderType renderType, VertexConsumer vertexConsumer){
-        if (ItemModifierManager.hasSpecificModifier(itemStack, CGItemModifiers.GOGGLE_MODIFIER.get())){
-            BakedModel model = this.itemModelShaper.getModelManager().getModel(new ModelResourceLocation(CreateGoggles.MOD_ID,"goggle", "inventory"));
-            this.renderModelLists(model, itemStack, i, j, poseStack, vertexConsumer);
-        }
+        renderInjection(itemModelShaper, itemStack, poseStack, i, j, vertexConsumer);
     }
 }

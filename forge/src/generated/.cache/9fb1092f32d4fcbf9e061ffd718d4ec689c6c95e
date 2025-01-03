@@ -1,5 +1,6 @@
-// 1.20.1	2024-07-11T16:41:01.8052496	Recipes
+// 1.20.1	2025-01-03T15:44:31.3864182	Recipes
 ffc1bc6c85041c43232eb1325b971393d13ef5b5 data/creategoggles/advancements/recipes/combat/goggle_armor_trimming.json
+d38d00d127475be39e7947d46646463462b03c94 data/creategoggles/advancements/recipes/combat/goggle_armor_trimming_c.json
 fe3551ee5e0a276eb0d5d76cc8463387616880bb data/creategoggles/advancements/recipes/combat/modifier_remover.json
 11b7aaa5b79ca74297362afad8c02e6d360530dc data/creategoggles/advancements/recipes/misc/goggle_netherite_helmet_smithing.json
 558d1f58d9923ba68d2107857c7f24e456325b9a data/creategoggles/advancements/recipes/misc/module_goggle_unit.json
@@ -34,6 +35,7 @@ de4946d6f905c365d770a346f3cec6c581dbe7f9 data/creategoggles/recipes/crushing/net
 5d9b5227e250225e68a99c75b8081e5fc20b8c4e data/creategoggles/recipes/crushing/turtle_helmet.json
 0e56e6beb93be03fb322701d4e272a8f6fe142cd data/creategoggles/recipes/diamond_backtank.json
 b8a7a3b0adb33a103b7d8a29d0148bfe9fa812ae data/creategoggles/recipes/goggle_armor_trimming.json
+5f03d7965ccbbe83743d4465411b72141d93635c data/creategoggles/recipes/goggle_armor_trimming_c.json
 e43275f6c175dbe229efce85ec40cece03416035 data/creategoggles/recipes/goggle_chainmail_helmet.json
 aa8d2dcc81a98fde611aa70dfebcdfe0a23543ad data/creategoggles/recipes/goggle_diamond_helmet.json
 b622750674b4bb5a9ab0b7c66f8f741df5b203a1 data/creategoggles/recipes/goggle_diving_helmet.json
@@ -49,5 +51,4 @@ ebdad47d0064f554818434165f04fa3f5bc7c159 data/creategoggles/recipes/goggle_nethe
 9253ea0c7e16d78f39b202efc22b863f9b91e86d data/creategoggles/recipes/leather_backtank.json
 5f08a815d200feec8cc7150d4ab0dfc9f6f29fd7 data/creategoggles/recipes/modifier_remover.json
 00b492560b6973eb906a340fc7261c7891f16a23 data/creategoggles/recipes/module_goggle_unit.json
-dbfe866d20fe5dd98ce0b4383f056de730768307 data/creategoggles/recipes/smithing/apply_goggle_modifier.json
 0ec8939a89b21b1e346ef261183bd85410694b92 data/creategoggles/recipes/smithing/apply_removel_modifier.json

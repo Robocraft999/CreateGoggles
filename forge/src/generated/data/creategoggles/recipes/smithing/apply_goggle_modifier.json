@@ -1,7 +1,0 @@
-{
-  "type": "creategoggles:apply_modifier",
-  "addition": {
-    "item": "create:goggles"
-  },
-  "modifier": "creategoggles:goggle_modifier"
-}
