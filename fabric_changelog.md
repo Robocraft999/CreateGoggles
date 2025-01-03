@@ -1,8 +1,8 @@
 Features
 
 Bug Fixes
-- fixed crash
+- fixed enchantments being lost on block break
 
 Internal
-- updated create to 0.5.1.f
+- updated create to 0.5.1.j
 - upgraded some other stuff

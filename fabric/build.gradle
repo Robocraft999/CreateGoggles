@@ -108,7 +108,6 @@ unifiedPublishing {
         gameVersions = ["${minecraft_version}"]
         gameLoaders = ["${project.name}"]
 
-        //TODO add fabric/forge
         displayName = "${mod_name} ${project.version} [${project.name.toUpperCase()}]"
         var changelog_file = new File('fabric_changelog.md')
         changelog = changelog_file.exists() ?  changelog_file.text : ""

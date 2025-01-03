@@ -1,4 +1,4 @@
-// 1.20.1	2024-07-11T17:08:35.5826386	Registrate Provider for creategoggles [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.20.1	2025-01-03T13:42:29.2530687	Registrate Provider for creategoggles [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 7f462d3a6706f58aa0cea24884827d8365ffbf6c assets/creategoggles/blockstates/chainmail_backtank.json
 e52dcaca40caf5fe22f4b1501fecde2a91d891ef assets/creategoggles/blockstates/diamond_backtank.json
 6cde82499a1b278cf25228a21c2d500ee1907827 assets/creategoggles/blockstates/golden_backtank.json
@@ -22,11 +22,11 @@ d469f22dd952b59344eabc5abc9be1d0469241f7 assets/creategoggles/models/item/iron_b
 c2b7564d5c58cf138139052ddaab2d402cb019d4 assets/creategoggles/models/item/leather_backtank.json
 c2e289a5eea1bd6badeebff47ad14d48aac41e40 assets/creategoggles/models/item/modifier_remover.json
 d6e8b435bb938143ba96650573a257fde2203d62 assets/creategoggles/models/item/module_goggle_unit.json
-78b6afdbaa261bab559ecee32c521a6b2ff1a4a1 data/creategoggles/loot_tables/blocks/chainmail_backtank.json
-1c517d69de9b00328805fde5904d5a3f47765b2a data/creategoggles/loot_tables/blocks/diamond_backtank.json
-56817a310653d0c66cd5c002f400946ec6688735 data/creategoggles/loot_tables/blocks/golden_backtank.json
-ce4af123c760d2ab9fca10fd6c74b1f0e0b49e02 data/creategoggles/loot_tables/blocks/iron_backtank.json
-8e82bfabe4ae6f3d700f0ddf0816359fd07d0973 data/creategoggles/loot_tables/blocks/leather_backtank.json
+a0f8d0a1fcac3212d30ef6dcf14d6b1f42bf0c5a data/creategoggles/loot_tables/blocks/chainmail_backtank.json
+062361813bebb9af2ee9440f7d565cb5142cbcdd data/creategoggles/loot_tables/blocks/diamond_backtank.json
+6abe5be71d399a3edf8f7354cfd51839c87ef7db data/creategoggles/loot_tables/blocks/golden_backtank.json
+f9272f48e22e78e8d104a64d80e9e8d9676f0ca3 data/creategoggles/loot_tables/blocks/iron_backtank.json
+c36a89677aa27b9728944db68b6dd7b9b59c1655 data/creategoggles/loot_tables/blocks/leather_backtank.json
 71b86302ed4a559df823b0ac7e071aa58bc43394 data/creategoggles/tags/items/goggle.json
 b9dae076012388abbe7df63143b7c1009898792a data/create/tags/items/pressurized_air_sources.json
 b9dae076012388abbe7df63143b7c1009898792a data/forge/tags/items/armors/chestplates.json
