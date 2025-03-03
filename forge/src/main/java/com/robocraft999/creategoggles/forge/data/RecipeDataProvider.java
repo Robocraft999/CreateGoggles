@@ -19,8 +19,12 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.crafting.ConditionalRecipe;
+import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 
 import java.util.function.Consumer;
+
+import static net.minecraft.data.recipes.RecipeBuilder.getDefaultRecipeId;
 
 public class RecipeDataProvider extends RecipeProvider {
     public RecipeDataProvider(DataGenerator gen) {
@@ -66,6 +70,28 @@ public class RecipeDataProvider extends RecipeProvider {
                 .define('B', Ingredient.of(AllItems.BRASS_INGOT.get()))
                 .unlockedBy("has_brass", has(AllItems.BRASS_INGOT.get()))
                 .save(consumer);
+
+        ShapedRecipeBuilder
+                .shaped(RecipeCategory.COMBAT, CGItems.GOGGLE_ARMOR_TRIM_SMITHING_TEMPLATE.get())
+                .pattern("DGD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .define('D', Ingredient.of(Items.DIAMOND))
+                .define('C', Ingredient.of(Items.COBBLESTONE))
+                .define('G', Ingredient.of(AllItems.GOGGLES.get()))
+                .unlockedBy("has_goggles", has(AllItems.GOGGLES.get()))
+                .save(consumer, CreateGoggles.asResource("smithing_template_single"));
+
+        ShapedRecipeBuilder
+                .shaped(RecipeCategory.COMBAT, CGItems.GOGGLE_ARMOR_TRIM_SMITHING_TEMPLATE.get(), 2)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .define('D', Ingredient.of(Items.DIAMOND))
+                .define('C', Ingredient.of(Items.COBBLESTONE))
+                .define('T', Ingredient.of(CGItems.GOGGLE_ARMOR_TRIM_SMITHING_TEMPLATE.get()))
+                .unlockedBy("has_goggles", has(AllItems.GOGGLES.get()))
+                .save(consumer, CreateGoggles.asResource("smithing_template_duplicate"));
 
         SmithingTransformRecipeBuilder
                 .smithing(
@@ -113,16 +139,22 @@ public class RecipeDataProvider extends RecipeProvider {
     }
 
     private void mekModule(ItemLike module, ItemLike input, Consumer<FinishedRecipe> writer){
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, module)
-                .pattern("A#A")
-                .pattern("ABA")
-                .pattern("HHH")
-                .define('A', Ingredient.fromJson(GsonHelper.parse("{\"item\": \"mekanism:alloy_reinforced\"}")))
-                .define('#', input)
-                .define('B', Ingredient.fromJson(GsonHelper.parse("{\"item\": \"mekanism:module_base\"}")))
-                .define('H', Ingredient.fromJson(GsonHelper.parse("{\"item\": \"mekanism:hdpe_sheet\"}")))
-                .unlockedBy("has_module", has(input))
-                .save(writer);
+        ConditionalRecipe.builder()
+                .addCondition(new ModLoadedCondition("mekanism"))
+                .addRecipe((consumer) -> {
+                    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, module)
+                            .pattern("A#A")
+                            .pattern("ABA")
+                            .pattern("HHH")
+                            .define('A', Ingredient.fromJson(GsonHelper.parse("{\"item\": \"mekanism:alloy_reinforced\"}")))
+                            .define('#', input)
+                            .define('B', Ingredient.fromJson(GsonHelper.parse("{\"item\": \"mekanism:module_base\"}")))
+                            .define('H', Ingredient.fromJson(GsonHelper.parse("{\"item\": \"mekanism:hdpe_sheet\"}")))
+                            .unlockedBy("has_module", has(input))
+                            .save(consumer);
+                })
+                .generateAdvancement()
+                .build(writer, getDefaultRecipeId(module));
     }
 
     private void modifier(ItemModifier modifier, ItemLike addition, Consumer<FinishedRecipe> writer){

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "G": {
+      "item": "create:goggles"
+    }
+  },
+  "pattern": [
+    "DGD",
+    "DCD",
+    "DDD"
+  ],
+  "result": {
+    "item": "creategoggles:goggle_armor_trim_smithing_template"
+  },
+  "show_notification": true
+}

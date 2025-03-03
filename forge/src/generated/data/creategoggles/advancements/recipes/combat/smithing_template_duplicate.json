@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_module": {
+    "has_goggles": {
       "conditions": {
         "items": [
           {
             "items": [
-              "creategoggles:goggle_netherite_helmet"
+              "create:goggles"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "creategoggles:module_goggle_unit"
+        "recipe": "creategoggles:smithing_template_duplicate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_module",
+      "has_goggles",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "creategoggles:module_goggle_unit"
+      "creategoggles:smithing_template_duplicate"
     ]
   },
   "sends_telemetry_event": false
