@@ -5,7 +5,7 @@ import com.robocraft999.creategoggles.net.CGNet;
 import com.robocraft999.creategoggles.registry.*;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
-import com.simibubi.create.foundation.item.TooltipHelper.Palette;
+import net.createmod.catnip.lang.FontHelper;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +17,7 @@ public class CreateGoggles {
 
     static {
         REGISTRATE.setTooltipModifierFactory(
-                item -> new ItemDescription.Modifier(item, Palette.STANDARD_CREATE)
+                item -> new ItemDescription.Modifier(item, FontHelper.Palette.STANDARD_CREATE)
         );
     }
 

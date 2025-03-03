@@ -1,7 +1,7 @@
 package com.robocraft999.creategoggles.registry;
 
-import com.simibubi.create.foundation.utility.Lang;
 import dev.architectury.platform.Platform;
+import net.createmod.catnip.lang.Lang;
 
 import java.util.Optional;
 import java.util.function.Supplier;

@@ -1,4 +1,5 @@
 repositories {
+    maven { url = "https://maven.createmod.net" } // Ponder, Flywheel
     // mavens for Create Fabric and dependencies
     maven { url = "https://api.modrinth.com/maven" } // LazyDFU
     maven { url = "https://maven.terraformersmc.com/releases/" } // Mod Menu
