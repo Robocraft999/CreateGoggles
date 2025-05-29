@@ -11,6 +11,7 @@ import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -170,7 +171,7 @@ public class NBTCraftingRecipeBuilder implements RecipeBuilder {
 
             jsonObject.add("key", jsonObject2);
             JsonObject jsonObject3 = new JsonObject();
-            jsonObject3.addProperty("item", this.result.arch$registryName().toString());
+            jsonObject3.addProperty("item", BuiltInRegistries.ITEM.getKey(this.result).toString());
             if (this.count > 1) {
                 jsonObject3.addProperty("count", this.count);
             }
