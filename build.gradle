@@ -11,23 +11,66 @@ architectury {
 
 subprojects {
     apply plugin: "dev.architectury.loom"
+    apply plugin: "architectury-plugin"
     apply plugin: "java"
     apply plugin: "me.shedaniel.unified-publishing"
+
+    archivesBaseName = "${rootProject.archives_base_name}-${minecraft_version}"
+    version = rootProject.mod_version
+    group = rootProject.maven_group
 
     loom {
         silentMojangMappingsLicense()
     }
 
+    repositories {
+        maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // Forge Config API
+        maven { url = "https://maven.parchmentmc.org" } // ParchmentMC
+        maven { url = "https://maven.terraformersmc.com/" } // ModMenu
+        maven { url = "https://maven.shedaniel.me/" } // Cloth Config, REI
+        maven { url = "https://maven.blamejared.com/" } // JEI
+        maven { url = "https://maven.quiltmc.org/repository/release" } // Quilt Mappings
+        maven { url = "https://api.modrinth.com/maven" } // LazyDFU
+        maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
+        maven { url = "https://jitpack.io/" } // Mixin Extras, Fabric ASM
+        maven { url = "https://maven.createmod.net" } // Create, Ponder, Flywheel
+        maven { url = "https://maven.tterrag.com" } // Registrate
+        maven { url = "https://cursemaven.com"
+            content {
+                includeGroup "curse.maven"
+            }
+        }
+    }
+
     dependencies {
         minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
         // The following line declares the mojmap mappings, you may use other mappings as well
-        mappings loom.officialMojangMappings()
         // The following line declares the yarn mappings you may select this one as well.
         // mappings "net.fabricmc:yarn:@YARN_MAPPINGS@:v2"
+        mappings loom.layered() {
+            officialMojangMappings()
+            //parchment("org.parchmentmc.data:parchment-${rootProject.minecraft_version}:${rootProject.parchment_version}@zip")
+        }
     }
 }
 
 allprojects {
+    apply plugin: "java"
+    apply plugin: "architectury-plugin"
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+        options.release = 17
+    }
+
+    java {
+        withSourcesJar()
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
+/*allprojects {
     apply plugin: "java"
     apply plugin: "architectury-plugin"
     apply plugin: "maven-publish"
@@ -61,4 +104,4 @@ allprojects {
     java {
         withSourcesJar()
     }
-}
+}*/
