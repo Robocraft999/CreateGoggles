@@ -110,7 +110,7 @@ unifiedPublishing {
         gameLoaders = ["${project.name}"]
 
         displayName = "${mod_name} ${project.version} [${project.name.toUpperCase()}]"
-        var changelog_file = new File(rootProject.uri("fabric_changelog.md"))
+        var changelog_file = new File(rootProject.uri("changelog.md"))
         changelog = changelog_file.exists() ?  changelog_file.text : ""
 
         mainPublication tasks.remapJar // Declares the publicated jar
