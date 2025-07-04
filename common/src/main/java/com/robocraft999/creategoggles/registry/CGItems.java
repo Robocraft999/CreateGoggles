@@ -3,10 +3,7 @@ package com.robocraft999.creategoggles.registry;
 import com.robocraft999.creategoggles.CreateGoggles;
 import com.robocraft999.creategoggles.item.ArmorColor;
 import com.robocraft999.creategoggles.item.backtank.DyableBacktankItem;
-import com.robocraft999.creategoggles.item.goggle.DivingGoggleHelmet;
-import com.robocraft999.creategoggles.item.goggle.DyableGoggleHelmet;
-import com.robocraft999.creategoggles.item.goggle.GoggleHelmet;
-import com.robocraft999.creategoggles.item.goggle.IGoggleHelmet;
+import com.robocraft999.creategoggles.item.goggle.*;
 import com.robocraft999.creategoggles.item.modifier.CGSmithingTemplateItem;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.Create;
@@ -55,7 +52,8 @@ public class CGItems {
                     .color(() -> ArmorColor::new)
                     .register(),
             DIVING_GOGGLE_HELMET = goggleHelmet("goggle_diving_helmet", p -> new DivingGoggleHelmet(AllArmorMaterials.COPPER, p, Create.asResource("copper_diving"))).register(),
-            NETHERITE_DIVING_GOGGLE_HELMET = goggleHelmet("goggle_netherite_diving_helmet", p -> new DivingGoggleHelmet(ArmorMaterials.NETHERITE, p.fireResistant(), Create.asResource("netherite_diving"))).register();
+            NETHERITE_DIVING_GOGGLE_HELMET = goggleHelmet("goggle_netherite_diving_helmet", p -> new DivingGoggleHelmet(ArmorMaterials.NETHERITE, p.fireResistant(), Create.asResource("netherite_diving"))).register(),
+            CARDBOARD_GOGGLE_HELMET = goggleHelmet("goggle_cardboard_helmet", CardboardGoggleHelmet::new).register();
     public static final ItemEntry<BacktankItem.BacktankBlockItem>
             CHAINMAIL_BACKTANK_PLACEABLE = backtank_placable("chainmail_backtank", () -> CGItems.CHAINMAIL_BACKTANK, () -> CGBlocks.CHAINMAIL_BACKTANK_BLOCK),
             DIAMOND_BACKTANK_PLACABLE = backtank_placable("diamond_backtank", () -> CGItems.DIAMOND_BACKTANK, () -> CGBlocks.DIAMOND_BACKTANK_BLOCK),

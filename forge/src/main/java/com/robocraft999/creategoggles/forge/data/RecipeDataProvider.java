@@ -42,6 +42,7 @@ public class RecipeDataProvider extends RecipeProvider {
         helmetRecipe(CGItems.NETHERITE_GOGGLE_HELMET.get(), Items.NETHERITE_HELMET, consumer);
         helmetRecipe(CGItems.DIVING_GOGGLE_HELMET.get(), AllItems.COPPER_DIVING_HELMET.get(), consumer);
         helmetRecipe(CGItems.NETHERITE_DIVING_GOGGLE_HELMET.get(), AllItems.NETHERITE_DIVING_HELMET.get(), consumer);
+        helmetRecipe(CGItems.CARDBOARD_GOGGLE_HELMET.get(), AllItems.CARDBOARD_HELMET.get(), consumer);
 
         backtankRecipe(CGItems.CHAINMAIL_BACKTANK.get(), Items.CHAINMAIL_CHESTPLATE, consumer);
         backtankRecipe(CGItems.DIAMOND_BACKTANK.get(), Items.DIAMOND_CHESTPLATE, consumer);
