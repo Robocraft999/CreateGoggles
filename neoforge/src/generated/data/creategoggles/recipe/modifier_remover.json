@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "create:brass_ingot"
+    }
+  },
+  "pattern": [
+    " B",
+    "B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "creategoggles:modifier_remover"
+  }
+}

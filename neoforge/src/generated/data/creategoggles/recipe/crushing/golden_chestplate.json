@@ -1,0 +1,17 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "creategoggles:golden_backtank"
+    }
+  ],
+  "processing_time": 150,
+  "results": [
+    {
+      "id": "minecraft:golden_chestplate"
+    },
+    {
+      "id": "create:copper_backtank"
+    }
+  ]
+}

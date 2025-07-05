@@ -1,0 +1,7 @@
+{
+    "asset_id": "creategoggles:goggle",
+    "description": {
+        "translate": "trim_pattern.creategoggles.goggle"
+    },
+    "template_item": "creategoggles:goggle_armor_trim_smithing_template"
+}

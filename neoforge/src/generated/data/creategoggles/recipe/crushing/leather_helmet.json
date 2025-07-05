@@ -1,0 +1,17 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "creategoggles:goggle_leather_helmet"
+    }
+  ],
+  "processing_time": 150,
+  "results": [
+    {
+      "id": "minecraft:leather_helmet"
+    },
+    {
+      "id": "create:goggles"
+    }
+  ]
+}

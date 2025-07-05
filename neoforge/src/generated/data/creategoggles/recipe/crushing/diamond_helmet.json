@@ -1,0 +1,17 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "creategoggles:goggle_diamond_helmet"
+    }
+  ],
+  "processing_time": 150,
+  "results": [
+    {
+      "id": "minecraft:diamond_helmet"
+    },
+    {
+      "id": "create:goggles"
+    }
+  ]
+}

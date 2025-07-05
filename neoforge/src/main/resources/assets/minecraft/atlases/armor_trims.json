@@ -1,0 +1,15 @@
+{
+    "sources": [
+        {
+            "type": "paletted_permutations",
+            "textures": [
+                "creategoggles:trims/models/armor/goggle",
+                "creategoggles:trims/models/armor/goggle_leggings"
+            ],
+            "palette_key": "trims/color_palettes/trim_palette",
+            "permutations": {
+                "goggle_material": "creategoggles:trims/color_palettes/goggle_material"
+            }
+        }
+    ]
+}

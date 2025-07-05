@@ -1,0 +1,17 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "creategoggles:goggle_netherite_diving_helmet"
+    }
+  ],
+  "processing_time": 150,
+  "results": [
+    {
+      "id": "create:netherite_diving_helmet"
+    },
+    {
+      "id": "create:goggles"
+    }
+  ]
+}

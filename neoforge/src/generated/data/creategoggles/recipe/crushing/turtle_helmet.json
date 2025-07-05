@@ -1,0 +1,17 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "creategoggles:goggle_turtle_helmet"
+    }
+  ],
+  "processing_time": 150,
+  "results": [
+    {
+      "id": "minecraft:turtle_helmet"
+    },
+    {
+      "id": "create:goggles"
+    }
+  ]
+}

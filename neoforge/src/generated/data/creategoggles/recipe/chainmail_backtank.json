@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "b": {
+      "item": "create:copper_backtank"
+    },
+    "c": {
+      "item": "minecraft:chainmail_chestplate"
+    }
+  },
+  "pattern": [
+    "cb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "creategoggles:chainmail_backtank"
+  }
+}

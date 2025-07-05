@@ -1,0 +1,9 @@
+{
+  "asset_name": "goggle_material",
+  "description": {
+    "color": "#B57C12",
+    "translate": "trim_material.creategoggles.goggle_material"
+  },
+  "ingredient": "create:goggles",
+  "item_model_index": -1
+}

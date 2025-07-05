@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "g": {
+      "item": "create:goggles"
+    },
+    "h": {
+      "item": "minecraft:diamond_helmet"
+    }
+  },
+  "pattern": [
+    "hg"
+  ],
+  "result": {
+    "count": 1,
+    "id": "creategoggles:goggle_diamond_helmet"
+  }
+}

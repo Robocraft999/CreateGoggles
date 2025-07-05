@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "creategoggles:item/goggle_leather_helmet",
+    "layer1": "creategoggles:item/goggle_leather_helmet_overlay"
+  }
+}
