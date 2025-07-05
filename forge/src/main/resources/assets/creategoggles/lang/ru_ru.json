@@ -24,6 +24,7 @@
   "item.creategoggles.diamond_backtank.tooltip.condition2": "При вращении",
   "item.creategoggles.diamond_backtank.tooltip.summary": "_Носимый резервуар_ для транспортировки сжатого воздуха.",
   "item.creategoggles.diamond_backtank_placeable": "Размещаемый алмазный баллон",
+  "item.creategoggles.goggle_armor_trim_smithing_template": "Кузнечный шаблон",
   "item.creategoggles.goggle_cardboard_helmet": "Картонный шлем с инженерными очками",
   "item.creategoggles.goggle_cardboard_helmet.tooltip": "КАРТОННЫЙ ШЛЕМ С ИНЖЕНЕРНЫМИ ОЧКАМИ",
   "item.creategoggles.goggle_cardboard_helmet.tooltip.behaviour1": "_Кинетические компоненты_ показывают свою _создаваемую нагрузку_ или _оставшуюся мощность_ сети. _Стрессометры_ показывают статистику своей _кинетической сети_, к которой прикреплены. Некоторые другие блоки могут показывать другую полезную информацию, такую как данные о содержащихся предметах и жидкостях.",
