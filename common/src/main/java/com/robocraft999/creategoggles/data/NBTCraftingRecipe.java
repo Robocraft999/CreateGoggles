@@ -1,16 +1,16 @@
 package com.robocraft999.creategoggles.data;
 
-import com.google.gson.JsonObject;
+import com.mojang.serialization.MapCodec;
 import com.robocraft999.creategoggles.registry.CGRecipeTypes;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.inventory.CraftingContainer;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.Nonnull;
@@ -20,8 +20,8 @@ import java.util.Map.Entry;
 public record NBTCraftingRecipe(ShapedRecipe recipe) implements CraftingRecipe {
 
 	@Override
-	public boolean matches(@Nonnull CraftingContainer inv, @Nonnull Level worldIn) {
-		return recipe().matches(inv, worldIn);
+	public boolean matches(@Nonnull CraftingInput input, @Nonnull Level worldIn) {
+		return recipe().matches(input, worldIn);
 	}
 
 	@Nonnull
@@ -32,23 +32,25 @@ public record NBTCraftingRecipe(ShapedRecipe recipe) implements CraftingRecipe {
 
 	@Nonnull
 	@Override
-	public ItemStack assemble(CraftingContainer inv, RegistryAccess registryAccess) {
-		HashMap<Enchantment, Integer> allEnchants = new HashMap<>();
+	public ItemStack assemble(CraftingInput input, HolderLookup.Provider provider) {
+		HashMap<Holder<Enchantment>, Integer> allEnchants = new HashMap<>();
 		ItemStack nbtItemResult = ItemStack.EMPTY;
-		for (int slot = 0; slot < inv.getContainerSize(); slot++) {
-			ItemStack nbtItem = inv.getItem(slot).copy();
+		for (int slot = 0; slot < input.size(); slot++) {
+			ItemStack nbtItem = input.getItem(slot).copy();
 			if(nbtItem.isEmpty() || (!nbtItem.isEnchantable() && !nbtItem.isEnchanted()))continue;
-			if(nbtItem.isEnchanted()) {
-				allEnchants.putAll(EnchantmentHelper.getEnchantments(nbtItem));
-			}
+
 			if(nbtItemResult.isEmpty()) {
-				nbtItemResult = new ItemStack(getResultItem(registryAccess).getItem());
+				nbtItemResult = new ItemStack(getResultItem(provider).getItem());
+			}
+			var ench = nbtItem.get(DataComponents.ENCHANTMENTS);
+			if (ench != null) {
+				ench.entrySet().forEach(entry -> allEnchants.put(entry.getKey(), entry.getIntValue()));
 			}
 		}
 		if(!allEnchants.isEmpty() || !nbtItemResult.isEmpty()){
-			for (Entry<Enchantment, Integer> entry : allEnchants.entrySet()) {
-				Enchantment enchantment = entry.getKey();
-				if (!enchantment.isCurse() && EnchantmentHelper.getItemEnchantmentLevel(enchantment, nbtItemResult) == 0) {
+			for (Entry<Holder<Enchantment>, Integer> entry : allEnchants.entrySet()) {
+				Holder<Enchantment> enchantment = entry.getKey();
+				if (nbtItemResult.getEnchantmentLevel(enchantment) == 0) {
 					nbtItemResult.enchant(enchantment, entry.getValue());
 				}
 			}
@@ -57,14 +59,8 @@ public record NBTCraftingRecipe(ShapedRecipe recipe) implements CraftingRecipe {
 	}
 
 	@Override
-	public ItemStack getResultItem(RegistryAccess registryAccess) {
-		return recipe().getResultItem(registryAccess);
-	}
-
-	@Nonnull
-	@Override
-	public ResourceLocation getId() {
-		return recipe().getId();
+	public ItemStack getResultItem(HolderLookup.Provider provider) {
+		return recipe().getResultItem(provider);
 	}
 
 	@Nonnull
@@ -86,26 +82,18 @@ public record NBTCraftingRecipe(ShapedRecipe recipe) implements CraftingRecipe {
 
 
 	public static class Serializer implements RecipeSerializer<NBTCraftingRecipe> {
+		public static final MapCodec<NBTCraftingRecipe> CODEC = RecipeSerializer.SHAPED_RECIPE.codec().xmap(NBTCraftingRecipe::new, NBTCraftingRecipe::recipe);
+		public static final StreamCodec<RegistryFriendlyByteBuf, NBTCraftingRecipe> STREAM_CODEC = RecipeSerializer.SHAPED_RECIPE.streamCodec().map(NBTCraftingRecipe::new, NBTCraftingRecipe::recipe);
 
-		@Nonnull
 		@Override
-		public NBTCraftingRecipe fromJson(@Nonnull ResourceLocation recipeId, @Nonnull JsonObject json) {
-			ShapedRecipe recipe = RecipeSerializer.SHAPED_RECIPE.fromJson(recipeId, json);
-			return new NBTCraftingRecipe(recipe);
+		public MapCodec<NBTCraftingRecipe> codec() {
+			return CODEC;
 		}
 
 		@Override
-		public NBTCraftingRecipe fromNetwork(@Nonnull ResourceLocation recipeId, @Nonnull FriendlyByteBuf buffer) {
-			ShapedRecipe recipe = RecipeSerializer.SHAPED_RECIPE.fromNetwork(recipeId, buffer);
-			return new NBTCraftingRecipe(recipe);
-
+		public StreamCodec<RegistryFriendlyByteBuf, NBTCraftingRecipe> streamCodec() {
+			return STREAM_CODEC;
 		}
-
-		@Override
-		public void toNetwork(@Nonnull FriendlyByteBuf buffer, NBTCraftingRecipe recipe) {
-			RecipeSerializer.SHAPED_RECIPE.toNetwork(buffer, recipe.recipe());
-		}
-
 	}
 
 

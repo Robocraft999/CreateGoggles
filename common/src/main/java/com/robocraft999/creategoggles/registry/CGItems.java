@@ -13,11 +13,10 @@ import com.simibubi.create.content.equipment.armor.BacktankItem;
 import com.simibubi.create.content.equipment.goggles.GogglesItem;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.tterrag.registrate.builders.ItemBuilder;
-import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
+import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ArmorMaterial;
@@ -28,7 +27,6 @@ import net.minecraft.world.item.SmithingTemplateItem;
 import java.util.function.Supplier;
 
 import static com.robocraft999.creategoggles.CreateGoggles.REGISTRATE;
-import static com.simibubi.create.AllTags.forgeItemTag;
 
 public class CGItems {
     static {
@@ -49,6 +47,7 @@ public class CGItems {
                             new ResourceLocation(CreateGoggles.MOD_ID, "item/goggle_leather_helmet"),
                             new ResourceLocation(CreateGoggles.MOD_ID,"item/goggle_leather_helmet_overlay")))*/
                     .model(AssetLookup.existingItemModel())
+                    .tag(ItemTags.DYEABLE)
                     .color(() -> ArmorColor::new)
                     .register(),
             DIVING_GOGGLE_HELMET = goggleHelmet("goggle_diving_helmet", p -> new DivingGoggleHelmet(AllArmorMaterials.COPPER, p, Create.asResource("copper_diving"))).register(),
@@ -67,12 +66,13 @@ public class CGItems {
             GOLDEN_BACKTANK = backtank("golden_backtank", ArmorMaterials.GOLD, GOLDEN_BACKTANK_PLACEABLE),
             IRON_BACKTANK = backtank("iron_backtank", ArmorMaterials.IRON, IRON_BACKTANK_PLACEABLE),
             LEATHER_BACKTANK = REGISTRATE
-                    .item("leather_backtank", p -> new DyableBacktankItem(ArmorMaterials.LEATHER, p, new ResourceLocation("leather"), CGItems.LEATHER_BACKTANK_PLACEABLE))
+                    .item("leather_backtank", p -> new DyableBacktankItem(ArmorMaterials.LEATHER, p, ResourceLocation.withDefaultNamespace("leather"), CGItems.LEATHER_BACKTANK_PLACEABLE))
                     .model(AssetLookup.customGenericItemModel("_", "item"))
-                    .color(() -> ArmorColor::new)
+                    //.color(() -> ArmorColor::new)
                     .tag(AllTags.AllItemTags.PRESSURIZED_AIR_SOURCES.tag)
-                    .tag(forgeItemTag("armors/chestplates"))
+                    .tag(ItemTags.CHEST_ARMOR)
                     .tag(ItemTags.TRIMMABLE_ARMOR)
+                    .tag(ItemTags.DYEABLE)
                     .register();
 
     public static final ItemEntry<Item> MODIFIER_REMOVER = REGISTRATE
@@ -82,11 +82,11 @@ public class CGItems {
     public static final ItemEntry<SmithingTemplateItem> GOGGLE_ARMOR_TRIM_SMITHING_TEMPLATE = REGISTRATE
             .item("goggle_armor_trim_smithing_template", p -> CGSmithingTemplateItem.createGoggleArmorTrimTemplateItem())
             .tag(ItemTags.TRIM_TEMPLATES)
-            .setData(ProviderType.LANG, NonNullBiConsumer.noop())
+            .lang("Smithing Template")
             .register();
 
 
-    private static ItemEntry<? extends GoggleHelmet> goggleHelmet(String name, ArmorMaterial material){
+    private static ItemEntry<? extends GoggleHelmet> goggleHelmet(String name, Holder<ArmorMaterial> material){
         return goggleHelmet(name, p ->  new GoggleHelmet(material, p, vanillaArmorLoc(material))).register();
     }
 
@@ -95,7 +95,7 @@ public class CGItems {
                 .item(name, builder)
                 .tag(CGTags.Items.GOGGLE)
                 .tag(ItemTags.TRIMMABLE_ARMOR)
-                .tag(forgeItemTag("armors/helmets"));
+                .tag(ItemTags.HEAD_ARMOR);
     }
 
     private static ItemEntry<BacktankItem.BacktankBlockItem> backtank_placable(String name, Supplier<ItemEntry<? extends BacktankItem>> item,
@@ -107,18 +107,18 @@ public class CGItems {
                 .register();
     }
 
-    private static ItemEntry<? extends BacktankItem> backtank(String name, ArmorMaterial material, ItemEntry<BacktankItem.BacktankBlockItem> placable){
+    private static ItemEntry<? extends BacktankItem> backtank(String name, Holder<ArmorMaterial> material, ItemEntry<BacktankItem.BacktankBlockItem> placable){
         return REGISTRATE
                 .item(name, p -> new BacktankItem(material, p, vanillaArmorLoc(material), placable))
                 .model(AssetLookup.customGenericItemModel("_", "item"))
                 .tag(AllTags.AllItemTags.PRESSURIZED_AIR_SOURCES.tag)
                 .tag(ItemTags.TRIMMABLE_ARMOR)
-                .tag(forgeItemTag("armors/chestplates"))
+                .tag(ItemTags.CHEST_ARMOR)
                 .register();
     }
 
-    private static ResourceLocation vanillaArmorLoc(ArmorMaterial material){
-        return new ResourceLocation(material.getName());
+    private static ResourceLocation vanillaArmorLoc(Holder<ArmorMaterial> material){
+        return ResourceLocation.parse(material.getRegisteredName());
     }
 
     public static void register() {

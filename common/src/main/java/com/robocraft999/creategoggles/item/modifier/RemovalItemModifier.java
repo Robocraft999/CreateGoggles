@@ -13,6 +13,5 @@ public class RemovalItemModifier extends ItemModifier{
 
     @Override
     public void apply(ItemStack stack) {
-        ItemModifierManager.removeModifier(stack);
     }
 }

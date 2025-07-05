@@ -5,6 +5,7 @@ import dev.architectury.networking.NetworkManager;
 import dev.architectury.networking.simple.BaseS2CMessage;
 import dev.architectury.networking.simple.MessageType;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 
 public class ClientboundEnableGogglesPacket extends BaseS2CMessage {
 
@@ -24,7 +25,7 @@ public class ClientboundEnableGogglesPacket extends BaseS2CMessage {
     }
 
     @Override
-    public void write(FriendlyByteBuf buf) {
+    public void write(RegistryFriendlyByteBuf buf) {
         buf.writeBoolean(newState);
     }
 

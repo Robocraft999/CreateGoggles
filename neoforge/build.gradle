@@ -1,0 +1,182 @@
+plugins {
+    id "com.github.johnrengelman.shadow" version "${shadow_plugin_version}"
+    id "idea"
+}
+architectury {
+    platformSetupLoomIde()
+    neoForge()
+}
+
+configurations {
+    common
+    shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentNeoForge.extendsFrom common
+}
+
+def generatedResources = file("src/generated")
+
+//sourceSets.main.resources { srcDir generatedResources }
+
+loom {
+    runs.configureEach {
+        programArg("-mixin.config=create.mixins.json")
+    }
+    accessWidenerPath = project(":common").loom.accessWidenerPath
+    runs {
+        data {
+            data()
+            programArgs "--all", "--mod", "creategoggles"
+            programArgs "--output", generatedResources.absolutePath
+            programArgs "--existing", file("src/main/resources").absolutePath
+        }
+        client {
+            client()
+            setConfigName("Forge Client")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+        server {
+            server()
+            setConfigName("Forge Server")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+    }
+    /*neoForge {
+        mixinConfig "creategoggles.mixins.json"
+        mixinConfig "creategoggles-common.mixins.json"
+    }*/
+}
+
+repositories {
+    maven {
+        url 'https://modmaven.dev/'
+    }
+    maven { url = "https://maven.createmod.net" }
+    maven { url = 'https://maven.neoforged.net/releases' } // NeoForge
+}
+
+dependencies {
+    neoForge "net.neoforged:neoforge:${neoforge_version}"
+    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }
+    // Remove the next line if you don't want to depend on the API
+    // Remove the next line if you don't want to depend on the API
+    //modApi "dev.architectury:architectury:${rootProject.architectury_version}"
+    modApi "dev.architectury:architectury-neoforge:${rootProject.architectury_version}"
+
+    modImplementation("com.simibubi.create:create-${minecraft_version}:${create_version_neoforge}:slim"){transitive = false}
+    modCompileOnly("dev.engine-room.flywheel:flywheel-neoforge-api-${flywheel_minecraft_version}:${flywheel_version_neoforge}")
+    modRuntimeOnly("dev.engine-room.flywheel:flywheel-neoforge-${flywheel_minecraft_version}:${flywheel_version_neoforge}")
+    modRuntimeOnly("dev.engine-room.vanillin:vanillin-neoforge-${flywheel_minecraft_version}:${vanillin_version}")
+    modImplementation("net.createmod.ponder:Ponder-NeoForge-${minecraft_version}:${ponder_version}")
+    modImplementation("com.tterrag.registrate:Registrate:${registrate_version_neoforge}")
+
+    compileOnly("mekanism:Mekanism:${mekanism_version}")
+    modRuntimeOnly("curse.maven:mekanism-268560:6486993")
+
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:${mixin_extras_version}"))
+    implementation("io.github.llamalad7:mixinextras-neoforge:${mixin_extras_version}")
+
+    // modApi("top.theillusivec4.curios:curios-forge:${curios_minecraft_version}-${curios_version}:api")
+    // modRuntimeOnly("top.theillusivec4.curios:curios-forge:${curios_minecraft_version}-${curios_version}")
+}
+
+processResources {
+    from(project(":common").sourceSets.main.resources)
+    from(generatedResources) {
+        exclude('.cache/')
+    }
+
+    inputs.property "modId", "${mod_id}"
+    inputs.property "version", "${mod_version}"
+    inputs.property "modName", "${mod_name}"
+    inputs.property "author", "${authors}"
+    inputs.property "create_neoforge_version", "${create_version_plain}"
+    inputs.property "architectury_version", "${architectury_version}"
+
+    filesMatching("META-INF/neoforge.mods.toml") {
+        expand( "modId": "${mod_id}",
+                "version": "${mod_version}",
+                "modName": "${mod_name}",
+                "author": "${authors}",
+                "create_neoforge_version" : "${create_version_plain}",
+                "architectury_version": "${architectury_version}"
+        )
+    }
+}
+
+shadowJar {
+    exclude "fabric.mod.json"
+
+    configurations = [project.configurations.shadowCommon]
+    archiveClassifier = "dev-shadow"
+}
+
+remapJar {
+    input.set shadowJar.archiveFile
+    dependsOn shadowJar
+    archiveClassifier = "[NEOFORGE]"
+}
+
+jar {
+    archiveClassifier = "dev"
+}
+
+sourcesJar {
+    def commonSources = project(":common").sourcesJar
+    dependsOn commonSources
+    from commonSources.archiveFile.map { zipTree(it) }
+}
+
+components.java {
+    withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
+        skip()
+    }
+}
+
+unifiedPublishing {
+    project {
+        gameVersions = ["${minecraft_version}"]
+        gameLoaders = ["${project.name}"]
+
+        displayName = "${mod_name} ${project.version} [${project.name.toUpperCase()}]"
+        var changelog_file = new File(rootProject.uri("changelog.md"))
+        changelog = changelog_file.exists() ?  changelog_file.text : ""
+
+        mainPublication tasks.remapJar // Declares the publicated jar
+
+        relations {
+            depends {
+                curseforge = "architectury-api"
+                modrinth = "architectury-api"
+            }
+            depends {
+                curseforge = "create"
+                modrinth = "create"
+            }
+            optional {
+                curseforge = "mekanism"
+                modrinth = "mekanism"
+            }
+        }
+
+        if (project.hasProperty("CF_TOKEN") || System.getenv("CF_TOKEN") != null) {
+            curseforge {
+                token = project.hasProperty("CF_TOKEN") ? project.property("CF_TOKEN") : System.getenv("CF_TOKEN")
+                id = "${curseforge_project_id}" // Required, must be a string, ID of CurseForge project
+            }
+        }
+
+        if (project.hasProperty("MODRINTH_TOKEN") || System.getenv("MODRINTH_TOKEN") != null) {
+            modrinth {
+                mainPublicationDepends tasks.sourcesJar
+                secondaryPublication tasks.sourcesJar.getArchiveFile()
+                token = project.hasProperty("MODRINTH_TOKEN") ? project.property("MODRINTH_TOKEN") : System.getenv("MODRINTH_TOKEN")
+                id = "${modrinth_project_id}" // Required, must be a string, ID of Modrinth project
+            }
+        }
+    }
+}

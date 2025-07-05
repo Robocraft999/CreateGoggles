@@ -20,12 +20,12 @@ public class CGSmithingTemplateItem extends SmithingTemplateItem {
 
     private static Component[] genUpgradeDescriptions(String name){
         return new Component[]{
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(CreateGoggles.MOD_ID, "smithing_template." + name + ".applies_to"))).withStyle(DESCRIPTION_FORMAT),
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(CreateGoggles.MOD_ID, "smithing_template." + name + ".ingredients"))).withStyle(DESCRIPTION_FORMAT),
+                Component.translatable(Util.makeDescriptionId("item", CreateGoggles.asResource("smithing_template." + name + ".applies_to"))).withStyle(DESCRIPTION_FORMAT),
+                Component.translatable(Util.makeDescriptionId("item", CreateGoggles.asResource( "smithing_template." + name + ".ingredients"))).withStyle(DESCRIPTION_FORMAT),
                 //Component.translatable(Util.makeDescriptionId("upgrade", new ResourceLocation(CreateGoggles.MOD_ID, "goggle_upgrade"))).withStyle(TITLE_FORMAT),
-                Component.translatable(Util.makeDescriptionId("trim_pattern", new ResourceLocation(CreateGoggles.MOD_ID, name))).withStyle(TITLE_FORMAT),
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(CreateGoggles.MOD_ID, "smithing_template." + name + ".base_slot_description"))),
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(CreateGoggles.MOD_ID, "smithing_template." + name + ".additions_slot_description")))
+                Component.translatable(Util.makeDescriptionId("trim_pattern", CreateGoggles.asResource(name))).withStyle(TITLE_FORMAT),
+                Component.translatable(Util.makeDescriptionId("item", CreateGoggles.asResource("smithing_template." + name + ".base_slot_description"))),
+                Component.translatable(Util.makeDescriptionId("item", CreateGoggles.asResource("smithing_template." + name + ".additions_slot_description")))
         };
     }
 
@@ -46,8 +46,8 @@ public class CGSmithingTemplateItem extends SmithingTemplateItem {
         TITLE_FORMAT = ChatFormatting.GRAY;
         DESCRIPTION_FORMAT = ChatFormatting.BLUE;
 
-        EMPTY_SLOT_HELMET = new ResourceLocation("item/empty_armor_slot_helmet");
-        EMPTY_SLOT_GOGGLES = new ResourceLocation("item/empty_armor_slot_helmet");
+        EMPTY_SLOT_HELMET = ResourceLocation.withDefaultNamespace("item/empty_armor_slot_helmet");
+        EMPTY_SLOT_GOGGLES = ResourceLocation.withDefaultNamespace("item/empty_armor_slot_helmet");
         //EMPTY_SLOT_GOGGLES = new ResourceLocation(CreateGoggles.MOD_ID, "item/empty_armor_slot_goggles");
     }
 }

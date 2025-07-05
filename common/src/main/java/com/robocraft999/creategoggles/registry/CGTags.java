@@ -19,14 +19,14 @@ public class CGTags {
    }
 
     private static TagKey<Item> forgeItemTag(String name) {
-        return TagKey.create(Registries.ITEM, new ResourceLocation("forge", name));
+        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", name));
     }
 
     private static TagKey<Item> commonItemTag(String name) {
-        return TagKey.create(Registries.ITEM, new ResourceLocation("c", name));
+        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", name));
     }
 
     private static TagKey<Item> modItemTag(String name) {
-        return TagKey.create(Registries.ITEM, new ResourceLocation(CreateGoggles.MOD_ID, name));
+        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(CreateGoggles.MOD_ID, name));
     }
 }

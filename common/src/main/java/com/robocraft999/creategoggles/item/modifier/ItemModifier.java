@@ -45,7 +45,7 @@ public class ItemModifier {
     }
 
     public boolean isItemValid(ItemStack stack) {
-        return !stack.is(getIncompatibleItems()) && this.predicate.test(stack) && !ItemModifierManager.hasSpecificModifier(stack, this);
+        return !stack.is(getIncompatibleItems()) && this.predicate.test(stack);
     }
 
     public List<ItemStack> getValidItems() {

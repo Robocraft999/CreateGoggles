@@ -10,26 +10,31 @@ repositories {
     maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
     maven { url = "https://jitpack.io/" } // Mixin Extras, Fabric ASM
     maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // Forge Config API Port
+    maven { url = 'https://maven.neoforged.net/releases' } // NeoForge
+}
+
+loom{
+    accessWidenerPath = file("src/main/resources/creategoggles.accesswidener")
 }
 
 dependencies {
     // We depend on fabric loader here to use the fabric @Environment annotations and get the mixin dependencies
     // Do NOT use other classes from fabric loader
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
-    forge "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    neoForge "net.neoforged:neoforge:${neoforge_version}"
     // Remove the next line if you don't want to depend on the API
     //modApi "dev.architectury:architectury:${rootProject.architectury_version}"
-    modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
+    modApi "dev.architectury:architectury-neoforge:${rootProject.architectury_version}"
 
-    modImplementation("com.simibubi.create:create-${minecraft_version}:${create_version_forge}:slim"){transitive = false}
-    modCompileOnly("dev.engine-room.flywheel:flywheel-forge-api-${flywheel_minecraft_version}:${flywheel_version_forge}")
-    modRuntimeOnly("dev.engine-room.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version_forge}")
-    modRuntimeOnly("dev.engine-room.vanillin:vanillin-forge-${flywheel_minecraft_version}:${vanillin_version}")
-    modImplementation("net.createmod.ponder:Ponder-Forge-${minecraft_version}:${ponder_version}")
-    modImplementation("com.tterrag.registrate:Registrate:${registrate_version_forge}")
+    modImplementation("com.simibubi.create:create-${minecraft_version}:${create_version_neoforge}:slim"){transitive = false}
+    modCompileOnly("dev.engine-room.flywheel:flywheel-neoforge-api-${flywheel_minecraft_version}:${flywheel_version_neoforge}")
+    modRuntimeOnly("dev.engine-room.flywheel:flywheel-neoforge-${flywheel_minecraft_version}:${flywheel_version_neoforge}")
+    modRuntimeOnly("dev.engine-room.vanillin:vanillin-neoforge-${flywheel_minecraft_version}:${vanillin_version}")
+    modImplementation("net.createmod.ponder:Ponder-NeoForge-${minecraft_version}:${ponder_version}")
+    modImplementation("com.tterrag.registrate:Registrate:${registrate_version_neoforge}")
 
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:${mixin_extras_version}"))
-    implementation("io.github.llamalad7:mixinextras-forge:${mixin_extras_version}")
+    implementation("io.github.llamalad7:mixinextras-neoforge:${mixin_extras_version}")
 
     //modImplementation("com.tterrag.registrate:Registrate:${rootProject.registrate_version}")
     //modImplementation("com.tterrag.registrate_fabric:Registrate:$registrate_version_fabric")
@@ -40,5 +45,5 @@ dependencies {
 }
 
 architectury {
-    common("fabric", "forge")
+    common(/*"fabric", */ "neoforge")
 }

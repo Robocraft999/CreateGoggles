@@ -1,9 +1,8 @@
 package com.robocraft999.creategoggles.registry;
 
-import com.robocraft999.creategoggles.CreateGoggles;
-import com.robocraft999.creategoggles.PlatformHelper;
 import com.robocraft999.creategoggles.item.backtank.CGBacktankBlock;
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllDataComponents;
 import com.simibubi.create.api.stress.BlockStressValues;
 import com.simibubi.create.content.equipment.armor.BacktankBlock;
 import com.simibubi.create.content.equipment.armor.BacktankItem;
@@ -20,27 +19,18 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.functions.CopyNbtFunction;
+import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
 import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.nbt.ContextNbtProvider;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.DoubleSupplier;
 import java.util.function.Supplier;
 
 import static com.robocraft999.creategoggles.CreateGoggles.REGISTRATE;
 
 public class CGBlocks {
-    private static List<CGBacktankBlock> backtanks = new ArrayList<>();
-
-    static {
-        //TODO remove
-        CreateGoggles.LOGGER.info("cgblocks");
-    }
     public static final BlockEntry<? extends BacktankBlock>
             CHAINMAIL_BACKTANK_BLOCK = backtankBlock("chainmail_backtank", CGItems.CHAINMAIL_BACKTANK),
             DIAMOND_BACKTANK_BLOCK = backtankBlock("diamond_backtank", CGItems.DIAMOND_BACKTANK),
@@ -51,7 +41,6 @@ public class CGBlocks {
         return REGISTRATE.block(name, CGBacktankBlock::new)
                 .initialProperties(SharedProperties::copperMetal)
                 .transform(backtank(type::get))
-                .onRegister(tank -> backtanks.add(tank))
                 .register();
     }
 
@@ -67,10 +56,8 @@ public class CGBlocks {
                             .when(survivesExplosion)
                             .setRolls(ConstantValue.exactly(1.0F))
                             .add(LootItem.lootTableItem(drop.get())
-                                    .apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY)
-                                            .copy("VanillaTag", "{}", CopyNbtFunction.MergeStrategy.MERGE))
-                                    .apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY)
-                                            .copy("Air", "Air")))));
+                                    .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY)
+                                            .include(AllDataComponents.BACKTANK_AIR)))));
                 });
     }
 

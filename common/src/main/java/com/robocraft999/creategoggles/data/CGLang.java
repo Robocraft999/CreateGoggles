@@ -48,7 +48,7 @@ public class CGLang {
             REGISTRATE.addLang("item", item.getId(), "tooltip", value);
     }
 
-    private static void modifierHint(RegistryEntry<? extends ItemModifier> modifier, String hint){
+    private static void modifierHint(RegistryEntry<ItemModifier, ? extends ItemModifier> modifier, String hint){
         //modifier.get().getHintComponent().getString()
         CreateGoggles.LOGGER.info("hint." + CreateGoggles.MOD_ID + ".modifier." + modifier.get().getRegistryName().getPath());
         CreateGoggles.LOGGER.info(modifier.get().getHintComponent().getString());

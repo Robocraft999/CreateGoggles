@@ -2,8 +2,8 @@ package com.robocraft999.creategoggles;
 
 import com.robocraft999.creategoggles.net.ClientboundEnableGogglesPacket;
 import net.minecraft.world.level.GameRules;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec.BooleanValue;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -25,7 +25,7 @@ public class CGConfig {
                     GameRules.BooleanValue.create(false, (server, value) -> new ClientboundEnableGogglesPacket(value.get()).sendToAll(server)));
         }
 
-        Common(ForgeConfigSpec.Builder builder){
+        Common(ModConfigSpec.Builder builder){
             builder.comment("General configuration settings")
                     .push("general");
 
@@ -53,7 +53,7 @@ public class CGConfig {
         public final BooleanValue moveGoggleToEyes;
         public final BooleanValue enableCreativeModeGoggles;
 
-        Client(ForgeConfigSpec.Builder builder){
+        Client(ModConfigSpec.Builder builder){
             builder.comment("Client configuration settings")
                     .push("general");
 
@@ -67,18 +67,18 @@ public class CGConfig {
         }
     }
 
-    public static final ForgeConfigSpec commonSpec;
+    public static final ModConfigSpec commonSpec;
     public static final Common COMMON;
     static {
-        final Pair<Common, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Common::new);
+        final Pair<Common, ModConfigSpec> specPair = new ModConfigSpec.Builder().configure(Common::new);
         commonSpec = specPair.getRight();
         COMMON = specPair.getLeft();
     }
 
-    public static final ForgeConfigSpec clientSpec;
+    public static final ModConfigSpec clientSpec;
     public static final Client CLIENT;
     static{
-        final Pair<Client, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Client::new);
+        final Pair<Client, ModConfigSpec> specPair = new ModConfigSpec.Builder().configure(Client::new);
         clientSpec = specPair.getRight();
         CLIENT = specPair.getLeft();
     }

@@ -1,0 +1,6 @@
+accessWidener   v2  named
+accessible method net/minecraft/data/recipes/ShapedRecipeBuilder ensureValid (Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/world/item/crafting/ShapedRecipePattern;
+accessible field net/minecraft/data/recipes/ShapedRecipeBuilder category Lnet/minecraft/data/recipes/RecipeCategory;
+accessible field net/minecraft/data/recipes/ShapedRecipeBuilder resultStack Lnet/minecraft/world/item/ItemStack;
+accessible field net/minecraft/data/recipes/ShapedRecipeBuilder group Ljava/lang/String;
+accessible field net/minecraft/data/recipes/ShapedRecipeBuilder showNotification Z

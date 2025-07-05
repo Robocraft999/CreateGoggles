@@ -1,0 +1,47 @@
+modLoader = "javafml" #mandatory
+loaderVersion = "[4,)" #mandatory
+license = "MIT"
+issueTrackerURL = "https://github.com/Robocraft999/CreateGoggles/issues"
+
+[[mods]] #mandatory
+modId = "${modId}" #mandatory
+version = "${version}" #mandatory
+authors = "${author}"
+displayName = "${modName}" #mandatory
+logoFile = "icon.png" #optional
+description = '''
+    Adds Goggle helmets and armored backtanks
+'''
+[[dependencies.${modId}]] #optional
+modId = "neoforge" #mandatory
+mandatory = true #mandatory
+versionRange = "[21.0,)" #mandatory
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${modId}]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.21.1,1.22)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${modId}]]
+modId = "create"
+mandatory = true
+versionRange="[${create_neoforge_version},)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${modId}]]
+modId = "architectury"
+mandatory = true
+versionRange="[${architectury_version},)"
+ordering="AFTER"
+side="BOTH"
+
+[[mixins]]
+config = "${modId}.mixins.json"
+
+[[mixins]]
+config = "${modId}-common.mixins.json"
