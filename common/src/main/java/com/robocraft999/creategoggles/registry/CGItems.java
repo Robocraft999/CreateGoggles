@@ -19,10 +19,7 @@ import com.tterrag.registrate.util.nullness.NonNullFunction;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.ArmorMaterials;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SmithingTemplateItem;
+import net.minecraft.world.item.*;
 
 import java.util.function.Supplier;
 
@@ -35,13 +32,16 @@ public class CGItems {
     }
 
     public static final ItemEntry<? extends IGoggleHelmet>
-            CHAINMAIL_GOGGLE_HELMET = goggleHelmet("goggle_chainmail_helmet", ArmorMaterials.CHAIN),
-            DIAMOND_GOGGLE_HELMET = goggleHelmet("goggle_diamond_helmet", ArmorMaterials.DIAMOND),
-            GOLDEN_GOGGLE_HELMET = goggleHelmet("goggle_golden_helmet", ArmorMaterials.GOLD),
-            IRON_GOGGLE_HELMET = goggleHelmet("goggle_iron_helmet", ArmorMaterials.IRON),
-            TURTLE_GOGGLE_HELMET = goggleHelmet("goggle_turtle_helmet", ArmorMaterials.TURTLE),
-            NETHERITE_GOGGLE_HELMET = goggleHelmet("goggle_netherite_helmet", p -> new GoggleHelmet(ArmorMaterials.NETHERITE, p.fireResistant(), vanillaArmorLoc(ArmorMaterials.NETHERITE))).register(),
-            LEATHER_GOGGLE_HELMET = goggleHelmet("goggle_leather_helmet", p -> new DyableGoggleHelmet(ArmorMaterials.LEATHER, p, vanillaArmorLoc(ArmorMaterials.LEATHER)))
+            CHAINMAIL_GOGGLE_HELMET = goggleHelmet("goggle_chainmail_helmet", ArmorMaterials.CHAIN, 15),
+            DIAMOND_GOGGLE_HELMET = goggleHelmet("goggle_diamond_helmet", ArmorMaterials.DIAMOND, 33),
+            GOLDEN_GOGGLE_HELMET = goggleHelmet("goggle_golden_helmet", ArmorMaterials.GOLD, 7),
+            IRON_GOGGLE_HELMET = goggleHelmet("goggle_iron_helmet", ArmorMaterials.IRON, 15),
+            TURTLE_GOGGLE_HELMET = goggleHelmet("goggle_turtle_helmet", ArmorMaterials.TURTLE, 25),
+            NETHERITE_GOGGLE_HELMET = goggleHelmet("goggle_netherite_helmet", p ->
+                    new GoggleHelmet(ArmorMaterials.NETHERITE, p.fireResistant().durability(ArmorItem.Type.HELMET.getDurability(37)), vanillaArmorLoc(ArmorMaterials.NETHERITE)))
+                    .register(),
+            LEATHER_GOGGLE_HELMET = goggleHelmet("goggle_leather_helmet", p ->
+                    new DyableGoggleHelmet(ArmorMaterials.LEATHER, p.durability(ArmorItem.Type.HELMET.getDurability(5)), vanillaArmorLoc(ArmorMaterials.LEATHER)))
                     /*.model((ctx, p) -> p.generated(
                             ctx::getEntry,
                             new ResourceLocation(CreateGoggles.MOD_ID, "item/goggle_leather_helmet"),
@@ -50,9 +50,11 @@ public class CGItems {
                     .tag(ItemTags.DYEABLE)
                     .color(() -> ArmorColor::new)
                     .register(),
-            DIVING_GOGGLE_HELMET = goggleHelmet("goggle_diving_helmet", p -> new DivingGoggleHelmet(AllArmorMaterials.COPPER, p, Create.asResource("copper_diving"))).register(),
-            NETHERITE_DIVING_GOGGLE_HELMET = goggleHelmet("goggle_netherite_diving_helmet", p -> new DivingGoggleHelmet(ArmorMaterials.NETHERITE, p.fireResistant(), Create.asResource("netherite_diving"))).register(),
-            CARDBOARD_GOGGLE_HELMET = goggleHelmet("goggle_cardboard_helmet", CardboardGoggleHelmet::new).register();
+            DIVING_GOGGLE_HELMET = goggleHelmet("goggle_diving_helmet", p ->
+                    new DivingGoggleHelmet(AllArmorMaterials.COPPER, p.durability(ArmorItem.Type.HELMET.getDurability(7)), Create.asResource("copper_diving"))).register(),
+            NETHERITE_DIVING_GOGGLE_HELMET = goggleHelmet("goggle_netherite_diving_helmet", p ->
+                    new DivingGoggleHelmet(ArmorMaterials.NETHERITE, p.fireResistant().durability(ArmorItem.Type.HELMET.getDurability(37)), Create.asResource("netherite_diving"))).register(),
+            CARDBOARD_GOGGLE_HELMET = goggleHelmet("goggle_cardboard_helmet", p -> new CardboardGoggleHelmet(p.durability(ArmorItem.Type.HELMET.getDurability(4)))).register();
     public static final ItemEntry<BacktankItem.BacktankBlockItem>
             CHAINMAIL_BACKTANK_PLACEABLE = backtank_placable("chainmail_backtank", () -> CGItems.CHAINMAIL_BACKTANK, () -> CGBlocks.CHAINMAIL_BACKTANK_BLOCK),
             DIAMOND_BACKTANK_PLACABLE = backtank_placable("diamond_backtank", () -> CGItems.DIAMOND_BACKTANK, () -> CGBlocks.DIAMOND_BACKTANK_BLOCK),
@@ -66,7 +68,8 @@ public class CGItems {
             GOLDEN_BACKTANK = backtank("golden_backtank", ArmorMaterials.GOLD, GOLDEN_BACKTANK_PLACEABLE),
             IRON_BACKTANK = backtank("iron_backtank", ArmorMaterials.IRON, IRON_BACKTANK_PLACEABLE),
             LEATHER_BACKTANK = REGISTRATE
-                    .item("leather_backtank", p -> new DyableBacktankItem(ArmorMaterials.LEATHER, p, ResourceLocation.withDefaultNamespace("leather"), CGItems.LEATHER_BACKTANK_PLACEABLE))
+                    .item("leather_backtank", p ->
+                            new DyableBacktankItem(ArmorMaterials.LEATHER, p, ResourceLocation.withDefaultNamespace("leather"), CGItems.LEATHER_BACKTANK_PLACEABLE))
                     .model(AssetLookup.customGenericItemModel("_", "item"))
                     //.color(() -> ArmorColor::new)
                     .tag(AllTags.AllItemTags.PRESSURIZED_AIR_SOURCES.tag)
@@ -86,8 +89,8 @@ public class CGItems {
             .register();
 
 
-    private static ItemEntry<? extends GoggleHelmet> goggleHelmet(String name, Holder<ArmorMaterial> material){
-        return goggleHelmet(name, p ->  new GoggleHelmet(material, p, vanillaArmorLoc(material))).register();
+    private static ItemEntry<? extends GoggleHelmet> goggleHelmet(String name, Holder<ArmorMaterial> material, int durability){
+        return goggleHelmet(name, p ->  new GoggleHelmet(material, p.durability(ArmorItem.Type.HELMET.getDurability(durability)), vanillaArmorLoc(material))).register();
     }
 
     private static <T extends Item & IGoggleHelmet> ItemBuilder<T, ?> goggleHelmet(String name, NonNullFunction<Item.Properties, T> builder){

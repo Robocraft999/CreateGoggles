@@ -62,7 +62,7 @@ public class CGBlocks {
     }
 
     private static DoubleSupplier getImpact(Block block) {
-        if (!(block instanceof CGBacktankBlock)) return () -> 0;
+        if (!(block instanceof CGBacktankBlock)) return null;
         return () -> BlockStressValues.getImpact(AllBlocks.COPPER_BACKTANK.get());
     }
 

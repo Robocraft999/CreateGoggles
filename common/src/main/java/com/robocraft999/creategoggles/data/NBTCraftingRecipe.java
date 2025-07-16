@@ -37,6 +37,7 @@ public record NBTCraftingRecipe(ShapedRecipe recipe) implements CraftingRecipe {
 		ItemStack nbtItemResult = ItemStack.EMPTY;
 		for (int slot = 0; slot < input.size(); slot++) {
 			ItemStack nbtItem = input.getItem(slot).copy();
+			//TODO consider using getComponentMap to copy all components
 			if(nbtItem.isEmpty() || (!nbtItem.isEnchantable() && !nbtItem.isEnchanted()))continue;
 
 			if(nbtItemResult.isEmpty()) {

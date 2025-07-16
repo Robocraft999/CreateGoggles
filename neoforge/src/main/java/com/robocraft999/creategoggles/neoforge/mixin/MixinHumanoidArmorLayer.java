@@ -2,6 +2,7 @@ package com.robocraft999.creategoggles.neoforge.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.robocraft999.creategoggles.registry.CGTrimPatterns;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
@@ -21,7 +22,7 @@ public abstract class MixinHumanoidArmorLayer {
             at = @At("HEAD"),
             cancellable = true
     )
-    public void onRenderArmorTrim(Holder<ArmorMaterial> armorMaterial, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, ArmorTrim armorTrim, Model humanoidModel, boolean bl, CallbackInfo ci){
+    public void onRenderArmorTrim(Holder<ArmorMaterial> armorMaterial, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, ArmorTrim armorTrim, HumanoidModel humanoidModel, boolean bl, CallbackInfo ci){
         if (armorTrim.material().is(CGTrimPatterns.GOGGLE_MATERIAL)){
             ci.cancel();
         }

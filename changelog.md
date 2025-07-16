@@ -1,11 +1,14 @@
 Features
-- Added Goggle Helmet for Cardboard Armor
 
 Bug Fixes
+- Fixed Gamecrash
+- fixed Helmets not having durability
+- fixed breaking stress impact
 
 Internal
-- Updated to Create 6.0.4
 
 Forge Only
+
+NeoForge Only
 
 Fabric Only
