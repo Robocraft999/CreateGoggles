@@ -6,7 +6,10 @@ import com.robocraft999.creategoggles.item.modifier.ArmorTrimHelper;
 import com.robocraft999.creategoggles.item.modifier.ItemModifier;
 import com.robocraft999.creategoggles.item.modifier.ItemModifierManager;
 import com.robocraft999.creategoggles.registry.CGItemModifiers;
+import com.robocraft999.creategoggles.registry.CGItems;
 import com.robocraft999.creategoggles.registry.CGTrimPatterns;
+import com.simibubi.create.content.equipment.armor.CardboardArmorStealthOverlay;
+import com.simibubi.create.infrastructure.fabric.HelmetOverlay;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
@@ -73,6 +76,7 @@ public class ClientEvents {
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register(ClientEvents::addEntityRenderLayers);
         ItemTooltipCallback.EVENT.register(ClientEvents::onTooltip);
         ModelLoadingPlugin.register(pluginContext -> pluginContext.addModels(new ModelResourceLocation(CreateGoggles.MOD_ID, "goggle", "inventory")));
+        HelmetOverlay.REGISTRY.register(CGItems.CARDBOARD_GOGGLE_HELMET.get(), new CardboardArmorStealthOverlay());
         //ModelLoadingPlugin.register(pluginContext -> pluginContext.addModels(ClientEvents.onModelRegistry()));
         //ModelLoadingPlugin.register(ClientEvents::onModelRegistry);
     }
