@@ -29,7 +29,7 @@ dependencies {
     modImplementation("com.tterrag.registrate:Registrate:${registrate_version_forge}")*/
 
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:${mixin_extras_version}"))
-    implementation("io.github.llamalad7:mixinextras-forge:${mixin_extras_version}")
+    //implementation("io.github.llamalad7:mixinextras-forge:${mixin_extras_version}")
 
     //modImplementation("com.tterrag.registrate:Registrate:${rootProject.registrate_version}")
     //modImplementation("com.tterrag.registrate_fabric:Registrate:$registrate_version_fabric")
