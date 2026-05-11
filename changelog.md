@@ -1,11 +1,12 @@
 Features
-- Added Goggle Helmet for Cardboard Armor
 
 Bug Fixes
+- Invalid impact provider
 
 Internal
-- Updated to Create 6.0.4
+- Updated to Create 6.0.8
 
 Forge Only
 
 Fabric Only
+- port to create 6 yay
