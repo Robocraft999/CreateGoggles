@@ -24,22 +24,29 @@ subprojects {
     }
 
     repositories {
-        maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // Forge Config API
-        maven { url = "https://maven.parchmentmc.org" } // ParchmentMC
-        maven { url = "https://maven.terraformersmc.com/" } // ModMenu
-        maven { url = "https://maven.shedaniel.me/" } // Cloth Config, REI
+        mavenLocal()
+
+        maven { url = "https://cursemaven.com" } // CurseForge maven
+        maven { url = "https://api.modrinth.com/maven" } // Modrinth maven
+
+        maven { url = "https://maven.parchmentmc.org" } // Parchment mappings
+        maven { url = "https://maven.tterrag.com/" } // Forge Registrate
+
+        maven { url = "https://maven.createmod.net" } // Create Forge, Ponder, Flywheel
+
+        maven { url = "https://mvn.devos.one/snapshots/" } // Create Fabric, Fabric Registrate
+
+        maven { url = "https://maven.idiotss.com/releases/" } // ESL
+
         maven { url = "https://maven.blamejared.com/" } // JEI
-        maven { url = "https://maven.quiltmc.org/repository/release" } // Quilt Mappings
-        maven { url = "https://api.modrinth.com/maven" } // LazyDFU
+
+        // Create dependencies
         maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
-        maven { url = "https://jitpack.io/" } // Mixin Extras, Fabric ASM
-        maven { url = "https://maven.createmod.net" } // Create, Ponder, Flywheel
-        maven { url = "https://maven.tterrag.com" } // Registrate
-        maven { url = "https://cursemaven.com"
-            content {
-                includeGroup "curse.maven"
-            }
-        }
+
+        maven { url = "https://jitpack.io/" } // Mixin Extras
+
+        maven { url "https://modmaven.dev/" } // Applied Energistics 2
+
     }
 
     dependencies {

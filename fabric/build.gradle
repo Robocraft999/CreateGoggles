@@ -17,15 +17,10 @@ configurations {
 }
 
 repositories {
-    maven { url = "https://maven.createmod.net" } // Ponder, Flywheel
-    maven { url = "https://api.modrinth.com/maven" } // LazyDFU
-    maven { url = "https://maven.terraformersmc.com/releases/" } // Mod Menu
-    maven { url = "https://mvn.devos.one/releases/" } // Porting Lib
-    maven { url = "https://mvn.devos.one/snapshots/" } // Create Fabric, Forge Tags, Milk Lib, Registrate Fabric
-    maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // Forge Config API Port
-    maven { url = "https://maven.cafeteria.dev/releases" } // Fake Player API
-    maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
-    maven { url = "https://jitpack.io/" } // Mixin Extras, Fabric ASM
+    maven { url = "https://maven.terraformersmc.com/" } // ModMenu, EMI
+    maven { url = "https://maven.shedaniel.me" } // REI
+    maven { url = "https://mvn.devos.one/releases" }  // Porting Lib
+    maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven" } // Forge Config API Port
 }
 
 dependencies {
@@ -33,11 +28,17 @@ dependencies {
     common(project(path: ":common", configuration: "namedElements")) { transitive = false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive = false }
 
-    // dependencies
-    modImplementation("net.fabricmc.fabric-api:fabric-api:${fabric_api_version}")
+    modImplementation("net.fabricmc:fabric-loader:${fabric_loader_version}")
+    modApi("net.fabricmc.fabric-api:fabric-api:${fabric_api_version}")
 
-    // Create - dependencies are added transitively
     modImplementation("com.simibubi.create:create-fabric:${create_version_fabric}")
+    modApi("fuzs.forgeconfigapiport:forgeconfigapiport-fabric:8.0.0")
+
+    modImplementation("com.tterrag.registrate_fabric:Registrate:${rootProject.registrate_version_fabric}")
+    modImplementation("net.createmod.ponder:Ponder-Fabric-${rootProject.minecraft_version}:${ponder_version}")
+    modCompileOnly("dev.engine-room.flywheel:flywheel-fabric-api-${flywheel_minecraft_version}:${flywheel_version_fabric}")
+    modRuntimeOnly("dev.engine-room.flywheel:flywheel-fabric-${flywheel_minecraft_version}:${flywheel_version_fabric}")
+
 
     modApi "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
 }

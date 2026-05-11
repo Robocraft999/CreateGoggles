@@ -1,43 +1,22 @@
 repositories {
-    maven { url = "https://maven.createmod.net" } // Ponder, Flywheel
-    // mavens for Create Fabric and dependencies
-    maven { url = "https://api.modrinth.com/maven" } // LazyDFU
-    maven { url = "https://maven.terraformersmc.com/releases/" } // Mod Menu
-    maven { url = "https://mvn.devos.one/snapshots/" }
-    maven { url = "https://mvn.devos.one/releases/" }
-    // Create Fabric, Porting Lib, Forge Tags, Milk Lib, Registrate Fabric
-    maven { url = "https://maven.cafeteria.dev/releases" } // Fake Player API
-    maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
-    maven { url = "https://jitpack.io/" } // Mixin Extras, Fabric ASM
-    maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // Forge Config API Port
+    maven { url "https://files.minecraftforge.net/maven/" }
 }
 
 dependencies {
-    // We depend on fabric loader here to use the fabric @Environment annotations and get the mixin dependencies
-    // Do NOT use other classes from fabric loader
-    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
-    //forge "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    // Remove the next line if you don't want to depend on the API
-    modApi "dev.architectury:architectury:${rootProject.architectury_version}"
-    //modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
+    modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
 
-    /*modImplementation("com.simibubi.create:create-${minecraft_version}:${create_version_forge}:slim"){transitive = false}
-    modCompileOnly("dev.engine-room.flywheel:flywheel-forge-api-${flywheel_minecraft_version}:${flywheel_version_forge}")
-    modRuntimeOnly("dev.engine-room.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version_forge}")
-    modRuntimeOnly("dev.engine-room.vanillin:vanillin-forge-${flywheel_minecraft_version}:${vanillin_version}")
+    forge("net.minecraftforge:forge:${rootProject.forge_version}")
+    modCompileOnly("com.simibubi.create:create-${rootProject.minecraft_version}:${rootProject.create_version_forge}:slim") { transitive = false }
+    modCompileOnly("com.tterrag.registrate:Registrate:${rootProject.registrate_version_forge}")
+    modImplementation("dev.engine-room.flywheel:flywheel-forge-${minecraft_version}:${flywheel_version_forge}")
+    compileOnly("dev.engine-room.flywheel:flywheel-forge-api-${minecraft_version}:${flywheel_version_forge}")
     modImplementation("net.createmod.ponder:Ponder-Forge-${minecraft_version}:${ponder_version}")
-    modImplementation("com.tterrag.registrate:Registrate:${registrate_version_forge}")*/
 
-    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:${mixin_extras_version}"))
-    //implementation("io.github.llamalad7:mixinextras-forge:${mixin_extras_version}")
+    modCompileOnly("net.fabricmc:fabric-loader:${fabric_loader_version}")
+    modCompileOnly("curse.maven:forge-config-api-port-fabric-547434:4583000")
 
-    //modImplementation("com.tterrag.registrate:Registrate:${rootProject.registrate_version}")
-    //modImplementation("com.tterrag.registrate_fabric:Registrate:$registrate_version_fabric")
-    modCompileOnly("com.simibubi.create:create-fabric:${create_version_fabric}")
-    modCompileOnly("dev.engine-room.flywheel:flywheel-fabric-api-${minecraft_version}:${flywheel_version_fabric}")
-    modCompileOnly("net.fabricmc.fabric-api:fabric-api:${fabric_api_version}")
-    //modImplementation("com.simibubi.create:create-${minecraft_version}:${create_version_forge}:slim"){transitive = false}
-    //modImplementation("com.jozufozu.flywheel:flywheel-fabric-$minecraft_version:$flywheel_version_fabric")
+    modCompileOnly("com.google.code.findbugs:findbugs:3.0.1")
+    annotationProcessor(implementation("io.github.llamalad7:mixinextras-common:0.4.1"))
 }
 
 architectury {

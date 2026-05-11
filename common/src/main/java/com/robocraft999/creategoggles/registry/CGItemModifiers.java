@@ -1,7 +1,7 @@
 package com.robocraft999.creategoggles.registry;
 
 import com.robocraft999.creategoggles.CreateGoggles;
-import com.robocraft999.creategoggles.RegistrateRegistryKeyProvider;
+import com.robocraft999.creategoggles.RegistratePlatformHelper;
 import com.robocraft999.creategoggles.item.modifier.ItemModifier;
 import com.robocraft999.creategoggles.item.modifier.ItemModifierManager;
 import com.robocraft999.creategoggles.item.modifier.RemovalItemModifier;
@@ -18,7 +18,7 @@ import java.util.function.Predicate;
 import static com.robocraft999.creategoggles.CreateGoggles.REGISTRATE;
 
 public class CGItemModifiers {
-    public static final ResourceKey<Registry<ItemModifier>> ITEM_MODIFIER_REGISTRY = RegistrateRegistryKeyProvider.itemModifierRegistryKey();
+    public static final ResourceKey<Registry<ItemModifier>> ITEM_MODIFIER_REGISTRY = RegistratePlatformHelper.itemModifierRegistryKey();
 
     public static final RegistryEntry<? extends ItemModifier>
             GOGGLE_MODIFIER = modifier(

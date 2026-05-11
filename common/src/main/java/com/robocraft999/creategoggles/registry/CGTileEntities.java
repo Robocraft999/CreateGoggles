@@ -1,9 +1,11 @@
 package com.robocraft999.creategoggles.registry;
 
 import com.robocraft999.creategoggles.CreateGoggles;
+import com.robocraft999.creategoggles.RegistratePlatformHelper;
 import com.simibubi.create.content.equipment.armor.BacktankBlockEntity;
 import com.simibubi.create.content.equipment.armor.BacktankRenderer;
-import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
+import com.simibubi.create.foundation.data.CreateBlockEntityBuilder;
+import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 
 import static com.robocraft999.creategoggles.CreateGoggles.REGISTRATE;
@@ -17,7 +19,7 @@ public class CGTileEntities {
 
     public static final BlockEntityEntry<BacktankBlockEntity> BACKTANK = REGISTRATE
             .blockEntity("cg_backtank", BacktankBlockEntity::new)
-            .visual(() -> SingleAxisRotatingVisual::backtank)
+            .transform(b -> RegistratePlatformHelper.visualUnfucker((CreateBlockEntityBuilder<BacktankBlockEntity, CreateRegistrate>) b))
             .validBlocks(
                     CGBlocks.CHAINMAIL_BACKTANK_BLOCK,
                     CGBlocks.DIAMOND_BACKTANK_BLOCK,
