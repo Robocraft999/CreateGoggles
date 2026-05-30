@@ -40,4 +40,27 @@ public interface IGoggleHelmet {
 
         return false;
     }
+
+    static double getGoggleZOffset(LivingEntity entity) {
+        ItemStack headSlot = entity.getItemBySlot(EquipmentSlot.HEAD);
+        
+        if (headSlot.is(CGTags.Items.GOGGLE)) {
+            return -0.05D;
+        }
+        
+        if (Minecraft.getInstance().level != null) {
+            var optionalTrim = headSlot.get(DataComponents.TRIM);
+            if (optionalTrim != null &&
+                    optionalTrim.pattern().is(CGTrimPatterns.GOGGLE_PATTERN) &&
+                    optionalTrim.material().is(CGTrimPatterns.GOGGLE_MATERIAL)) {
+                return -0.05D;
+            }
+        }
+
+        if (entity instanceof Player player && player.isCreative()) {
+            return 0.0D;
+        }
+
+        return 0.05D;
+    }
 }

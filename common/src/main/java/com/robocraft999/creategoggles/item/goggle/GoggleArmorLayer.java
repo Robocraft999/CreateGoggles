@@ -16,6 +16,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import com.simibubi.create.AllPartialModels;
 
 public class GoggleArmorLayer<T extends LivingEntity, M extends EntityModel<T>> extends RenderLayer<T, M> {
 
@@ -36,14 +37,15 @@ public class GoggleArmorLayer<T extends LivingEntity, M extends EntityModel<T>> 
 
         ItemStack stack = new ItemStack(AllItems.GOGGLES.get());
 
-        // Translate and rotate with our head
         ms.pushPose();
-        ms.translate(model.head.x / 16.0, model.head.y / 16.0, model.head.z / 16.0);
-        ms.mulPose(Axis.YP.rotation(model.head.yRot));
-        ms.mulPose(Axis.XP.rotation(model.head.xRot));
 
-        // Translate and scale to our head
-        ms.translate(0, -0.25, -0.05);
+        // Translate and rotate to our head
+        model.head.translateAndRotate(ms);
+
+        // Translate offset
+        double zOffset = IGoggleHelmet.getGoggleZOffset(entity);
+        ms.translate(0.0D, -0.25D, (double) zOffset);
+        
         ms.mulPose(Axis.ZP.rotationDegrees(180.0f));
         ms.scale(0.625f, 0.625f, 0.625f);
 
@@ -52,9 +54,8 @@ public class GoggleArmorLayer<T extends LivingEntity, M extends EntityModel<T>> 
             ms.translate(0, -0.25, 0);
         }
 
-        // Render
-        Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.HEAD, light, OverlayTexture.NO_OVERLAY, ms, buffer, Minecraft.getInstance().level, 0);
-        //Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.HEAD, false, ms, buffer, light, OverlayTexture.NO_OVERLAY, AllPartialModels.GOGGLES.get());
+        Minecraft.getInstance().getItemRenderer().render(stack, ItemDisplayContext.HEAD, false, ms, buffer, light, OverlayTexture.NO_OVERLAY, AllPartialModels.GOGGLES.get());
+        
         ms.popPose();
     }
 }
